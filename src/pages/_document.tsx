@@ -5,7 +5,10 @@ export default function Document() {
   return (
     <Html>
       <Head>
-        {/* <Script src="https://kit.fontawesome.com/a71c664b5b.js" /> */}
+        <Script
+          src="https://kit.fontawesome.com/a71c664b5b.js"
+          strategy="beforeInteractive"
+        />
       </Head>
       <body>
         <Main />
