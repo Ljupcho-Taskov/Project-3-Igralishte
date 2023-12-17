@@ -1,0 +1,49 @@
+.pink-background {
+  background: var(--Light-ribbon-pink, #fff6f6);
+}
+.text-olive {
+  color: var(--Fancy-olive, #8a8328);
+  font-family: Cormorant Infant;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 150%;
+  letter-spacing: -0.176px;
+}
+.text-desc {
+  color: var(--Black, #232221);
+  font-family: Cormorant Garamond;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 200%;
+  letter-spacing: -0.176px;
+}
+.faq-header {
+  color: var(--Black, #232221);
+  font-family: Century;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%;
+  letter-spacing: -0.242px;
+}
+.faq-sparks {
+  width: 53.202px;
+  height: 52.655px;
+  background: url("/logo/sparks-elements-and-symbols-isolated-on-white-background-free-vector\ 2.png");
+  mix-blend-mode: darken;
+}
+.text-top {
+  color: #000;
+  text-align: center;
+  font-family: Cormorant Garamond;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 150%;
+  letter-spacing: -0.176px;
+}
+.faq-section .container {
+  width: 90%;
+}

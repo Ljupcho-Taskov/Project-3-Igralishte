@@ -1,0 +1,89 @@
+.us-image {
+  width: 53.202px;
+  height: 52.655px;
+  background-image: url("/logo/sparks-elements-and-symbols-isolated-on-white-background-free-vector\ 2.png");
+}
+.us {
+  color: var(--Black, #232221);
+  font-family: Century;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%; /* 33px */
+  letter-spacing: -0.242px;
+}
+.about .row .col p {
+  color: #000;
+  text-align: center;
+  font-family: Cormorant Garamond;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 150%; /* 24px */
+  letter-spacing: -0.176px;
+}
+
+.rounded-corners {
+  border-radius: 8.571px;
+  border: 0.857px solid var(--Light-grey, #c2c2c2);
+  background: var(--Light-ribbon-pink, #fff6f6);
+  box-shadow: 0px 0px 2.57143px 0px #c2c2c2;
+  display: flex;
+  padding: 5px 0;
+}
+.rounded-corners button {
+  color: var(--Pinc-green, #504e21);
+  font-family: Cormorant Infant;
+  font-size: 12px;
+  font-style: italic;
+  font-weight: 600;
+  line-height: 150%; /* 18px */
+  letter-spacing: -0.132px;
+  border: none;
+  background: inherit;
+  cursor: pointer;
+  width: 50%;
+}
+
+.rounded-image {
+  width: 300px;
+  height: 334.167px;
+}
+.rounded-image-inner-about {
+  background: url("../images/coll\ 1.png");
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.rounded-image-inner-about2 {
+  background: url("../images/604eee326a61e796f4565a69fd3244b5.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.rounded-image-inner {
+  height: 100%;
+  width: 100%;
+  border-radius: 6.51px;
+  box-shadow: 0px 0px 1.95313px 0px rgba(0, 0, 0, 0.25);
+}
+.we {
+  color: var(--Black, #232221);
+  text-align: center;
+  font-family: Century;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%; /* 33px */
+  letter-spacing: -0.242px;
+}
+.desc-text {
+  color: var(--Black, #232221);
+  font-family: Cormorant Garamond;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 200%; /* 32px */
+  letter-spacing: -0.176px;
+}
+.about-us-section .container {
+  width: 90%;
+}

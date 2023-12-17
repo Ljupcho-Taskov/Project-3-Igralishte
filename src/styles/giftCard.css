@@ -1,0 +1,140 @@
+.giftCard-section h3 {
+  color: var(--Black, #232221);
+  text-align: center;
+  margin: 0 auto;
+  width: 300px;
+  font-family: Century;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%;
+  letter-spacing: -0.242px;
+}
+.partyGirl,
+.vintageGirl,
+.wavyGirl {
+  z-index: 1;
+  width: 100%;
+  position: absolute;
+  height: 26.875px;
+  background: var(
+    --Gold-gradient,
+    linear-gradient(
+      99deg,
+      #fff0bf -10.68%,
+      #efc990 18.14%,
+      #fdd292 43.87%,
+      rgba(240, 199, 73, 0.42) 81.17%,
+      #d4af37 100%
+    )
+  );
+}
+.partyGirl {
+  top: 15px;
+  left: 0;
+  right: 0;
+}
+.wavyGirl,
+.vintageGirl {
+  bottom: 15px;
+  left: 0;
+  right: 0;
+}
+.partyGirlImg {
+  position: relative;
+}
+.vintageGirlImg {
+  position: relative;
+}
+.wavyGirlImg {
+  position: relative;
+}
+.svg-vintage {
+  margin-left: auto;
+  position: absolute;
+  z-index: 1;
+  position: absolute;
+  z-index: 1;
+  bottom: -13px;
+  left: 25px;
+}
+.svg-party {
+  margin-left: auto;
+  position: absolute;
+  z-index: 1;
+  position: absolute;
+  z-index: 1;
+  top: -7px;
+  right: 25px;
+}
+
+.svg-wavy {
+  margin-left: auto;
+  position: absolute;
+  z-index: 1;
+  position: absolute;
+  z-index: 1;
+  bottom: -13px;
+  right: 25px;
+}
+
+.buttonPrice {
+  display: flex;
+  width: 270px;
+  height: 61px;
+  border-radius: 18px;
+  border: 1.8px solid var(--Light-grey, #c2c2c2);
+  background: var(--Light-ribbon-pink, #fff6f6);
+  box-shadow: 0px 0px 5.4px 0px #c2c2c2;
+  margin: 0 auto;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.buttonPriceClick {
+  display: flex;
+  width: 270px;
+  height: 61px;
+  border-radius: 18px;
+  border: 1.8px solid var(--Light-grey, #c2c2c2);
+  background: var(--Light-ribbon-pink, #fff6f6);
+  box-shadow: 0px 0px 5.4px 0px #c2c2c2;
+  margin: 0 auto;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.added {
+  color: var(--Pinc-green, #504e21);
+  font-family: Century;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%;
+  letter-spacing: -0.22px;
+}
+
+.goToCart {
+  color: var(--Dark-grey, #666560);
+  font-family: Cormorant Garamond;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 150%;
+  letter-spacing: -0.22px;
+}
+.buttonPriceSpan {
+  color: var(--Black, #232221);
+  font-family: Cormorant Garamond;
+  font-size: 25px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%; /* 37.5px */
+  letter-spacing: -0.275px;
+}
+.btnSpanStars {
+  position: absolute;
+  top: 0;
+  left: 69px;
+}

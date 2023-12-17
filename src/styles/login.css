@@ -1,0 +1,159 @@
+.login-section {
+  background: var(--Light-ribbon-pink, #fff6f6);
+}
+.login-section .container {
+  width: 360px;
+}
+.login-section form {
+  width: 220px;
+}
+.logo-image {
+  background-image: url("../images/Logo\ Igralishte\ final\ version\ 1\ \(1\).png");
+  height: 38px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.login-section form input {
+  border-radius: 8px;
+  border: 1px solid #a9a9a9;
+  background: rgba(196, 196, 196, 0);
+  width: 100%;
+  height: 40px;
+}
+.login-section form button {
+  width: 100%;
+  height: 40px;
+  border-radius: 13px;
+  background: var(--Black, #232221);
+  color: #fff;
+  font-family: Inter;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+.login-section form label,
+.registration-section form label {
+  color: #000;
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  width: 100%;
+}
+
+.socials-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 220px;
+  gap: 8px;
+  border-radius: 13px;
+  border: 3px solid var(--Ribbon-pink, #ffdbdb);
+  height: 40px;
+  background: inherit;
+}
+.socials-button span {
+  color: var(--Black, #232221);
+  font-family: Inter;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.npr {
+  color: var(--Black, #232221);
+  font-family: Inter;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+.npr a,
+.forgot-pass {
+  color: var(--Fancy-olive, #8a8328);
+  font-family: Inter;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  text-decoration-line: underline;
+}
+.circle-image {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 1.247px solid var(--Black, #232221);
+  background: var(
+    --Pink-gradient,
+    linear-gradient(
+      180deg,
+      #ffdbdb 0.05%,
+      #fdfdfd 93.1%,
+      #fdfdfd 110.6%,
+      #8a8328 152.03%
+    )
+  );
+}
+.custom-file-button {
+  color: #000;
+  width: 82.473px;
+  text-align: center;
+  font-family: Century;
+  font-size: 10.09px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  background: rgb(233, 233, 240);
+  cursor: pointer;
+  border-radius: 10px;
+  border: none;
+}
+
+.registration-section form input {
+  height: 40px;
+  width: 300px;
+  border-radius: 8px;
+  border: 1px solid #a9a9a9;
+  background: inherit;
+}
+.registration-section form label {
+  width: 300px;
+}
+.registration-section form button {
+  width: 220px;
+  height: 40px;
+  border-radius: 13px;
+  background: var(--Black, #232221);
+  color: #fff;
+  font-family: Inter;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+.registration-terms {
+  color: var(--Black, #232221);
+  font-family: Inter;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.registration-terms span a {
+  text-decoration-line: underline;
+  color: var(--Black, #232221);
+  font-weight: 500;
+}
+
+textarea {
+  background: inherit;
+}
+.registration-bg-pink {
+  background: var(--Light-ribbon-pink, #fff6f6);
+}
+.registration-section form {
+  width: 300px;
+}

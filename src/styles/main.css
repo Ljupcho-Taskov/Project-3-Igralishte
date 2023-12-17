@@ -1,0 +1,847 @@
+p,
+h1,
+h2,
+h3,
+h4,
+h5 {
+  margin: 0;
+}
+img {
+  width: 100%;
+}
+* {
+  font-family: "Cormorant Garamond";
+}
+.svg-brands {
+  position: absolute;
+  z-index: 5;
+  bottom: 12px;
+  right: 5px;
+}
+.p-relative {
+  position: relative;
+}
+input {
+  border-radius: 18px;
+  border: 1.8px solid var(--Light-grey, #c2c2c2);
+  box-shadow: 0px 0px 5.4px 0px #c2c2c2;
+}
+label {
+  color: var(--Dark-grey, #666560);
+  font-family: "Cormorant Garamond", serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%;
+  letter-spacing: -0.22px;
+  text-align: left;
+  width: 100%;
+}
+textarea {
+  border-radius: 4px;
+  border: 1.8px solid var(--Light-grey, #c2c2c2);
+  box-shadow: 0px 0px 5.4px 0px #c2c2c2;
+  width: 100%;
+}
+a:hover {
+  text-decoration: none;
+}
+body {
+  overflow-x: hidden;
+}
+* {
+  box-sizing: border-box;
+}
+li {
+  list-style: none;
+}
+
+.sparks {
+  width: 25.309px;
+  height: 25.309px;
+  flex-shrink: 0;
+  background: url("../logo/sparks-elements-and-symbols-isolated-on-white-background-free-vector\ 2.png"),
+    white 0px 0px / 100% 100% no-repeat;
+}
+
+.announcement-bar {
+  overflow: hidden;
+  background: var(--Light-ribbon-pink, #fff6f6);
+  padding: 10px 0;
+  border-bottom: 1px solid black;
+}
+
+.announcement-text {
+  white-space: nowrap;
+  animation: scrollAnimation 10s linear infinite;
+  color: #000;
+  text-align: center;
+  font-family: Cormorant Infant;
+  font-size: 21px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%;
+  letter-spacing: -0.231px;
+}
+
+@keyframes scrollAnimation {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+/* Valentines */
+.bg-pink {
+  background: var(
+    --Pink-gradient,
+    linear-gradient(
+      180deg,
+      #ffdbdb 0.05%,
+      #fdfdfd 93.1%,
+      #fdfdfd 110.6%,
+      #8a8328 152.03%
+    )
+  );
+}
+.image-without-circle {
+  position: relative;
+  max-width: 330px;
+  height: 383px;
+  flex-shrink: 0;
+  margin-left: auto;
+}
+
+.valentines-img {
+  background: url("../images/coll 1.png");
+}
+
+.circle {
+  position: absolute;
+  bottom: -162px;
+  width: 240px;
+  height: 240px;
+  flex-shrink: 0;
+  border-radius: 120px;
+  border: 1.247px solid var(--Black, #232221);
+  background: var(
+    --Pink-gradient,
+    linear-gradient(
+      180deg,
+      #ffdbdb 0.05%,
+      #fdfdfd 93.1%,
+      #fdfdfd 110.6%,
+      #8a8328 152.03%
+    )
+  );
+}
+.right-7 {
+  right: -7px;
+}
+.left-7 {
+  left: -7px;
+}
+.circle-inner {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.circle p {
+  color: var(--Black, #232221);
+  text-align: center;
+  font-family: Century;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%; /* 30px */
+  letter-spacing: -0.22px;
+}
+
+.circle small {
+  width: 124.74px;
+  color: var(--Dark-grey, #666560);
+  text-align: center;
+  font-family: Cormorant Garamond;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%;
+  letter-spacing: -0.132px;
+}
+.circle .stars {
+  width: 49.435px;
+  height: 48.927px;
+  flex-shrink: 0;
+  background: url("../logo/sparks-elements-and-symbols-isolated-on-white-background-free-vector\ 2.png");
+  mix-blend-mode: darken;
+}
+.circle .arrow {
+  width: 46.198px;
+  height: 15.212px;
+  flex-shrink: 0;
+  background: url("../logo/Group\ 36.png");
+  mix-blend-mode: darken;
+}
+.trendi {
+  color: #000;
+  text-align: center;
+  font-family: Cormorant Infant;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%; /* 33px */
+  letter-spacing: -0.242px;
+}
+/*  */
+
+/* Sliders */
+.image-carousel {
+  max-width: 300px;
+  min-height: 400px;
+  margin: 0 auto;
+}
+.arrow-sliders {
+  width: 31px;
+  height: 31px;
+  flex-shrink: 0;
+}
+.prev {
+  background: url("../logo/material-symbols_arrow-back-ios-rounded.png");
+}
+.next {
+  background: url("../logo/material-symbols_arrow-back-ios-rounded (1).png");
+}
+/*  */
+/* Accessories */
+
+.accessories-img {
+  background: url("../images/IMG_6142 1.png"),
+    lightgray -300.846px -18.314px / 259.146% 109.894% no-repeat;
+}
+.gift-card-img {
+  position: absolute;
+  z-index: -1;
+  top: 4px;
+  width: 100%;
+  height: 100%;
+  background: url("../images/ova13\ 1.png");
+  background-repeat: no-repeat;
+}
+
+.gift-card {
+  position: relative;
+  margin-left: 41px;
+  height: 257.756px;
+  border-top-left-radius: 128.878px;
+  border-bottom-left-radius: 128.878px;
+  border: 1.34px solid var(--Black, #232221);
+}
+
+.star {
+  position: absolute;
+  width: 65.567px;
+  height: 65.567px;
+  left: 18px;
+  top: 30px;
+  background: url("../logo/emojione-monotone_eight-pointed-star.png");
+  background-repeat: no-repeat;
+}
+
+/* Product Details */
+.image-slider {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+.image-slider img {
+  width: 80px;
+  height: 60px;
+  cursor: pointer;
+  border: 2px solid #ccc;
+}
+
+.image-slider img:hover {
+  border-color: #ff5b29;
+}
+
+.other-brands {
+  color: var(--Black, #232221);
+  font-family: Cormorant Garamond;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 150%;
+  letter-spacing: -0.22px;
+}
+/* Filter-Modal */
+.modal-filter {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal.open {
+  display: flex;
+}
+
+.modal-content-filter {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 400px;
+  width: 100%;
+}
+
+.input-check {
+  box-sizing: border-box;
+  padding: 0;
+  box-shadow: none;
+  width: 15px;
+  height: 15px;
+  border: none;
+}
+
+.searchFilter {
+  width: 32px;
+  height: 23px;
+  flex-shrink: 0;
+  border-radius: 6.242px;
+  border: 0.624px solid var(--Light-grey, #c2c2c2);
+  box-shadow: 0px 0px 1.872px 0px #c2c2c2;
+}
+
+.sort-span {
+  color: var(--Black, #232221);
+  text-align: center;
+  font-family: Cormorant Garamond;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%; /* 24px */
+  letter-spacing: -0.176px;
+}
+
+select {
+  padding: 4px 7px;
+  border-radius: 6.242px;
+  border: 0.624px solid var(--Light-grey, #c2c2c2);
+  box-shadow: 0px 0px 1.872px 0px #c2c2c2;
+  margin-left: 5px;
+}
+select option {
+  color: var(--Dark-grey, #666560);
+  text-align: center;
+  font-family: Cormorant Garamond;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 150%; /* 18px */
+  letter-spacing: -0.132px;
+}
+/*  */
+
+.color-square {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  position: absolute;
+  left: 0;
+  pointer-events: none;
+  border-radius: 3.356px;
+}
+.color-square-red {
+  background-color: #ff835e;
+}
+.color-square-blue {
+  background-color: #75d7f0;
+}
+.color-square-black {
+  background-color: var(--Black, #232221);
+}
+.color-square-green {
+  background-color: #b9e5a4;
+}
+.color-square-orange {
+  background-color: #fbc26c;
+}
+.color-square-yellow {
+  background-color: #fcff81;
+}
+
+.color-square-pink {
+  background-color: var(--Ribbon-pink, #ffdbdb);
+}
+
+.color-square-white {
+  background-color: #fff;
+  border: 0.168px solid #000;
+}
+
+.color-square-purple {
+  background-color: #ea97ff;
+}
+.color-square-grey {
+  background-color: #d9d9d9;
+}
+/* Pagination */
+.svg-button {
+  border: none;
+  background: none;
+  touch-action: none;
+}
+.button-number {
+  color: var(--Black, #232221);
+  font-family: Cormorant Garamond;
+  font-size: 25px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%;
+  letter-spacing: -0.275px;
+  border: none;
+  background: none;
+  touch-action: none;
+}
+.button-number-active {
+  color: var(--Red-alert, #ff5b29);
+}
+button:focus {
+  outline: none;
+}
+.w-90 {
+  width: 90%;
+}
+
+.brand-name {
+  position: absolute;
+  width: 100%;
+  z-index: 1;
+  bottom: 7%;
+  background: var(
+    --Gold-gradient,
+    linear-gradient(
+      99deg,
+      #fff0bf -10.68%,
+      #efc990 18.14%,
+      #fdd292 43.87%,
+      rgba(240, 199, 73, 0.42) 81.17%,
+      #d4af37 100%
+    )
+  );
+}
+li a {
+  text-decoration: none;
+  color: black;
+}
+/* Filter Page */
+.headersH4 {
+  color: var(--Black, #232221);
+  font-family: Cormorant Infant;
+  font-size: 25px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%; /* 37.5px */
+  letter-spacing: -0.275px;
+}
+.categoryHr {
+  width: 127.534px;
+}
+.brandsHr {
+  width: 102.363px;
+}
+.accessosiesHr {
+  width: 106px;
+}
+.sizesHr {
+  width: 97.329px;
+}
+.colorsHr {
+  width: 46.147px;
+}
+.pricesHr {
+  width: 55.377px;
+}
+.line-hr {
+  width: 100%;
+  margin: 0px;
+  height: 0.839px;
+  background: linear-gradient(
+    99deg,
+    #fff0bf -10.68%,
+    #efc990 18.14%,
+    #fdd292 43.87%,
+    rgba(240, 199, 73, 0.42) 81.17%,
+    #d4af37 100%
+  );
+}
+.filtering-button {
+  width: 300px;
+  height: 51px;
+  border-radius: 15px;
+  border: 1.5px solid var(--Light-grey, #c2c2c2);
+  background: var(
+    --Gold-gradient,
+    linear-gradient(
+      99deg,
+      #fff0bf -10.68%,
+      #efc990 18.14%,
+      #fdd292 43.87%,
+      rgba(240, 199, 73, 0.42) 81.17%,
+      #d4af37 100%
+    )
+  );
+  box-shadow: 0px 0px 4.5px 0px #c2c2c2;
+}
+.decline-button {
+  color: var(--Black, #232221);
+  text-align: center;
+  font-family: Cormorant Garamond;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 150%; /* 30px */
+  letter-spacing: -0.22px;
+  text-decoration-line: underline;
+  border: none;
+  background: inherit;
+}
+.filtering-div {
+  background: white;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: 20px 0;
+}
+.pPrice {
+  color: var(--Black, #232221);
+  font-family: Century;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%;
+  letter-spacing: -0.242px;
+}
+.spanCart,
+.spanHeart {
+  width: 45px;
+  height: 45px;
+  border-radius: 6.242px;
+  border: 0.624px solid var(--Light-grey, #c2c2c2);
+  position: relative;
+  padding: 5px;
+}
+.spanCart {
+  background: var(--Light-ribbon-pink, #fff6f6);
+  box-shadow: 0px 0px 1.872px 0px #c2c2c2;
+}
+.spanHeart {
+  background: var(--White, #fdfdfd);
+  box-shadow: 0px 0px 1.872px 0px #c2c2c2;
+}
+
+.spanCart img,
+.spanHeart img,
+.spanHeart svg,
+.spanCart svg {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.p-fixed {
+  position: fixed;
+  right: 14px;
+  bottom: 43px;
+  z-index: 1000;
+}
+.rotate-star {
+  position: relative;
+}
+.rotate-star svg {
+  width: 14px;
+  height: 14px;
+  transform: rotate(11.054deg);
+  position: absolute;
+  left: 1px;
+  bottom: 1px;
+}
+.rotate-star2 svg {
+  width: 14px;
+  height: 14px;
+  transform: rotate(11.054deg);
+  position: absolute;
+  right: 0px;
+  bottom: 0px;
+}
+.boxShadowNone {
+  box-shadow: none;
+}
+.hrYellow {
+  width: 300px;
+  margin-left: 0;
+  height: 0.674px;
+  background: linear-gradient(
+    99deg,
+    #fff0bf -10.68%,
+    #efc990 18.14%,
+    #fdd292 43.87%,
+    rgba(240, 199, 73, 0.42) 81.17%,
+    #d4af37 100%
+  );
+}
+/* Accordions */
+.accordion-row {
+  width: 100%;
+  height: 100px;
+}
+.accordion-row1 {
+  width: 100%;
+  height: 166px;
+}
+.accordion-p {
+  color: var(--Dark-grey, #666560);
+  font-family: Cormorant Garamond;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 150%;
+  letter-spacing: -0.092px;
+}
+
+.accordion-title {
+  color: var(--Fancy-olive, #8a8328);
+  font-family: Cormorant Infant;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%;
+  letter-spacing: -0.176px;
+}
+.accordion-svg-left {
+  position: absolute;
+  left: 23px;
+}
+.accordion-svg-right {
+  position: absolute;
+  right: 23px;
+}
+.open-left-svg {
+  position: absolute;
+  left: 23px;
+  top: 16px;
+}
+.open-right-svg {
+  position: absolute;
+  right: 23px;
+  top: 18px;
+}
+/*  */
+/* Order Page */
+.order-button,
+.favorites-button {
+  text-align: center;
+  font-family: Cormorant Infant;
+  font-size: 20px;
+  font-style: italic;
+  font-weight: 500;
+  line-height: 150%;
+  letter-spacing: -0.22px;
+  border: none;
+  background: inherit;
+  display: flex;
+  align-items: center;
+}
+.darkGrey {
+  color: var(--Dark-grey, #666560);
+}
+.colorDark {
+  color: var(--Black, #232221);
+}
+.hr-order {
+  width: 100%;
+  height: 0.5px;
+  background: linear-gradient(
+    99deg,
+    #fff0bf -10.68%,
+    #efc990 18.14%,
+    #fdd292 43.87%,
+    rgba(240, 199, 73, 0.42) 81.17%,
+    #d4af37 100%
+  );
+}
+/*  */
+
+/* ProductItem */
+.productItemTitle {
+  color: var(--Black, #232221);
+  font-family: Cormorant Garamond;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%; /* 33px */
+  letter-spacing: -0.242px;
+}
+
+.productName {
+  color: var(--Dark-grey, #666560);
+  font-family: Century;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%; /* 24px */
+  letter-spacing: -0.176px;
+}
+.red-alert {
+  color: var(--Red-alert, #ff5b29);
+}
+.olive {
+  color: var(--Fancy-olive, #8a8328);
+}
+.total {
+  color: #000;
+  text-align: center;
+  font-family: Century;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%; /* 30px */
+  letter-spacing: -0.22px;
+}
+
+.continue-button {
+  width: 155.635px;
+  height: 41.098px;
+  border-radius: 12.127px;
+  border: 1.213px solid var(--Light-grey, #c2c2c2);
+  background: var(
+    --Gold-gradient,
+    linear-gradient(
+      99deg,
+      #fff0bf -10.68%,
+      #efc990 18.14%,
+      #fdd292 43.87%,
+      rgba(240, 199, 73, 0.42) 81.17%,
+      #d4af37 100%
+    )
+  );
+  box-shadow: 0px 0px 3.638px 0px #c2c2c2;
+  color: var(--Black, #232221);
+  font-family: Century;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%; /* 24px */
+  letter-spacing: -0.176px;
+}
+.delete-button {
+  border: none;
+  background: inherit;
+}
+/*  */
+/* form order page */
+.sparksForm {
+  width: 57.082px;
+  height: 56.496px;
+  background: url("../logo/sparks-elements-and-symbols-isolated-on-white-background-free-vector\ 2.png");
+
+  mix-blend-mode: darken;
+}
+
+.starLabel {
+  color: var(--Red-alert, #ff5b29);
+  font-family: Cormorant Garamond;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%;
+  letter-spacing: -0.176px;
+}
+
+.orderingInput {
+  border-radius: 4.161px;
+  border: 0.416px solid var(--Light-grey, #c2c2c2);
+  background: var(--Light-ribbon-pink, #fff6f6);
+  box-shadow: 0px 0px 1.248px 0px #c2c2c2;
+  height: 30px;
+}
+.cancel-order-button {
+  color: var(--Black, #232221);
+  text-align: center;
+  font-family: Cormorant Garamond;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%; /* 24px */
+  letter-spacing: -0.176px;
+  text-decoration-line: underline;
+  border: none;
+  background: inherit;
+}
+.box-none {
+  box-shadow: none;
+}
+.svg-order-x {
+  text-align: end;
+}
+/* order-modal */
+.order-modal {
+  background: rgba(0, 0, 0, 0.54);
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1050;
+}
+.order-modal-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  height: 325px;
+  border-radius: 8.322px;
+  background: var(--Light-ribbon-pink, #fff6f6);
+  box-shadow: 0px 0px 1.248px 0px rgba(0, 0, 0, 0.25);
+}
+.order-modal-p {
+  color: #000;
+  text-align: center;
+  font-family: Cormorant Infant;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%; /* 30px */
+  letter-spacing: -0.22px;
+}
+
+.order-modal-small {
+  color: var(--Dark-grey, #666560);
+  text-align: center;
+  font-family: Cormorant Garamond;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 150%; /* 24px */
+  letter-spacing: -0.176px;
+}
+
+/*  */

@@ -1,0 +1,61 @@
+.rounded-image-inner-contact {
+  background: url("../images/Rectangle\ 52.png");
+}
+.adress-text {
+  color: var(--Black, #232221);
+  text-align: center;
+  font-family: Century;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%; /* 24px */
+  letter-spacing: -0.176px;
+}
+.contact h2 {
+  color: #000;
+  text-align: center;
+  font-family: Cormorant Garamond;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 160%; /* 35.2px */
+  letter-spacing: -0.242px;
+}
+.contact p {
+  color: #000;
+  font-family: Cormorant Garamond;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 160%;
+  letter-spacing: -0.242px;
+}
+.contact-section .container {
+  width: 90%;
+}
+
+.contact-section button {
+  border-radius: 15px;
+  border: 1.5px solid var(--Light-grey, #c2c2c2);
+  background: var(
+    --Gold-gradient,
+    linear-gradient(
+      99deg,
+      #fff0bf -10.68%,
+      #efc990 18.14%,
+      #fdd292 43.87%,
+      rgba(240, 199, 73, 0.42) 81.17%,
+      #d4af37 100%
+    )
+  );
+  box-shadow: 0px 0px 4.5px 0px #c2c2c2;
+  width: 300px;
+  height: 61px;
+  color: var(--Black, #232221);
+  font-family: Cormorant Garamond;
+  font-size: 25px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%; /* 37.5px */
+  letter-spacing: -0.275px;
+}
