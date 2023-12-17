@@ -7,7 +7,6 @@ import Head from "next/head";
 const formToOrderPage: NextPage = () => {
   const [useProfileInfo, setUseProfileInfo] = useState(false);
   const [isModalVisible, setIsModalVisible] = useState(false);
-  const { cart } = useCart();
 
   useEffect(() => {
     const storedData = localStorage.getItem("registrationData");

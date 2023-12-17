@@ -196,15 +196,15 @@ const GiftCardPage: NextPage<Props> = ({ dataCardsPrice }) => {
                               y2="10.4743"
                               gradientUnits="userSpaceOnUse"
                             >
-                              <stop offset="0.0389507" stop-color="#FFF0BF" />
-                              <stop offset="0.289254" stop-color="#EFC990" />
-                              <stop offset="0.512668" stop-color="#FDD292" />
+                              <stop offset="0.0389507" stopColor="#FFF0BF" />
+                              <stop offset="0.289254" stopColor="#EFC990" />
+                              <stop offset="0.512668" stopColor="#FDD292" />
                               <stop
                                 offset="0.836534"
-                                stop-color="#F0C749"
+                                stopColor="#F0C749"
                                 stop-opacity="0.42"
                               />
-                              <stop offset="1" stop-color="#D4AF37" />
+                              <stop offset="1" stopColor="#D4AF37" />
                             </linearGradient>
                             <linearGradient
                               id="paint1_linear_1035_1596"
@@ -214,15 +214,15 @@ const GiftCardPage: NextPage<Props> = ({ dataCardsPrice }) => {
                               y2="1.63971"
                               gradientUnits="userSpaceOnUse"
                             >
-                              <stop offset="0.0389507" stop-color="#FFF0BF" />
-                              <stop offset="0.289254" stop-color="#EFC990" />
-                              <stop offset="0.512668" stop-color="#FDD292" />
+                              <stop offset="0.0389507" stopColor="#FFF0BF" />
+                              <stop offset="0.289254" stopColor="#EFC990" />
+                              <stop offset="0.512668" stopColor="#FDD292" />
                               <stop
                                 offset="0.836534"
-                                stop-color="#F0C749"
+                                stopColor="#F0C749"
                                 stop-opacity="0.42"
                               />
-                              <stop offset="1" stop-color="#D4AF37" />
+                              <stop offset="1" stopColor="#D4AF37" />
                             </linearGradient>
                           </defs>
                         </svg>

@@ -157,7 +157,7 @@ const OrderPage: React.FC<ProductsPageProps> = ({ product, productsData }) => {
       {cart.length === 0 && priceCard.length === 0 && !isViewingFavorites ? (
         <p>Your cart is empty.</p>
       ) : favorites.length === 0 && isViewingFavorites ? (
-        <p>You don't have any items in favorites.</p>
+        <p>You dont have any items in favorites.</p>
       ) : (
         <div className="container">
           {isViewingFavorites ? (
@@ -267,7 +267,7 @@ const OrderPage: React.FC<ProductsPageProps> = ({ product, productsData }) => {
                     d="M7 4.2H7.2V4V2.7H16.8V4V4.2H17H21.8V5.8H20H19.8V6V21C19.8 21.2122 19.7157 21.4157 19.5657 21.5657C19.4157 21.7157 19.2122 21.8 19 21.8H5C4.78783 21.8 4.58434 21.7157 4.43431 21.5657C4.28429 21.4157 4.2 21.2122 4.2 21V6V5.8H4H2.2V4.2H7ZM6 5.8H5.8V6V20V20.2H6H18H18.2V20V6V5.8H18H6ZM9.2 9.2H10.8V16.8H9.2V9.2ZM13.2 9.2H14.8V16.8H13.2V9.2Z"
                     fill="#232221"
                     stroke="#FDFDFD"
-                    stroke-width="0.4"
+                    strokeWidth="0.4"
                   />
                 </svg>
               </button>

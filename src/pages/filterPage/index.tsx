@@ -3,8 +3,7 @@ import React, { useEffect, useRef, useState } from "react";
 import Header from "../../components/header/Header";
 import { ProductsType } from "../../types/types";
 import { GetServerSideProps, NextPage } from "next";
-import Link from "next/link";
-import ProductItem from "../../components/ProductItem";
+
 import Head from "next/head";
 
 interface ProductsPageProps {
@@ -12,10 +11,7 @@ interface ProductsPageProps {
   noResultsProducts: boolean;
 }
 
-const FilterPage: NextPage<ProductsPageProps> = ({
-  data,
-  noResultsProducts,
-}) => {
+const FilterPage: NextPage<ProductsPageProps> = ({ data }) => {
   const getColorSquareClassName = (color: string): string => {
     const colorMap: Record<string, string> = {
       red: "color-square-red",
@@ -201,7 +197,7 @@ const FilterPage: NextPage<ProductsPageProps> = ({
                   viewBox="0 0 22 22"
                   fill="none"
                 >
-                  <g clip-path="url(#clip0_1059_1431)">
+                  <g clipPath="url(#clip0_1059_1431)">
                     <path
                       d="M16.6543 16.7685C16.5567 16.8643 16.425 16.9173 16.2882 16.9159C16.1515 16.9146 16.0209 16.8589 15.9252 16.7613L10.9922 11.729L5.95987 16.662C5.86222 16.7577 5.73053 16.8107 5.59378 16.8093C5.45704 16.808 5.32643 16.7523 5.2307 16.6547C5.13497 16.557 5.08196 16.4253 5.08332 16.2886C5.08468 16.1519 5.14031 16.0213 5.23797 15.9255L10.2703 10.9925L5.33728 5.96023C5.24155 5.86257 5.18853 5.73089 5.1899 5.59414C5.19126 5.4574 5.24689 5.32679 5.34455 5.23106C5.4422 5.13533 5.57389 5.08232 5.71064 5.08368C5.84738 5.08505 5.97798 5.14067 6.07371 5.23833L11.0067 10.2706L16.039 5.33764C16.1367 5.24191 16.2683 5.1889 16.4051 5.19026C16.5418 5.19162 16.6724 5.24725 16.7682 5.34491C16.8639 5.44256 16.9169 5.57425 16.9156 5.711C16.9142 5.84774 16.8586 5.97834 16.7609 6.07407L11.7286 11.0071L16.6616 16.0394C16.7573 16.137 16.8103 16.2687 16.809 16.4055C16.8076 16.5422 16.752 16.6728 16.6543 16.7685Z"
                       fill="#232221"
