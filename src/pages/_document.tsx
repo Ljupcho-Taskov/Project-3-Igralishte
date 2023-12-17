@@ -5,10 +5,7 @@ export default function Document() {
   return (
     <Html>
       <Head>
-        <Script
-          src="https://kit.fontawesome.com/a71c664b5b.js"
-          crossOrigin="anonymous"
-        ></Script>
+        <Script src="https://kit.fontawesome.com/a71c664b5b.js" />
       </Head>
       <body>
         <Main />
