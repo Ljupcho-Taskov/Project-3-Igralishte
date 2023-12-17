@@ -4,7 +4,7 @@ import { useCart } from "../../context/CartContext";
 import OrderSuccessModal from "../../components/OrderSuccessModal";
 import Head from "next/head";
 
-const formToOrderPage: NextPage = () => {
+const formToOrderPage = () => {
   const [useProfileInfo, setUseProfileInfo] = useState(false);
   const [isModalVisible, setIsModalVisible] = useState(false);
 

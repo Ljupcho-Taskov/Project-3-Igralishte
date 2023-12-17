@@ -202,7 +202,7 @@ const GiftCardPage: NextPage<Props> = ({ dataCardsPrice }) => {
                               <stop
                                 offset="0.836534"
                                 stopColor="#F0C749"
-                                stop-opacity="0.42"
+                                stopOpacity="0.42"
                               />
                               <stop offset="1" stopColor="#D4AF37" />
                             </linearGradient>
@@ -220,7 +220,7 @@ const GiftCardPage: NextPage<Props> = ({ dataCardsPrice }) => {
                               <stop
                                 offset="0.836534"
                                 stopColor="#F0C749"
-                                stop-opacity="0.42"
+                                stopOpacity="0.42"
                               />
                               <stop offset="1" stopColor="#D4AF37" />
                             </linearGradient>
