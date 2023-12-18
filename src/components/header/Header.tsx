@@ -62,6 +62,7 @@ const Header: React.FC = () => {
     setIsModalOpen(!isModalOpen);
     setIsSearchModalOpen(false);
   };
+
   const handleDropDown = (dropdownKey: keyof DropdownStates) => {
     setDropdownStates((prevStates) => ({
       ...prevStates,
