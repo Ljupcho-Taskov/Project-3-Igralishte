@@ -12,7 +12,6 @@ import Footer from "../../components/footer/Footer";
 
 interface Props {
   product: ProductsType;
-  images: ProductsType["images"];
   allProductsData: ProductsType[];
 }
 
