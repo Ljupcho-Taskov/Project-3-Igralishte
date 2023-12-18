@@ -1,7 +1,16 @@
 import Link from "next/link";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 const Footer: React.FC = () => {
+  const [user, setUser] = useState(
+    typeof window !== "undefined"
+      ? localStorage.getItem("registrationData")
+      : null
+  );
+  useEffect(() => {
+    const item = localStorage.getItem("registrationData");
+    setUser(item);
+  }, []);
   return (
     <footer>
       <div className="container">
@@ -37,7 +46,11 @@ const Footer: React.FC = () => {
               </li>
               <li className="mb-2">
                 <Link href="/register">Регистрирај се</Link> /{" "}
-                <Link href="/login">логирај се</Link>
+                {!user ? (
+                  <Link href="/login">/ Логирај се</Link>
+                ) : (
+                  <Link href="/login">/ Одјави се</Link>
+                )}
               </li>
             </ul>
             <ul>
