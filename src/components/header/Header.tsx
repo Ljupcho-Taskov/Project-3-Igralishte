@@ -26,7 +26,7 @@ const Header: React.FC = () => {
     const item = localStorage.getItem("registrationData");
     setUser(item);
   }, []);
-  console.log(user);
+
   const inputRef = useRef<HTMLInputElement>(null);
 
   const handleOnSubmitProduct = (e: React.FormEvent<HTMLFormElement>) => {
