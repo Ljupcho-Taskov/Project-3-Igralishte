@@ -12,6 +12,7 @@ const About: NextPage = () => {
   const handleButtonClick = (component: string) => {
     setSelectedComponent(component);
   };
+
   return (
     <>
       <Head>
