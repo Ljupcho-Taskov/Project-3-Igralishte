@@ -1,5 +1,6 @@
 import { NextPage } from "next";
 import React, { useState } from "react";
+
 import Footer from "../../components/footer/Footer";
 import Header from "../../components/header/Header";
 import OurStory from "../../components/OurStory";
