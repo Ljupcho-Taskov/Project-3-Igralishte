@@ -21,7 +21,7 @@ interface ProductsPageProps {
 }
 
 const OrderPage: React.FC<ProductsPageProps> = ({ product, productsData }) => {
-  const { cart, favorites, priceCard, removeFromCart } = useCart();
+  const { cart, favorites, priceCard, clearCart } = useCart();
   const [currentPage, setCurrentPage] = useState(1);
   const [isViewingFavorites, setIsViewingFavorites] = useState(false);
   const [isViewingCart, setIsViewingCart] = useState(false);
@@ -51,6 +51,16 @@ const OrderPage: React.FC<ProductsPageProps> = ({ product, productsData }) => {
   };
 
   useEffect(() => {
+    const { favorites: isViewingFavoritesParam } = router.query;
+    setIsViewingFavorites(Boolean(isViewingFavoritesParam));
+  }, []);
+
+  useEffect(() => {
+    const { cart: isViewingCartParam } = router.query;
+    setIsViewingCart(Boolean(isViewingCartParam));
+  }, []);
+
+  useEffect(() => {
     const total = cart.reduce((sum, item) => sum + parseFloat(item.priceR), 0);
     const totalGiftCard = priceCard.reduce(
       (sum, item) => sum + parseFloat(item.price),
@@ -75,14 +85,10 @@ const OrderPage: React.FC<ProductsPageProps> = ({ product, productsData }) => {
   }, [cart, priceCard]);
 
   useEffect(() => {
-    const { favorites: isViewingFavoritesParam } = router.query;
-    setIsViewingFavorites(Boolean(isViewingFavoritesParam));
-  }, []);
-
-  useEffect(() => {
-    const { cart: isViewingCartParam } = router.query;
-    setIsViewingCart(Boolean(isViewingCartParam));
-  }, []);
+    if (!localStorage.getItem("cart") && !localStorage.getItem("priceCard")) {
+      router.reload();
+    }
+  }, [router]);
 
   const handleNextPage = () => {
     setCurrentPage((prev) => Math.min(prev + 1, totalProductPages));
@@ -124,9 +130,14 @@ const OrderPage: React.FC<ProductsPageProps> = ({ product, productsData }) => {
                     : "order-button darkGrey"
                 }
               >
-                <img className="mr-3" src="../../logo/cart.png" alt="" />
+                <img
+                  style={{ width: "30px", height: "28px" }}
+                  className="mr-2"
+                  src="../../logo/cart.png"
+                  alt=""
+                />
                 <span className={isViewingCart ? "colorDark" : "darkGrey"}>
-                  Кошничка
+                  Кошничка ({cart.length > 0 ? `${cart.length}` : "0"})
                 </span>
               </button>
             </Link>
@@ -140,11 +151,15 @@ const OrderPage: React.FC<ProductsPageProps> = ({ product, productsData }) => {
                 onClick={handleViewFavorites}
               >
                 <img
-                  className="mr-3"
+                  style={{ width: "30px", height: "28px" }}
+                  className="mr-2"
                   src="../../logo/ph_heart-straight-thin.png"
                   alt=""
                 />
-                <span> Favorites</span>
+                <span>
+                  Favorites (
+                  {favorites.length > 0 ? `${favorites.length}` : "0"})
+                </span>
               </button>
             </Link>
           </div>
@@ -155,7 +170,13 @@ const OrderPage: React.FC<ProductsPageProps> = ({ product, productsData }) => {
       </div>
 
       {cart.length === 0 && priceCard.length === 0 && !isViewingFavorites ? (
-        <p>Your cart is empty.</p>
+        <div className="container">
+          <div className="row">
+            <div className="col-12 text-center">
+              <p>Вашата кошничка е празна</p>
+            </div>
+          </div>
+        </div>
       ) : favorites.length === 0 && isViewingFavorites ? (
         <p>You dont have any items in favorites.</p>
       ) : (
@@ -251,26 +272,29 @@ const OrderPage: React.FC<ProductsPageProps> = ({ product, productsData }) => {
 
           <div className="row mb-5">
             <div className="col-12 d-flex align-items-center">
-              <Link href="/formToOrder">
-                <button className="continue-button">Продолжи</button>
-              </Link>
-
-              <button className="delete-button">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                >
-                  <path
-                    d="M7 4.2H7.2V4V2.7H16.8V4V4.2H17H21.8V5.8H20H19.8V6V21C19.8 21.2122 19.7157 21.4157 19.5657 21.5657C19.4157 21.7157 19.2122 21.8 19 21.8H5C4.78783 21.8 4.58434 21.7157 4.43431 21.5657C4.28429 21.4157 4.2 21.2122 4.2 21V6V5.8H4H2.2V4.2H7ZM6 5.8H5.8V6V20V20.2H6H18H18.2V20V6V5.8H18H6ZM9.2 9.2H10.8V16.8H9.2V9.2ZM13.2 9.2H14.8V16.8H13.2V9.2Z"
-                    fill="#232221"
-                    stroke="#FDFDFD"
-                    strokeWidth="0.4"
-                  />
-                </svg>
-              </button>
+              {!isViewingFavorites ? (
+                <>
+                  <Link href="/formToOrder">
+                    <button className="continue-button">Продолжи</button>
+                  </Link>
+                  <button onClick={clearCart} className="delete-button">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                    >
+                      <path
+                        d="M7 4.2H7.2V4V2.7H16.8V4V4.2H17H21.8V5.8H20H19.8V6V21C19.8 21.2122 19.7157 21.4157 19.5657 21.5657C19.4157 21.7157 19.2122 21.8 19 21.8H5C4.78783 21.8 4.58434 21.7157 4.43431 21.5657C4.28429 21.4157 4.2 21.2122 4.2 21V6V5.8H4H2.2V4.2H7ZM6 5.8H5.8V6V20V20.2H6H18H18.2V20V6V5.8H18H6ZM9.2 9.2H10.8V16.8H9.2V9.2ZM13.2 9.2H14.8V16.8H13.2V9.2Z"
+                        fill="#232221"
+                        stroke="#FDFDFD"
+                        strokeWidth="0.4"
+                      />
+                    </svg>
+                  </button>
+                </>
+              ) : null}
             </div>
           </div>
 
@@ -309,17 +333,23 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   let productsRes: Response;
   let brandRes: Response;
 
-  const priceRes = await fetch("http://localhost:5001/priceCards");
+  const priceRes = await fetch(
+    "https://adventurous-jade-duck.cyclic.app/priceCards"
+  );
   const dataCardsPrice: CardsPriceType[] = await priceRes.json();
 
   if (query.category) {
     productsRes = await fetch(
-      `http://localhost:5001/products?q=${query.category}`
+      `https://adventurous-jade-duck.cyclic.app/products?q=${query.category}`
     );
-    brandRes = await fetch(`http://localhost:5001/brands?q=${query.category}`);
+    brandRes = await fetch(
+      `https://adventurous-jade-duck.cyclic.app/brands?q=${query.category}`
+    );
   } else {
-    productsRes = await fetch("http://localhost:5001/products");
-    brandRes = await fetch("http://localhost:5001/brands");
+    productsRes = await fetch(
+      "https://adventurous-jade-duck.cyclic.app/products"
+    );
+    brandRes = await fetch("https://adventurous-jade-duck.cyclic.app/brands");
   }
 
   const productsData: ProductsType[] = await productsRes.json();

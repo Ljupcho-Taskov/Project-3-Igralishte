@@ -8,6 +8,8 @@ import Pagination from "../../components/Pagination";
 import { ProductsType } from "../../types/types";
 import Card from "../../components/Card";
 import Head from "next/head";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
 
 interface BrandsPageProps {
   brandsData: ProductsType[];
@@ -24,7 +26,6 @@ const BrandsPage: NextPage<BrandsPageProps> = ({
   const { brand, category } = router.query;
 
   const [currentPage, setCurrentPage] = useState(1);
-  const [headerText, setHeaderText] = useState<string>("Pocetna > All");
 
   const productsPerPage = 10;
 
@@ -49,13 +50,8 @@ const BrandsPage: NextPage<BrandsPageProps> = ({
     setCurrentPage(page);
   };
 
-  useEffect(() => {
-    const headerBrand = brand ? `${brand} > ` : "";
-    const headerCategory = category || "All";
-    setHeaderText(`Pocetna > ${headerBrand}${headerCategory}`);
-  }, [brand, category]);
   const headerBrand = brand ? brand : "";
-  const headerCategory = category || "All";
+  const headerCategory = category || "Сите";
   const filteredProducts = productsData.filter(
     (product) => product.brand === category
   );
@@ -71,16 +67,26 @@ const BrandsPage: NextPage<BrandsPageProps> = ({
       <div className="container py-3 w-90">
         <div className="row mb-3">
           <div className="col-12">
-            <p>
-              {`Pocetna`}
-              <i
-                className={headerBrand ? "mx-2 fa-solid fa-angle-right" : ""}
-              ></i>
-              {headerBrand}
-              <i
-                className={headerCategory ? "mx-2 fa-solid fa-angle-right" : ""}
-              ></i>
-              {headerCategory}
+            <p className="d-flex">
+              {`Почетна`}
+              {headerBrand ? (
+                <span className="d-flex align-items-center">
+                  <FontAwesomeIcon
+                    style={{ height: "15px", width: "15px" }}
+                    icon={faAngleRight}
+                  />
+                  {headerBrand}
+                </span>
+              ) : null}
+              {headerCategory ? (
+                <span className="d-flex align-items-center">
+                  <FontAwesomeIcon
+                    style={{ height: "15px", width: "15px" }}
+                    icon={faAngleRight}
+                  />
+                  {headerCategory}
+                </span>
+              ) : null}
             </p>
           </div>
         </div>
@@ -125,13 +131,17 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   let productsRes: Response;
 
   if (query.category) {
-    brandsRes = await fetch(`http://localhost:5001/brands?q=${query.category}`);
+    brandsRes = await fetch(
+      `https://adventurous-jade-duck.cyclic.app/brands?q=${query.category}`
+    );
     productsRes = await fetch(
-      `http://localhost:5001/products?q=${query.category}`
+      `https://adventurous-jade-duck.cyclic.app/products?q=${query.category}`
     );
   } else {
-    brandsRes = await fetch("http://localhost:5001/brands");
-    productsRes = await fetch("http://localhost:5001/products");
+    brandsRes = await fetch("https://adventurous-jade-duck.cyclic.app/brands");
+    productsRes = await fetch(
+      "https://adventurous-jade-duck.cyclic.app/products"
+    );
   }
 
   const brandsData: ProductsType[] = await brandsRes.json();

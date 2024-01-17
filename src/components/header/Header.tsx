@@ -17,16 +17,18 @@ const Header: React.FC = () => {
     brands: false,
     accessories: false,
   });
-  const [user, setUser] = useState(
-    typeof window !== "undefined"
-      ? localStorage.getItem("registrationData")
-      : null
-  );
-  useEffect(() => {
-    const item = localStorage.getItem("registrationData");
-    setUser(item);
-  }, []);
 
+  const [user, setUser] = useState<string | null>(null);
+
+  useEffect(() => {
+    const getUserFromLocalStorage = () => {
+      return window.localStorage.getItem("registrationData");
+    };
+
+    if (typeof window !== "undefined") {
+      setUser(getUserFromLocalStorage());
+    }
+  }, []);
   const inputRef = useRef<HTMLInputElement>(null);
 
   const handleOnSubmitProduct = (e: React.FormEvent<HTMLFormElement>) => {
@@ -297,12 +299,16 @@ const Header: React.FC = () => {
                       <div className="ph-user mr-1">
                         <img src="/logo/ph_user-light.png" alt="" />
                       </div>
-                      <Link href="/register">Регистрирај се </Link>
-
                       {!user ? (
-                        <Link href="/login">/ Логирај се</Link>
+                        <Link href="/register">Регистрирај се </Link>
                       ) : (
-                        <Link href="/login">/ Одјави се</Link>
+                        <Link href="/myProfile">Мој Профил </Link>
+                      )}
+                      <span className="mx-1">/</span>
+                      {!user ? (
+                        <Link href="/login"> Логирај се</Link>
+                      ) : (
+                        <Link href="/login"> Одјави се</Link>
                       )}
                     </li>
                   </ul>

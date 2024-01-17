@@ -8,6 +8,8 @@ import Card from "../../components/Card";
 import Pagination from "../../components/Pagination";
 import Link from "next/link";
 import Head from "next/head";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
 
 interface ProductsPageProps {
   data: ProductsType[];
@@ -124,6 +126,7 @@ const ProductsPage: NextPage<ProductsPageProps> = ({
       document.body.style.overflowY = "visible";
     }
   }, [isModalOpen, category]);
+  const headerCategory = category || "Сите";
 
   return (
     <>
@@ -136,7 +139,18 @@ const ProductsPage: NextPage<ProductsPageProps> = ({
       <div className="container">
         <div className="row">
           <div className="col-12 my-3">
-            <p>{`Почетна  > ${category || "Сите"}`}</p>
+            <p className="d-flex">
+              {`Почетна`}
+              {headerCategory ? (
+                <span className="d-flex align-items-center">
+                  <FontAwesomeIcon
+                    style={{ height: "15px", width: "15px" }}
+                    icon={faAngleRight}
+                  />
+                  {headerCategory}
+                </span>
+              ) : null}
+            </p>
           </div>
           <div className="col-12 mb-3 d-flex justify-content-between">
             <Link href="/filterPage">
@@ -243,9 +257,11 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
     .join("&");
 
   if (queryParams) {
-    res = await fetch(`http://localhost:5001/products?${queryParams}`);
+    res = await fetch(
+      `https://adventurous-jade-duck.cyclic.app/products?${queryParams}`
+    );
   } else {
-    res = await fetch("http://localhost:5001/products");
+    res = await fetch("https://adventurous-jade-duck.cyclic.app/products");
   }
 
   data = await res.json();

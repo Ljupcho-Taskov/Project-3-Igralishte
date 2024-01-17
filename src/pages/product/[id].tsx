@@ -9,6 +9,8 @@ import ProductItem from "../../components/ProductItem";
 import Pagination from "../../components/Pagination";
 import FourAccordions from "../../components/FourAccordions";
 import Footer from "../../components/footer/Footer";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
 
 interface Props {
   product: ProductsType;
@@ -45,6 +47,10 @@ const ProductDetailsPage: React.FC<Props> = ({ product, allProductsData }) => {
     indexOfFirstRelatedProduct,
     indexOfLastRelatedProduct
   );
+
+  useEffect(() => {
+    setSelectedImage(product.img);
+  }, [product.img]);
 
   useEffect(() => {
     setIsAddedToCart(cart.some((cartItem) => cartItem.id === product.id));
@@ -119,13 +125,10 @@ const ProductDetailsPage: React.FC<Props> = ({ product, allProductsData }) => {
     removeFromFavorites(product);
     setIsAddedToFavorites(false);
   };
-  useEffect(() => {
-    const headerChlotes = product.chlotes ? `${product.chlotes} > ` : "";
-    const headerCategory = product.category || "All";
-    setHeaderText(`Pocetna > ${headerChlotes}${headerCategory}`);
-  }, [product.chlotes, product.category]);
+
   const headerChlotes = product.chlotes ? product.chlotes : "";
-  const headerCategory = product.category || "All";
+  const headerCategory = product.category || "Сите";
+
   return (
     <>
       <Head>
@@ -135,16 +138,26 @@ const ProductDetailsPage: React.FC<Props> = ({ product, allProductsData }) => {
       </Head>
       <Header />
       <div className="col-12 d-flex flex-column py-3">
-        <p className="mb-4">
-          {`Pocetna`}
-          <i
-            className={headerChlotes ? "mx-2 fa-solid fa-angle-right" : ""}
-          ></i>
-          {headerChlotes}
-          <i
-            className={headerCategory ? "mx-2 fa-solid fa-angle-right" : ""}
-          ></i>
-          {headerCategory}
+        <p className="d-flex mb-4">
+          {`Почетна`}
+          {headerChlotes ? (
+            <span className="d-flex align-items-center">
+              <FontAwesomeIcon
+                style={{ height: "15px", width: "15px" }}
+                icon={faAngleRight}
+              />
+              {headerChlotes}
+            </span>
+          ) : null}
+          {headerCategory ? (
+            <span className="d-flex align-items-center">
+              <FontAwesomeIcon
+                style={{ height: "15px", width: "15px" }}
+                icon={faAngleRight}
+              />
+              {headerCategory}
+            </span>
+          ) : null}
         </p>
         <h4 className="mb-4">{product.title}</h4>
         <div>
@@ -403,7 +416,14 @@ const ProductDetailsPage: React.FC<Props> = ({ product, allProductsData }) => {
           растегнува. Одговара на наведената величина.
         </p>
         <hr className="hrYellow" />
-        <p className="mb-3">Боја:{product.color}</p>
+        <div className="mb-3 d-flex align-items-center">
+          <p>Боја:</p>
+          <p
+            className="colorSquare"
+            style={{ backgroundColor: `${product.color}` }}
+          ></p>
+          <p>{product.color}</p>
+        </div>
         <p>Материјал:</p>
         <p className="mb-3">{product.material}</p>
         <p className="mb-3">Постава: {product.material}</p>
@@ -441,7 +461,9 @@ const ProductDetailsPage: React.FC<Props> = ({ product, allProductsData }) => {
 export default ProductDetailsPage;
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const ProductsRes = await fetch("http://localhost:5001/products");
+  const ProductsRes = await fetch(
+    "https://adventurous-jade-duck.cyclic.app/products"
+  );
   const ProductsData: ProductsType[] = await ProductsRes.json();
 
   const paths = ProductsData.map((product) => {
@@ -459,14 +481,16 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const allProductsRes = await fetch("http://localhost:5001/products");
+  const allProductsRes = await fetch(
+    "https://adventurous-jade-duck.cyclic.app/products"
+  );
   const allProductsData: ProductsType[] = await allProductsRes.json();
 
   let product: ProductsType | undefined = undefined;
 
   if (params?.id) {
     const featuredProductRes = await fetch(
-      `http://localhost:5001/products/${params.id}`
+      `https://adventurous-jade-duck.cyclic.app/products/${params.id}`
     );
     product = await featuredProductRes.json();
   }

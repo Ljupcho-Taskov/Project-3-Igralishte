@@ -3,10 +3,14 @@ import Head from "next/head";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faG } from "@fortawesome/free-solid-svg-icons";
+import { faFacebook } from "@fortawesome/free-brands-svg-icons";
 
 const Login: NextPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState<boolean>(false);
   const router = useRouter();
 
   const handleLogin = (event: React.FormEvent<HTMLFormElement>) => {
@@ -23,6 +27,16 @@ const Login: NextPage = () => {
       console.error("User not registered");
     }
   };
+  const togglePasswordVisibility = (field: string) => {
+    switch (field) {
+      case "showPassword":
+        setShowPassword(!showPassword);
+        break;
+
+      default:
+        break;
+    }
+  };
   return (
     <>
       <Head>
@@ -34,7 +48,9 @@ const Login: NextPage = () => {
         <div className="container py-5">
           <div className="row">
             <div className="col py-5">
-              <div className="logo-image"></div>
+              <Link href="/">
+                <div className="logo-image"></div>
+              </Link>
             </div>
           </div>
           <div className="row">
@@ -51,14 +67,22 @@ const Login: NextPage = () => {
                   placeholder="example@example.com"
                 />
                 <label htmlFor="password">Лозинка</label> <br />
-                <input
-                  className="mb-3"
-                  id="password"
-                  name="password"
-                  type="password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                />
+                <div className="password-input-container">
+                  <input
+                    className="mb-3"
+                    id="password"
+                    name="password"
+                    type={showPassword ? "text" : "password"}
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                  />
+                  <span
+                    className="password-toggle-icon"
+                    onClick={() => togglePasswordVisibility("showPassword")}
+                  >
+                    👁️
+                  </span>
+                </div>
                 <br />
                 <p className="mb-3">
                   <a className="mb-3 forgot-pass" href="">
@@ -70,13 +94,13 @@ const Login: NextPage = () => {
               <p className="text-center mb-3">или</p>
               <button className="socials-button mb-3">
                 <span>
-                  <i className="fa-solid fa-g"></i>
+                  <FontAwesomeIcon icon={faG} />
                 </span>
                 <span>Најави се преку Google</span>
               </button>
               <button className="socials-button mb-3">
                 <span>
-                  <i className="fa-brands fa-facebook"></i>
+                  <FontAwesomeIcon icon={faFacebook} />
                 </span>
                 <span> Најави се преку Facebook</span>
               </button>

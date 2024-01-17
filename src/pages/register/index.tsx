@@ -43,7 +43,9 @@ const Register: NextPage<Props> = ({ data }) => {
 export default Register;
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const res = await fetch("http://localhost:5001/products/?_limit=3");
+  const res = await fetch(
+    "https://adventurous-jade-duck.cyclic.app/products/?_limit=3"
+  );
   const data: ProductsType[] = await res.json();
 
   return {

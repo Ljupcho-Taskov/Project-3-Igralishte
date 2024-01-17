@@ -59,3 +59,9 @@ export interface FaqType {
   title: string;
   desc: string;
 }
+export interface ProductCardType {
+  id: string;
+  img: string;
+  priceR: string;
+  title: string;
+}

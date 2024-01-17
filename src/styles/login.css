@@ -61,6 +61,10 @@
   font-weight: 500;
   line-height: normal;
 }
+.socials-button span svg {
+  width: 15px;
+  height: 15px;
+}
 
 .npr {
   color: var(--Black, #232221);

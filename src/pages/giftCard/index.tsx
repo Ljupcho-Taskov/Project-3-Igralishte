@@ -109,7 +109,7 @@ const GiftCardPage: NextPage<Props> = ({ dataCardsPrice }) => {
                       />
                     </svg>
                   </span>
-                  <span style={{ position: "absolute", right: "20px;" }}>
+                  <span style={{ position: "absolute", right: "20px" }}>
                     Vintage chick Gift card
                   </span>
                 </p>
@@ -119,7 +119,7 @@ const GiftCardPage: NextPage<Props> = ({ dataCardsPrice }) => {
               <div className="wavyGirlImg">
                 <img src="images/c54dfa1aacec436225c6a3d100b58b76.jpg" alt="" />
                 <p className="wavyGirl">
-                  <span style={{ position: "absolute", left: "20px;" }}>
+                  <span style={{ position: "absolute", left: "20px" }}>
                     Wavy baby Gift card
                   </span>
                   <span className="svg-wavy">
@@ -245,10 +245,14 @@ const GiftCardPage: NextPage<Props> = ({ dataCardsPrice }) => {
 export default GiftCardPage;
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const resGiftCards = await fetch("http://localhost:5001/giftCards");
+  const resGiftCards = await fetch(
+    "https://adventurous-jade-duck.cyclic.app/giftCards"
+  );
   const dataGiftCards: GiftCardsType[] = await resGiftCards.json();
 
-  const resCardsPrice = await fetch("http://localhost:5001/priceCards");
+  const resCardsPrice = await fetch(
+    "https://adventurous-jade-duck.cyclic.app/priceCards"
+  );
   const dataCardsPrice: CardsPriceType[] = await resCardsPrice.json();
 
   return {

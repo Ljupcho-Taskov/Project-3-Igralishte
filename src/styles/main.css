@@ -1,3 +1,5 @@
+@import url("https://fonts.google.com/specimen/Cormorant+Garamond?query=cormorant+garamond");
+
 p,
 h1,
 h2,
@@ -11,6 +13,9 @@ img {
 }
 * {
   font-family: "Cormorant Garamond";
+}
+a:hover {
+  color: #000;
 }
 .svg-brands {
   position: absolute;
@@ -111,7 +116,12 @@ li {
   max-width: 330px;
   height: 383px;
   flex-shrink: 0;
+}
+.ml-auto {
   margin-left: auto;
+}
+.mr-auto {
+  margin-right: auto;
 }
 
 .valentines-img {
@@ -229,17 +239,23 @@ li {
   top: 4px;
   width: 100%;
   height: 100%;
-  background: url("../images/ova13\ 1.png");
+  background: url("../images/d1f18373243eb7e02edb02e636da3eb2.jpg");
   background-repeat: no-repeat;
+  background-position-x: -311px;
+  background-position-y: -131px;
+  border-top-left-radius: 128.878px;
+  border-bottom-left-radius: 128.878px;
 }
 
 .gift-card {
   position: relative;
-  margin-left: 41px;
   height: 257.756px;
+  max-width: 330px;
   border-top-left-radius: 128.878px;
   border-bottom-left-radius: 128.878px;
   border: 1.34px solid var(--Black, #232221);
+  margin-left: auto;
+  margin-right: -25px;
 }
 
 .star {
@@ -688,8 +704,8 @@ li a {
 /* ProductItem */
 .productItemTitle {
   color: var(--Black, #232221);
-  font-family: Cormorant Garamond;
-  font-size: 22px;
+  font-family: Cormorant Garamond, sans-serif;
+  /* font-size: 22px; */
   font-style: normal;
   font-weight: 400;
   line-height: 150%; /* 33px */
@@ -844,4 +860,28 @@ li a {
   letter-spacing: -0.176px;
 }
 
+/*  */
+.colorSquare {
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+}
+
+.pHeart {
+  position: absolute;
+  z-index: 11;
+  top: 5px;
+  right: 20px;
+}
+
+/* Password Change modal */
+.password-toggle-icon {
+  position: absolute;
+  right: 4px;
+  top: 8px;
+  cursor: pointer;
+}
+.password-input-container {
+  position: relative;
+}
 /*  */

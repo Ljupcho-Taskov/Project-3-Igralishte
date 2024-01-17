@@ -2,14 +2,29 @@ import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
 const Footer: React.FC = () => {
-  const [user, setUser] = useState(
-    typeof window !== "undefined"
-      ? localStorage.getItem("registrationData")
-      : null
-  );
+  // const [user, setUser] = useState(
+  //   typeof window !== "undefined"
+  //     ? localStorage.getItem("registrationData")
+  //     : null
+  // );
+  // useEffect(() => {
+  //   const item = localStorage.getItem("registrationData");
+  //   setUser(item);
+  // }, []);
+  const [user, setUser] = useState<string | null>(null);
+
   useEffect(() => {
-    const item = localStorage.getItem("registrationData");
-    setUser(item);
+    const getUserFromLocalStorage = () => {
+      return window.localStorage.getItem("registrationData");
+    };
+
+    // Check if window is defined before accessing it
+    if (typeof window !== "undefined") {
+      setUser(getUserFromLocalStorage());
+
+      // Use window as needed
+      // For example, window.addEventListener, window.innerWidth, etc.
+    }
   }, []);
   return (
     <footer>
@@ -45,11 +60,16 @@ const Footer: React.FC = () => {
                 <Link href="/FAQ">Често поставувани прашања (FAQ)</Link>
               </li>
               <li className="mb-2">
-                <Link href="/register">Регистрирај се</Link> /{" "}
                 {!user ? (
-                  <Link href="/login">/ Логирај се</Link>
+                  <Link href="/register">Регистрирај се </Link>
                 ) : (
-                  <Link href="/login">/ Одјави се</Link>
+                  <Link href="/myProfile">Мој Профил </Link>
+                )}
+                <span className="mx-1">/</span>
+                {!user ? (
+                  <Link href="/login"> Логирај се</Link>
+                ) : (
+                  <Link href="/login"> Одјави се</Link>
                 )}
               </li>
             </ul>

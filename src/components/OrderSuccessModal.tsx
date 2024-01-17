@@ -10,13 +10,13 @@ const OrderSuccessModal: React.FC<{ onClose: () => void }> = ({ onClose }) => (
         Очекувајте потврда за вашата нарачка на вашата емаил адреса. Keep on
         shining *
       </p>
-      <button className="continue-button" type="submit">
+
+      <button onClick={onClose} className="continue-button" type="submit">
         Продолжи
       </button>
+
       <Link href="/">
-        <button onClick={onClose} className="cancel-order-button">
-          Кон почетна
-        </button>
+        <button className="cancel-order-button">Кон почетна</button>
       </Link>
     </div>
   </div>

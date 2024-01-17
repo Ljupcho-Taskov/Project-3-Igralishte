@@ -385,8 +385,8 @@ const FilterPage: NextPage<ProductsPageProps> = ({ data }) => {
                 <input
                   id="price4"
                   type="checkbox"
-                  checked={selectedPrices.includes("above-2500")}
-                  onChange={() => handleCheckboxChange("price", "above-2500")}
+                  checked={selectedPrices.includes("above 2500")}
+                  onChange={() => handleCheckboxChange("price", "above 2500")}
                 />
                 above 2500den
               </label>
@@ -429,9 +429,11 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
     .join("&");
 
   if (queryParams) {
-    res = await fetch(`http://localhost:5001/products?${queryParams}`);
+    res = await fetch(
+      `https://adventurous-jade-duck.cyclic.app/products?${queryParams}`
+    );
   } else {
-    res = await fetch("http://localhost:5001/products");
+    res = await fetch("https://adventurous-jade-duck.cyclic.app/products");
   }
 
   data = await res.json();

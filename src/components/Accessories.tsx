@@ -8,7 +8,7 @@ const Accessories = () => {
     >
       <div className="row">
         <div className="col">
-          <div className="image-without-circle accessories-img">
+          <div className="image-without-circle mr-auto accessories-img">
             <div className="circle right-7">
               <div className="circle-inner">
                 <div className="stars"></div>

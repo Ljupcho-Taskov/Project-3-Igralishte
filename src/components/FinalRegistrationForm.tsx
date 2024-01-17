@@ -38,10 +38,21 @@ const FinalRegistrationForm: React.FC<Props> = ({ data }) => {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    localStorage.setItem(
-      "registrationData2",
-      JSON.stringify({ adress, phone, biography })
+    const previousData = JSON.parse(
+      localStorage.getItem("registrationData") || "{}"
     );
+
+    const newData = { ...previousData, adress, phone, biography };
+
+    localStorage.setItem("registrationData", JSON.stringify(newData));
+
+    if (selectedFile) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        localStorage.setItem("profileImage", reader.result as string);
+      };
+      reader.readAsDataURL(selectedFile);
+    }
 
     setShowFinalRegistrationForm(true);
   };

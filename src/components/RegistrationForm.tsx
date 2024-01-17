@@ -14,6 +14,7 @@ const RegistrationForm: React.FC<Props> = ({ data }) => {
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
   const [passwordsMatch, setPasswordsMatch] = useState(true);
+  const [passwordError, setPasswordError] = useState("");
   const [showFinalRegistrationForm, setShowFinalRegistrationForm] =
     useState(false);
 
@@ -38,11 +39,34 @@ const RegistrationForm: React.FC<Props> = ({ data }) => {
   ) => {
     setRepeatPassword(event.target.value);
   };
+
+  const validatePassword = () => {
+    // Password validation criteria
+    const minLength = 8;
+    const hasUpperCase = /[A-Z]/.test(password);
+    const hasNumber = /\d/.test(password);
+
+    let errorMessage = "";
+
+    if (password.length < minLength || !hasUpperCase || !hasNumber) {
+      errorMessage =
+        "Password must be at least 8 characters, must contain at least one uppercase letter and must contain at least one number";
+    }
+
+    setPasswordError(errorMessage);
+    return !errorMessage;
+  };
+
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     if (password !== repeatPassword) {
       setPasswordsMatch(false);
+      return;
+    }
+
+    if (!validatePassword()) {
+      // Password validation failed
       return;
     }
 
@@ -53,6 +77,7 @@ const RegistrationForm: React.FC<Props> = ({ data }) => {
 
     setShowFinalRegistrationForm(true);
   };
+
   if (showFinalRegistrationForm) {
     return <FinalRegistrationForm data={data} />;
   }
@@ -108,6 +133,7 @@ const RegistrationForm: React.FC<Props> = ({ data }) => {
                 onChange={handlePasswordChange}
                 required
               />
+              {passwordError && <p className="text-danger">{passwordError}</p>}
 
               <label htmlFor="repeatPassword">Повтори лозинка</label>
               <input

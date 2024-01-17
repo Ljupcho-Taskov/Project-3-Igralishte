@@ -41,13 +41,21 @@ export const Home: NextPage<HomeProps> = ({ dataProducts }) => {
 export default Home;
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const resProducts = await fetch("http://localhost:5001/products/");
+  const resProducts = await fetch(
+    "https://adventurous-jade-duck.cyclic.app/products/"
+  );
   const dataProducts: ProductsType[] = await resProducts.json();
-  const resBrands = await fetch("http://localhost:5001/brands");
+  const resBrands = await fetch(
+    "https://adventurous-jade-duck.cyclic.app/brands"
+  );
   const dataBrands: BrandType[] = await resBrands.json();
-  const resAccessories = await fetch("http://localhost:5001/accessories");
+  const resAccessories = await fetch(
+    "https://adventurous-jade-duck.cyclic.app/accessories"
+  );
   const dataAccessories: AccessoriesType[] = await resAccessories.json();
-  const resColors = await fetch("http://localhost:5001/colors");
+  const resColors = await fetch(
+    "https://adventurous-jade-duck.cyclic.app/colors"
+  );
   const dataColors: ColorsType[] = await resColors.json();
 
   return {

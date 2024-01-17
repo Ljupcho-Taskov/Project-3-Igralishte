@@ -161,10 +161,14 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   let noResultsProducts = false;
 
   if (query.category) {
-    res = await fetch(`http://localhost:5001/products?q=${query.category}`);
+    res = await fetch(
+      `https://adventurous-jade-duck.cyclic.app/products?q=${query.category}`
+    );
     dataProduct = await res.json();
 
-    resBrand = await fetch(`http://localhost:5001/brands?q=${query.category}`);
+    resBrand = await fetch(
+      `https://adventurous-jade-duck.cyclic.app/brands?q=${query.category}`
+    );
     brandData = await resBrand.json();
 
     if (dataProduct.length === 0 && brandData.length === 0) {

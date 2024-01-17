@@ -3,19 +3,24 @@ import React, { useEffect, useState } from "react";
 import { useCart } from "../../context/CartContext";
 import OrderSuccessModal from "../../components/OrderSuccessModal";
 import Head from "next/head";
+import Link from "next/link";
+import router from "next/router";
 
 const FormToOrderPage: NextPage = () => {
   const [useProfileInfo, setUseProfileInfo] = useState(false);
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const { clearCart } = useCart();
 
   useEffect(() => {
     const storedData = localStorage.getItem("registrationData");
 
     if (storedData && useProfileInfo) {
-      const { name, surname, email } = JSON.parse(storedData);
+      const { name, surname, email, adress, phone } = JSON.parse(storedData);
       document.getElementById("name")!.setAttribute("value", name);
       document.getElementById("surname")!.setAttribute("value", surname);
       document.getElementById("email")!.setAttribute("value", email);
+      document.getElementById("adress")!.setAttribute("value", adress);
+      document.getElementById("number")!.setAttribute("value", phone);
     }
   }, [useProfileInfo]);
 
@@ -25,11 +30,14 @@ const FormToOrderPage: NextPage = () => {
 
   const handleOrderButtonClick = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
     setIsModalVisible(true);
+
+    clearCart();
   };
 
   const handleCloseModal = () => {
-    setIsModalVisible(false);
+    router.push("/order");
   };
   return (
     <>
@@ -41,19 +49,21 @@ const FormToOrderPage: NextPage = () => {
       <section className="ordering-section">
         <div className="container py-3">
           <div className="svg-order-x">
-            <svg
-              className="svg-order-x"
-              xmlns="http://www.w3.org/2000/svg"
-              width="26"
-              height="26"
-              viewBox="0 0 26 26"
-              fill="none"
-            >
-              <path
-                d="M20.7398 19.8857C20.7958 19.9417 20.8402 20.0082 20.8705 20.0814C20.9009 20.1546 20.9165 20.233 20.9165 20.3122C20.9165 20.3915 20.9009 20.4699 20.8705 20.5431C20.8402 20.6163 20.7958 20.6828 20.7398 20.7388C20.6838 20.7948 20.6173 20.8392 20.5441 20.8696C20.4709 20.8999 20.3924 20.9155 20.3132 20.9155C20.234 20.9155 20.1555 20.8999 20.0824 20.8696C20.0092 20.8392 19.9427 20.7948 19.8866 20.7388L13.0007 13.863L6.11477 20.7388C6.00164 20.8519 5.8482 20.9155 5.68821 20.9155C5.52822 20.9155 5.37478 20.8519 5.26165 20.7388C5.14852 20.6257 5.08496 20.4722 5.08496 20.3122C5.08496 20.1522 5.14852 19.9988 5.26165 19.8857L12.1374 12.9997L5.26165 6.1138C5.14852 6.00067 5.08496 5.84723 5.08496 5.68723C5.08496 5.52724 5.14852 5.3738 5.26165 5.26067C5.37478 5.14754 5.52822 5.08398 5.68821 5.08398C5.8482 5.08398 6.00164 5.14754 6.11477 5.26067L13.0007 12.1365L19.8866 5.26067C19.9998 5.14754 20.1532 5.08398 20.3132 5.08398C20.4732 5.08398 20.6266 5.14754 20.7398 5.26067C20.8529 5.3738 20.9165 5.52724 20.9165 5.68723C20.9165 5.84723 20.8529 6.00067 20.7398 6.1138L13.864 12.9997L20.7398 19.8857Z"
-                fill="black"
-              />
-            </svg>
+            <Link href="/order">
+              <svg
+                className="svg-order-x"
+                xmlns="http://www.w3.org/2000/svg"
+                width="26"
+                height="26"
+                viewBox="0 0 26 26"
+                fill="none"
+              >
+                <path
+                  d="M20.7398 19.8857C20.7958 19.9417 20.8402 20.0082 20.8705 20.0814C20.9009 20.1546 20.9165 20.233 20.9165 20.3122C20.9165 20.3915 20.9009 20.4699 20.8705 20.5431C20.8402 20.6163 20.7958 20.6828 20.7398 20.7388C20.6838 20.7948 20.6173 20.8392 20.5441 20.8696C20.4709 20.8999 20.3924 20.9155 20.3132 20.9155C20.234 20.9155 20.1555 20.8999 20.0824 20.8696C20.0092 20.8392 19.9427 20.7948 19.8866 20.7388L13.0007 13.863L6.11477 20.7388C6.00164 20.8519 5.8482 20.9155 5.68821 20.9155C5.52822 20.9155 5.37478 20.8519 5.26165 20.7388C5.14852 20.6257 5.08496 20.4722 5.08496 20.3122C5.08496 20.1522 5.14852 19.9988 5.26165 19.8857L12.1374 12.9997L5.26165 6.1138C5.14852 6.00067 5.08496 5.84723 5.08496 5.68723C5.08496 5.52724 5.14852 5.3738 5.26165 5.26067C5.37478 5.14754 5.52822 5.08398 5.68821 5.08398C5.8482 5.08398 6.00164 5.14754 6.11477 5.26067L13.0007 12.1365L19.8866 5.26067C19.9998 5.14754 20.1532 5.08398 20.3132 5.08398C20.4732 5.08398 20.6266 5.14754 20.7398 5.26067C20.8529 5.3738 20.9165 5.52724 20.9165 5.68723C20.9165 5.84723 20.8529 6.00067 20.7398 6.1138L13.864 12.9997L20.7398 19.8857Z"
+                  fill="black"
+                />
+              </svg>
+            </Link>
           </div>
           <div className="row">
             <div className="col-12 d-flex align-items-center flex-column">
@@ -155,7 +165,9 @@ const FormToOrderPage: NextPage = () => {
                   <button className="continue-button" type="submit">
                     Нарачај
                   </button>
-                  <button className="cancel-order-button">Откажи</button>
+                  <Link href="/order">
+                    <button className="cancel-order-button">Откажи</button>
+                  </Link>
                 </div>
               </form>
               <p className="registration-terms">
