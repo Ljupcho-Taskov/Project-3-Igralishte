@@ -4,7 +4,12 @@ import Script from "next/script";
 export default function Document() {
   return (
     <Html>
-      <Head></Head>
+      <Head>
+        <Script
+          src="https://kit.fontawesome.com/a71c664b5b.js"
+          crossOrigin="anonymous"
+        ></Script>
+      </Head>
       <body>
         <Main />
         <NextScript />
