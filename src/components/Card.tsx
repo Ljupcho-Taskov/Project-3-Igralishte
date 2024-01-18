@@ -32,7 +32,7 @@ const Card: React.FC<ProductItemProps> = ({
   };
   return (
     <Link href={`/product/${id}`}>
-      <div className={`col-${isFullWidth ? "12" : "6"}`} key={id}>
+      <div className={`pointer col-${isFullWidth ? "12" : "6"}`} key={id}>
         <img src={img} alt="IMG-PRODUCT" />
         <p>{title}</p>
         <p>{priceR} den</p>

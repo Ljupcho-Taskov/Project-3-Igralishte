@@ -1,42 +1,3 @@
-// import React from "react";
-// import { ProductsType } from "../types/types";
-// import Link from "next/link";
-
-// interface ProductItemProps extends ProductsType {
-//   index: number;
-// }
-
-// interface Props {
-//   product: ProductsType;
-// }
-
-// const ProductItem: React.FC<ProductItemProps> = ({
-//   id,
-//   img,
-//   title,
-//   priceR,
-// }) => {
-//   return (
-//     <Link href={`/product/${id}`}>
-//       <div className="row" key={id}>
-//         <div className="col-12 ">
-//           <img src={img} alt="IMG-PRODUCT" />
-
-//           <div>
-//             <p className=" my-1 productItemTitle">{title}</p>
-//             <p className="productItemTitle">{priceR} ден.</p>
-//             <p className="pHeart">
-//               <img src="../../logo/ph_heart-straight-thin.png" alt="" />
-//             </p>
-//           </div>
-//         </div>
-//       </div>
-//     </Link>
-//   );
-// };
-
-// export default ProductItem;
-
 import React, { useContext } from "react";
 import { ProductsType } from "../types/types";
 import Link from "next/link";
@@ -70,7 +31,7 @@ const ProductItem: React.FC<ProductItemProps> = ({
 
   return (
     <div className="row" key={id}>
-      <div className="col-12">
+      <div className="col-12 pointer">
         <Link href={`/product/${id}`}>
           <div>
             <img src={img} alt="IMG-PRODUCT" />

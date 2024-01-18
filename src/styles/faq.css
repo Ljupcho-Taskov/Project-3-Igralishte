@@ -28,10 +28,10 @@
   line-height: 150%;
   letter-spacing: -0.242px;
 }
-.faq-sparks {
+.faq-sparks img {
   width: 53.202px;
   height: 52.655px;
-  background: url("/logo/sparks-elements-and-symbols-isolated-on-white-background-free-vector\ 2.png");
+  /* background: url("/logo/sparks-elements-and-symbols-isolated-on-white-background-free-vector\ 2.png"); */
   mix-blend-mode: darken;
 }
 .text-top {

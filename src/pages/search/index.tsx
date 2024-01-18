@@ -72,14 +72,13 @@ const SearchPage: NextPage<SearchPageProps> = ({
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="container py-2">
-        <div className="d-flex align-items-center">
+        <div className="d-flex align-items-center justify-content-around">
           <Link href="/">
-            <span className="arrow-sliders prev"></span>
+            <i className="fa-solid fa-angle-left fa-xl pointer"></i>
           </Link>
           <form
             onSubmit={handleOnSubmit}
-            className="w-100"
-            style={{ position: "relative" }}
+            style={{ position: "relative", width: "90%" }}
           >
             <input
               className="search-page-input"
@@ -91,7 +90,7 @@ const SearchPage: NextPage<SearchPageProps> = ({
             />
             {inputValue ? (
               <div
-                className="x-search"
+                className="x-search pointer"
                 onClick={clearInput}
                 style={{ cursor: "pointer" }}
               >

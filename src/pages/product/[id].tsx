@@ -140,19 +140,19 @@ const ProductDetailsPage: React.FC<Props> = ({ product, allProductsData }) => {
           {`Почетна`}
           {headerChlotes ? (
             <span className="d-flex align-items-center">
-              <i className="fa-solid fa-angle-right"></i>
+              <i className="fa-solid fa-angle-right mx-1"></i>
               {headerChlotes}
             </span>
           ) : null}
           {headerCategory ? (
             <span className="d-flex align-items-center">
-              <i className="fa-solid fa-angle-right"></i>
+              <i className="fa-solid fa-angle-right mx-1"></i>
               {headerCategory}
             </span>
           ) : null}
         </p>
         <h4 className="mb-4">{product.title}</h4>
-        <div>
+        <div className="pointer">
           <img src={selectedImage} alt="IMG-PRODUCT" />
         </div>
 
@@ -175,11 +175,14 @@ const ProductDetailsPage: React.FC<Props> = ({ product, allProductsData }) => {
           <p className="pPrice my-3">{product.priceR} ден.</p>
           <p className="d-flex flex-column align-items-end p-fixed">
             {!isAddedToCart ? (
-              <span onClick={handleAddToCart} className="spanCart mb-2">
+              <span onClick={handleAddToCart} className="spanCart pointer mb-2">
                 <img src="../../logo/cart.png" alt="" />
               </span>
             ) : (
-              <span onClick={handleRemoveFromCart} className="spanCart mb-2">
+              <span
+                onClick={handleRemoveFromCart}
+                className="spanCart pointer mb-2 pointer"
+              >
                 <span className="rotate-star">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -265,11 +268,17 @@ const ProductDetailsPage: React.FC<Props> = ({ product, allProductsData }) => {
               </span>
             )}
             {!isAddedToFavorites ? (
-              <span onClick={handleAddToFavorites} className="spanHeart">
+              <span
+                onClick={handleAddToFavorites}
+                className="spanHeart pointer"
+              >
                 <img src="../../logo/ph_heart-straight-thin.png" alt="" />
               </span>
             ) : (
-              <span onClick={handleRemoveFromFavorites} className="spanHeart">
+              <span
+                onClick={handleRemoveFromFavorites}
+                className="spanHeart pointer"
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="30"
@@ -294,7 +303,7 @@ const ProductDetailsPage: React.FC<Props> = ({ product, allProductsData }) => {
           {!isAddedToCart ? (
             <>
               <button
-                className="buttonPrice m-0 mr-2"
+                className="buttonPrice pointer m-0 mr-2"
                 onClick={handleAddToCart}
               >
                 <span className="buttonPriceSpan">Додај во кошничка</span>
@@ -303,7 +312,7 @@ const ProductDetailsPage: React.FC<Props> = ({ product, allProductsData }) => {
           ) : (
             <>
               <button
-                className="buttonPriceClick m-0 mr-2"
+                className="buttonPriceClick pointer m-0 mr-2"
                 onClick={handleGoToCart}
               >
                 <span className="btnSpanStars">
@@ -371,14 +380,14 @@ const ProductDetailsPage: React.FC<Props> = ({ product, allProductsData }) => {
           {!isAddedToFavorites ? (
             <span
               onClick={handleAddToFavorites}
-              className="spanHeart border-0 boxShadowNone"
+              className="spanHeart pointer border-0 boxShadowNone"
             >
               <img src="../../logo/ph_heart-straight-thin.png" alt="" />
             </span>
           ) : (
             <span
               onClick={handleGoToFavorites}
-              className="spanHeart  border-0 boxShadowNone"
+              className="spanHeart pointer  border-0 boxShadowNone"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"

@@ -8,6 +8,7 @@ import Pagination from "../../components/Pagination";
 import { ProductsType } from "../../types/types";
 import Card from "../../components/Card";
 import Head from "next/head";
+import sparks from "../../logo/sparks-elements-and-symbols-isolated-on-white-background-free-vector 2.png";
 
 interface BrandsPageProps {
   brandsData: ProductsType[];
@@ -69,13 +70,13 @@ const BrandsPage: NextPage<BrandsPageProps> = ({
               {`Почетна`}
               {headerBrand ? (
                 <span className="d-flex align-items-center">
-                  <i className="fa-solid fa-angle-right"></i>
+                  <i className="fa-solid fa-angle-right mx-1"></i>
                   {headerBrand}
                 </span>
               ) : null}
               {headerCategory ? (
                 <span className="d-flex align-items-center">
-                  <i className="fa-solid fa-angle-right"></i>
+                  <i className="fa-solid fa-angle-right mx-1"></i>
                   {headerCategory}
                 </span>
               ) : null}
@@ -84,7 +85,12 @@ const BrandsPage: NextPage<BrandsPageProps> = ({
         </div>
         <div className="row py-4">
           <div className="col-12 d-flex  align-items-center">
-            <div className="faq-sparks"></div>
+            <div className="faq-sparks">
+              <img
+                src="../../logo/sparks-elements-and-symbols-isolated-on-white-background-free-vector 2.png"
+                alt=""
+              />
+            </div>
             <h2 className="faq-header">{headerCategory}</h2>
           </div>
         </div>

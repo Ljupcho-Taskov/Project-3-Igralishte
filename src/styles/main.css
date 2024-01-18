@@ -17,6 +17,9 @@ img {
 a:hover {
   color: #000;
 }
+.pointer {
+  cursor: pointer;
+}
 .svg-brands {
   position: absolute;
   z-index: 5;

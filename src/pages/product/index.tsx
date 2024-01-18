@@ -141,7 +141,7 @@ const ProductsPage: NextPage<ProductsPageProps> = ({
               {`Почетна`}
               {headerCategory ? (
                 <span className="d-flex align-items-center">
-                  <i className="fa-solid fa-angle-right"></i>
+                  <i className="fa-solid fa-angle-right mx-1"></i>
                   {headerCategory}
                 </span>
               ) : null}

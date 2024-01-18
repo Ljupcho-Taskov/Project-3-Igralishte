@@ -84,10 +84,10 @@ const Header: React.FC = () => {
             <div className="col-12 d-flex justify-content-between align-items-center">
               <div onClick={handleButtonClick} className="hamburger"></div>
               <Link href="/">
-                <div className="logo"></div>
+                <div className="logo pointer"></div>
               </Link>
               <Link href="/search">
-                <span className="search-icon"></span>
+                <span className="search-icon pointer"></span>
               </Link>
             </div>
           </div>
