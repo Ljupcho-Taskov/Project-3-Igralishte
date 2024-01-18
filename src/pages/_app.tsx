@@ -10,10 +10,15 @@ import "../styles/login.css";
 import "../styles/giftCard.css";
 import "../styles/search.css";
 import type { AppProps } from "next/app";
+import Script from "next/script";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <CartProvider>
+      <Script
+        src="https://kit.fontawesome.com/a71c664b5b.js"
+        crossOrigin="anonymous"
+      ></Script>
       <Component {...pageProps} />
     </CartProvider>
   );
