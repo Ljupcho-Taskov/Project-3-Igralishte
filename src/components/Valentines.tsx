@@ -8,7 +8,8 @@ const Valentines = () => {
     >
       <div className="row">
         <div className="col">
-          <div className="image-without-circle ml-auto valentines-img">
+          <div className="image-without-circle ml-auto">
+            <img src="../images/coll 1.png" alt="" />
             <div className="circle left-7">
               <div className="circle-inner">
                 <div className="stars"></div>
