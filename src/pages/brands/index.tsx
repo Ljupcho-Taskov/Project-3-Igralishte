@@ -8,8 +8,6 @@ import Pagination from "../../components/Pagination";
 import { ProductsType } from "../../types/types";
 import Card from "../../components/Card";
 import Head from "next/head";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
 
 interface BrandsPageProps {
   brandsData: ProductsType[];

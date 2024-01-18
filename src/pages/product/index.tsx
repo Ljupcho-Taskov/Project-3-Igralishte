@@ -8,8 +8,6 @@ import Card from "../../components/Card";
 import Pagination from "../../components/Pagination";
 import Link from "next/link";
 import Head from "next/head";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
 
 interface ProductsPageProps {
   data: ProductsType[];

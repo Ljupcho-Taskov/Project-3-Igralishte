@@ -9,8 +9,6 @@ import ProductItem from "../../components/ProductItem";
 import Pagination from "../../components/Pagination";
 import FourAccordions from "../../components/FourAccordions";
 import Footer from "../../components/footer/Footer";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
 
 interface Props {
   product: ProductsType;
