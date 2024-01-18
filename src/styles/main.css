@@ -220,12 +220,7 @@ li {
   height: 31px;
   flex-shrink: 0;
 }
-.prev {
-  background: url("../logo/material-symbols_arrow-back-ios-rounded.png");
-}
-.next {
-  background: url("../logo/material-symbols_arrow-back-ios-rounded (1).png");
-}
+
 /*  */
 /* Accessories */
 
