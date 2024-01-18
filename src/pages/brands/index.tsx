@@ -8,7 +8,7 @@ import Pagination from "../../components/Pagination";
 import { ProductsType } from "../../types/types";
 import Card from "../../components/Card";
 import Head from "next/head";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
 
 interface BrandsPageProps {
@@ -71,19 +71,13 @@ const BrandsPage: NextPage<BrandsPageProps> = ({
               {`Почетна`}
               {headerBrand ? (
                 <span className="d-flex align-items-center">
-                  <FontAwesomeIcon
-                    style={{ height: "15px", width: "15px" }}
-                    icon={faAngleRight}
-                  />
+                  <i className="fa-solid fa-angle-right"></i>
                   {headerBrand}
                 </span>
               ) : null}
               {headerCategory ? (
                 <span className="d-flex align-items-center">
-                  <FontAwesomeIcon
-                    style={{ height: "15px", width: "15px" }}
-                    icon={faAngleRight}
-                  />
+                  <i className="fa-solid fa-angle-right"></i>
                   {headerCategory}
                 </span>
               ) : null}

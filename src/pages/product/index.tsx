@@ -8,7 +8,7 @@ import Card from "../../components/Card";
 import Pagination from "../../components/Pagination";
 import Link from "next/link";
 import Head from "next/head";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
 
 interface ProductsPageProps {
@@ -143,10 +143,7 @@ const ProductsPage: NextPage<ProductsPageProps> = ({
               {`Почетна`}
               {headerCategory ? (
                 <span className="d-flex align-items-center">
-                  <FontAwesomeIcon
-                    style={{ height: "15px", width: "15px" }}
-                    icon={faAngleRight}
-                  />
+                  <i className="fa-solid fa-angle-right"></i>
                   {headerCategory}
                 </span>
               ) : null}
