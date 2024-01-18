@@ -22,12 +22,7 @@ const ImageCarousel: React.FC<Props> = ({ products }) => {
   };
 
   return (
-    <section
-      style={{
-        background:
-          "var(--Pink-gradient, linear-gradient(33deg, #FFDBDB 0.05%, #FDFDFD 93.1%, #FDFDFD 110.6%, #8A8328 152.03%))",
-      }}
-    >
+    <section>
       <div className="container py-4">
         <div className="row">
           <div className="col-12">

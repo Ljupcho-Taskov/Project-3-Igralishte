@@ -3,8 +3,10 @@ import React from "react";
 const Valentines = () => {
   return (
     <div
-      className="container-fluid d-flex flex-column justify-content-between bg-pink"
-      style={{ height: "605px" }}
+      className="container-fluid d-flex flex-column justify-content-between"
+      style={{
+        height: "605px",
+      }}
     >
       <div className="row">
         <div className="col">

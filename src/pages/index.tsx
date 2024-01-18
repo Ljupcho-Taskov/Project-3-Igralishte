@@ -28,11 +28,13 @@ export const Home: NextPage<HomeProps> = ({ dataProducts }) => {
 
       <>
         <Header />
-        <Valentines />
-        <ImageCarousel products={dataProducts} />
-        <Accessories />
-        <GiftCard />
-        <Footer />
+        <div className="home-page">
+          <Valentines />
+          <ImageCarousel products={dataProducts} />
+          <Accessories />
+          <GiftCard />
+          <Footer />
+        </div>
       </>
     </>
   );

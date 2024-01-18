@@ -99,18 +99,7 @@ li {
 }
 
 /* Valentines */
-.bg-pink {
-  background: var(
-    --Pink-gradient,
-    linear-gradient(
-      180deg,
-      #ffdbdb 0.05%,
-      #fdfdfd 93.1%,
-      #fdfdfd 110.6%,
-      #8a8328 152.03%
-    )
-  );
-}
+
 .image-without-circle {
   position: relative;
   max-width: 330px;
@@ -122,10 +111,6 @@ li {
 }
 .mr-auto {
   margin-right: auto;
-}
-
-.valentines-img {
-  background: url("../images/coll 1.png");
 }
 
 .circle {
@@ -223,19 +208,20 @@ li {
 
 /*  */
 /* Accessories */
-
-.accessories-img {
-  background: url("../images/IMG_6142 1.png"),
-    lightgray -300.846px -18.314px / 259.146% 109.894% no-repeat;
+.home-page {
+  background: linear-gradient(
+    180deg,
+    #ffdbdb 0.05%,
+    #fdfdfd 93.1%,
+    #fdfdfd 110.6%,
+    #8a8328 152.03%
+  );
 }
-.gift-card-img {
+.gift-card-img img {
   position: absolute;
-  z-index: -1;
   top: 4px;
   width: 100%;
   height: 100%;
-  background: url("../images/d1f18373243eb7e02edb02e636da3eb2.jpg");
-  background-repeat: no-repeat;
   background-position-x: -311px;
   background-position-y: -131px;
   border-top-left-radius: 128.878px;
@@ -248,19 +234,17 @@ li {
   max-width: 330px;
   border-top-left-radius: 128.878px;
   border-bottom-left-radius: 128.878px;
-  border: 1.34px solid var(--Black, #232221);
+  border: 2px solid var(--Black, #232221);
   margin-left: auto;
   margin-right: -25px;
 }
 
-.star {
+.star img {
   position: absolute;
-  width: 65.567px;
-  height: 65.567px;
-  left: 18px;
+  width: 45px;
+  height: 45px;
+  left: 2px;
   top: 30px;
-  background: url("../logo/emojione-monotone_eight-pointed-star.png");
-  background-repeat: no-repeat;
 }
 
 /* Product Details */
