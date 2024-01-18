@@ -1,8 +1,5 @@
 import React from "react";
 import Link from "next/link";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFacebook } from "@fortawesome/free-brands-svg-icons";
-import { faG } from "@fortawesome/free-solid-svg-icons";
 
 interface RegistrationProps {
   onShowRegistrationForm: () => void;
@@ -31,13 +28,13 @@ const Registration: React.FC<RegistrationProps> = ({
             <p className="text-center mb-3">или</p>
             <button className="socials-button mb-3">
               <span>
-                <FontAwesomeIcon icon={faG} />
+                <i className="fa-solid fa-g"></i>
               </span>
               <span>Најави се преку Google</span>
             </button>
             <button className="socials-button mb-3">
               <span>
-                <FontAwesomeIcon icon={faFacebook} />
+                <i className="fa-brands fa-facebook"></i>
               </span>
               <span> Најави се преку Facebook</span>
             </button>

@@ -3,9 +3,6 @@ import Head from "next/head";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faG } from "@fortawesome/free-solid-svg-icons";
-import { faFacebook } from "@fortawesome/free-brands-svg-icons";
 
 const Login: NextPage = () => {
   const [email, setEmail] = useState("");
@@ -94,13 +91,13 @@ const Login: NextPage = () => {
               <p className="text-center mb-3">или</p>
               <button className="socials-button mb-3">
                 <span>
-                  <FontAwesomeIcon icon={faG} />
+                  <i className="fa-solid fa-g"></i>
                 </span>
                 <span>Најави се преку Google</span>
               </button>
               <button className="socials-button mb-3">
                 <span>
-                  <FontAwesomeIcon icon={faFacebook} />
+                  <i className="fa-brands fa-facebook"></i>
                 </span>
                 <span> Најави се преку Facebook</span>
               </button>
