@@ -462,9 +462,7 @@ const ProductDetailsPage: React.FC<Props> = ({ product, allProductsData }) => {
 export default ProductDetailsPage;
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const ProductsRes = await fetch(
-    "https://adventurous-jade-duck.cyclic.app/products"
-  );
+  const ProductsRes = await fetch("https://igralishte.onrender.com/products");
   const ProductsData: ProductsType[] = await ProductsRes.json();
 
   const paths = ProductsData.map((product) => {
