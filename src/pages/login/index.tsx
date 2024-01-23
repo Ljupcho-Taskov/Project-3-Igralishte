@@ -12,17 +12,34 @@ const Login: NextPage = () => {
 
   const handleLogin = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const storedUserData = localStorage.getItem("registrationData");
-    if (storedUserData) {
-      const userData = JSON.parse(storedUserData);
-      if (userData.email === email && userData.password === password) {
-        router.push("/");
-      } else {
-        console.error("Invalid credentials");
-      }
+    const allRegistrations = JSON.parse(
+      localStorage.getItem("registrations") || "[]"
+    );
+
+    // Check if any registration matches the entered email and password
+    const matchedRegistration = allRegistrations.find(
+      (userData: any) =>
+        userData.email === email && userData.password === password
+    );
+
+    if (matchedRegistration) {
+      // Successful login, redirect or perform other actions
+      router.push("/");
     } else {
-      console.error("User not registered");
+      console.error("Invalid credentials");
     }
+
+    // const storedUserData = localStorage.getItem("registrationData");
+    // if (storedUserData) {
+    //   const userData = JSON.parse(storedUserData);
+    //   if (userData.email === email && userData.password === password) {
+    //     router.push("/");
+    //   } else {
+    //     console.error("Invalid credentials");
+    //   }
+    // } else {
+    //   console.error("User not registered");
+    // }
   };
   const togglePasswordVisibility = (field: string) => {
     switch (field) {

@@ -41,7 +41,6 @@ const RegistrationForm: React.FC<Props> = ({ data }) => {
   };
 
   const validatePassword = () => {
-    // Password validation criteria
     const minLength = 8;
     const hasUpperCase = /[A-Z]/.test(password);
     const hasNumber = /\d/.test(password);
@@ -60,21 +59,30 @@ const RegistrationForm: React.FC<Props> = ({ data }) => {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
+    const existingRegistrations = JSON.parse(
+      localStorage.getItem("registrationData") || "[]"
+    );
+
+    const newRegistration = { name, surname, email, password, repeatPassword };
+    const updatedRegistrations = [...existingRegistrations, newRegistration];
+
     if (password !== repeatPassword) {
       setPasswordsMatch(false);
       return;
     }
 
     if (!validatePassword()) {
-      // Password validation failed
       return;
     }
 
+    // localStorage.setItem(
+    //   "registrationData",
+    //   JSON.stringify({ name, surname, email, password, repeatPassword })
+    // );
     localStorage.setItem(
       "registrationData",
-      JSON.stringify({ name, surname, email, password, repeatPassword })
+      JSON.stringify(updatedRegistrations)
     );
-
     setShowFinalRegistrationForm(true);
   };
 
