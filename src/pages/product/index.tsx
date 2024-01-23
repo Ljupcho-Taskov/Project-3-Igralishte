@@ -253,10 +253,10 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
 
   if (queryParams) {
     res = await fetch(
-      `https://adventurous-jade-duck.cyclic.app/products?${queryParams}`
+      `https://igralishte.onrender.com/products?${queryParams}`
     );
   } else {
-    res = await fetch("https://adventurous-jade-duck.cyclic.app/products");
+    res = await fetch("https://igralishte.onrender.com/products");
   }
 
   data = await res.json();

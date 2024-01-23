@@ -63,7 +63,7 @@ const FAQ: NextPage<Props> = ({ data }) => {
 export default FAQ;
 
 export const getStaticProps: GetStaticProps = async () => {
-  const dataRes = await fetch("https://adventurous-jade-duck.cyclic.app/faq");
+  const dataRes = await fetch("https://igralishte.onrender.com/faq");
   const data: FaqType[] = await dataRes.json();
 
   return {

@@ -38,13 +38,17 @@ header .container {
   height: 100%;
   background: white;
   z-index: 1000;
+  display: block;
 }
 .modal {
+  right: 0;
   top: 68px;
-  transition: transform 0.3s ease-in-out;
   display: block;
   max-height: calc(100vh - 45px);
   overflow-y: auto;
+}
+.modal-transition {
+  transition: right 0.5s ease-in-out; /* Adjust the duration as needed */
 }
 
 .modal-overlay.open {
@@ -123,6 +127,7 @@ header .container {
   height: 100%;
   background: white;
   z-index: 1000;
+  display: block;
 }
 
 .search-icon-modal {

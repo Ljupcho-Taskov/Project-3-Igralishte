@@ -43,21 +43,15 @@ export const Home: NextPage<HomeProps> = ({ dataProducts }) => {
 export default Home;
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const resProducts = await fetch(
-    "https://adventurous-jade-duck.cyclic.app/products/"
-  );
+  const resProducts = await fetch("https://igralishte.onrender.com/products/");
   const dataProducts: ProductsType[] = await resProducts.json();
-  const resBrands = await fetch(
-    "https://adventurous-jade-duck.cyclic.app/brands"
-  );
+  const resBrands = await fetch("https://igralishte.onrender.com/brands");
   const dataBrands: BrandType[] = await resBrands.json();
   const resAccessories = await fetch(
-    "https://adventurous-jade-duck.cyclic.app/accessories"
+    "https://igralishte.onrender.com/accessories"
   );
   const dataAccessories: AccessoriesType[] = await resAccessories.json();
-  const resColors = await fetch(
-    "https://adventurous-jade-duck.cyclic.app/colors"
-  );
+  const resColors = await fetch("https://igralishte.onrender.com/colors");
   const dataColors: ColorsType[] = await resColors.json();
 
   return {

@@ -20,7 +20,6 @@ const MyProfile = () => {
     useState(false);
 
   useEffect(() => {
-    // Load data from local storage
     const storedAdress = localStorage.getItem("registrationData");
     if (storedAdress) {
       const { name, surname, email, password, adress, phone, biography } =
@@ -62,7 +61,6 @@ const MyProfile = () => {
     const file = event.target.files && event.target.files[0];
     setSelectedFile(file);
 
-    // Preview the selected image immediately
     if (file) {
       const reader = new FileReader();
       reader.onloadend = () => {

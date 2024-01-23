@@ -483,7 +483,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const allProductsRes = await fetch(
-    "https://adventurous-jade-duck.cyclic.app/products"
+    "https://igralishte.onrender.com/products"
   );
   const allProductsData: ProductsType[] = await allProductsRes.json();
 
@@ -491,7 +491,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
   if (params?.id) {
     const featuredProductRes = await fetch(
-      `https://adventurous-jade-duck.cyclic.app/products/${params.id}`
+      `https://igralishte.onrender.com/products/${params.id}`
     );
     product = await featuredProductRes.json();
   }

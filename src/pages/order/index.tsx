@@ -333,23 +333,19 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   let productsRes: Response;
   let brandRes: Response;
 
-  const priceRes = await fetch(
-    "https://adventurous-jade-duck.cyclic.app/priceCards"
-  );
+  const priceRes = await fetch("https://igralishte.onrender.com/priceCards");
   const dataCardsPrice: CardsPriceType[] = await priceRes.json();
 
   if (query.category) {
     productsRes = await fetch(
-      `https://adventurous-jade-duck.cyclic.app/products?q=${query.category}`
+      `https://igralishte.onrender.com/products?q=${query.category}`
     );
     brandRes = await fetch(
-      `https://adventurous-jade-duck.cyclic.app/brands?q=${query.category}`
+      `https://igralishte.onrender.com/brands?q=${query.category}`
     );
   } else {
-    productsRes = await fetch(
-      "https://adventurous-jade-duck.cyclic.app/products"
-    );
-    brandRes = await fetch("https://adventurous-jade-duck.cyclic.app/brands");
+    productsRes = await fetch("https://igralishte.onrender.com/products");
+    brandRes = await fetch("https://igralishte.onrender.com/brands");
   }
 
   const productsData: ProductsType[] = await productsRes.json();

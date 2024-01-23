@@ -20,6 +20,12 @@ a:hover {
 .pointer {
   cursor: pointer;
 }
+.w-30 {
+  width: 30px;
+}
+.h-28 {
+  height: 28px;
+}
 .svg-brands {
   position: absolute;
   z-index: 5;

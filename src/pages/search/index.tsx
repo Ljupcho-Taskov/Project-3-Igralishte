@@ -161,12 +161,12 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
 
   if (query.category) {
     res = await fetch(
-      `https://adventurous-jade-duck.cyclic.app/products?q=${query.category}`
+      `https://igralishte.onrender.com/products?q=${query.category}`
     );
     dataProduct = await res.json();
 
     resBrand = await fetch(
-      `https://adventurous-jade-duck.cyclic.app/brands?q=${query.category}`
+      `https://igralishte.onrender.com/brands?q=${query.category}`
     );
     brandData = await resBrand.json();
 
