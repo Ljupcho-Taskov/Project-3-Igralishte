@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { ProductsType } from "../types/types";
 import ProductItem from "./ProductItem";
 
@@ -8,6 +8,7 @@ interface Props {
 
 const ImageCarousel: React.FC<Props> = ({ products }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const touchStartXRef = useRef(0);
 
   const nextImage = () => {
     setCurrentImageIndex((prevIndex) =>
@@ -21,10 +22,29 @@ const ImageCarousel: React.FC<Props> = ({ products }) => {
     );
   };
 
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartXRef.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    const touchEndX = e.changedTouches[0].clientX;
+    const deltaX = touchEndX - touchStartXRef.current;
+
+    if (deltaX > 50) {
+      previousImage();
+    } else if (deltaX < -50) {
+      nextImage();
+    }
+  };
+
   return (
     <section>
       <div className="container py-5">
-        <div className="row mb-3">
+        <div
+          className="row mb-3"
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
+        >
           <div className="col-12">
             <div className="image-carousel">
               <ProductItem
