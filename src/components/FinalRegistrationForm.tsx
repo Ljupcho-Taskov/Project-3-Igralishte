@@ -42,9 +42,14 @@ const FinalRegistrationForm: React.FC<Props> = ({ data }) => {
       localStorage.getItem("registrationData") || "{}"
     );
 
-    const newData = { ...previousData, adress, phone, biography };
+    const newUser = {
+      ...previousData,
+      adress,
+      phone,
+      biography,
+    };
 
-    localStorage.setItem("registrationData", JSON.stringify(newData));
+    localStorage.setItem("registrationData", JSON.stringify(newUser));
 
     if (selectedFile) {
       const reader = new FileReader();

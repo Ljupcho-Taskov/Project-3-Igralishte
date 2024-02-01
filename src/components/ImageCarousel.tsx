@@ -23,8 +23,8 @@ const ImageCarousel: React.FC<Props> = ({ products }) => {
 
   return (
     <section>
-      <div className="container py-4">
-        <div className="row">
+      <div className="container py-5">
+        <div className="row mb-3">
           <div className="col-12">
             <div className="image-carousel">
               <ProductItem
@@ -35,15 +35,13 @@ const ImageCarousel: React.FC<Props> = ({ products }) => {
           </div>
         </div>
         <div className="row">
-          <div className="col d-flex justify-content-center">
-            <i
-              className="fa-solid fa-angle-left fa-2xl"
-              onClick={previousImage}
-            ></i>
-            <i
-              className="fa-solid fa-angle-right fa-2xl"
-              onClick={nextImage}
-            ></i>
+          <div className="col d-flex justify-content-around">
+            <p className="pointer" onClick={previousImage}>
+              <i className="fa-solid fa-angle-left fa-2xl"></i>
+            </p>
+            <p className="pointer" onClick={nextImage}>
+              <i className="fa-solid fa-angle-right fa-2xl"></i>
+            </p>
           </div>
         </div>
       </div>

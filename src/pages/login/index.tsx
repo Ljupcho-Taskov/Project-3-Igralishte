@@ -13,33 +13,33 @@ const Login: NextPage = () => {
   const handleLogin = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const allRegistrations = JSON.parse(
-      localStorage.getItem("registrations") || "[]"
+      localStorage.getItem("registrationData") || "[]"
     );
 
     // Check if any registration matches the entered email and password
-    const matchedRegistration = allRegistrations.find(
-      (userData: any) =>
-        userData.email === email && userData.password === password
-    );
+    // const matchedRegistration = allRegistrations.find(
+    //   (userData: any) =>
+    //     userData.email === email && userData.password === password
+    // );
 
-    if (matchedRegistration) {
-      // Successful login, redirect or perform other actions
-      router.push("/");
-    } else {
-      console.error("Invalid credentials");
-    }
-
-    // const storedUserData = localStorage.getItem("registrationData");
-    // if (storedUserData) {
-    //   const userData = JSON.parse(storedUserData);
-    //   if (userData.email === email && userData.password === password) {
-    //     router.push("/");
-    //   } else {
-    //     console.error("Invalid credentials");
-    //   }
+    // if (matchedRegistration) {
+    //   // Successful login, redirect or perform other actions
+    //   router.push("/");
     // } else {
-    //   console.error("User not registered");
+    //   console.error("Invalid credentials");
     // }
+
+    const storedUserData = localStorage.getItem("registrationData");
+    if (storedUserData) {
+      const userData = JSON.parse(storedUserData);
+      if (userData.email === email && userData.password === password) {
+        router.push("/");
+      } else {
+        console.error("Invalid credentials");
+      }
+    } else {
+      console.error("User not registered");
+    }
   };
   const togglePasswordVisibility = (field: string) => {
     switch (field) {

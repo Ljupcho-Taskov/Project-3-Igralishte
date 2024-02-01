@@ -12,7 +12,6 @@ import Link from "next/link";
 import Head from "next/head";
 
 interface ProductsPageProps {
-  product: ProductsType;
   productsData: ProductsType[];
   brandData: ProductsType[];
   dataCardsPrice: CardsPriceType[];
@@ -20,7 +19,7 @@ interface ProductsPageProps {
   totalPages: number;
 }
 
-const OrderPage: React.FC<ProductsPageProps> = ({ product, productsData }) => {
+const OrderPage: React.FC<ProductsPageProps> = ({ productsData }) => {
   const { cart, favorites, priceCard, clearCart } = useCart();
   const [currentPage, setCurrentPage] = useState(1);
   const [isViewingFavorites, setIsViewingFavorites] = useState(false);
@@ -170,15 +169,23 @@ const OrderPage: React.FC<ProductsPageProps> = ({ product, productsData }) => {
       </div>
 
       {cart.length === 0 && priceCard.length === 0 && !isViewingFavorites ? (
+        <>
+          <div className="container">
+            <div className="row">
+              <div className="col-12 text-center">
+                <p>Вашата кошничка е празна</p>
+              </div>
+            </div>
+          </div>
+        </>
+      ) : favorites.length === 0 && isViewingFavorites ? (
         <div className="container">
           <div className="row">
             <div className="col-12 text-center">
-              <p>Вашата кошничка е празна</p>
+              <p>Немате омилени парчиња</p>
             </div>
           </div>
         </div>
-      ) : favorites.length === 0 && isViewingFavorites ? (
-        <p>You dont have any items in favorites.</p>
       ) : (
         <div className="container">
           {isViewingFavorites ? (
@@ -297,30 +304,31 @@ const OrderPage: React.FC<ProductsPageProps> = ({ product, productsData }) => {
               ) : null}
             </div>
           </div>
-
-          <FourAccordions />
-          <div className="row">
-            <div className="col-12">
-              <p className=" mb-4 productItemTitle ">Други парчиња:</p>
-            </div>
-            {currentProducts.map((item, index) => (
-              <div className="col-6" key={item.id}>
-                <ProductItem index={index} {...item} />
-              </div>
-            ))}
-          </div>
-
-          <div className="row">
-            <Pagination
-              currentPage={currentPage}
-              totalPages={totalProductPages}
-              handlePageChange={handlePageChange}
-              handlePrevPage={handlePrevPage}
-              handleNextPage={handleNextPage}
-            />
-          </div>
         </div>
       )}
+      <div className="container mt-5">
+        <FourAccordions />
+        <div className="row">
+          <div className="col-12">
+            <p className=" mb-4 productItemTitle ">Други парчиња:</p>
+          </div>
+          {currentProducts.map((item, index) => (
+            <div className="col-6" key={item.id}>
+              <ProductItem index={index} {...item} />
+            </div>
+          ))}
+        </div>
+
+        <div className="row">
+          <Pagination
+            currentPage={currentPage}
+            totalPages={totalProductPages}
+            handlePageChange={handlePageChange}
+            handlePrevPage={handlePrevPage}
+            handleNextPage={handleNextPage}
+          />
+        </div>
+      </div>
 
       <Footer />
     </>

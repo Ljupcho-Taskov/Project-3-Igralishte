@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import FinalRegistrationForm from "./FinalRegistrationForm";
 import { ProductsType } from "../types/types";
 import { GetServerSideProps } from "next";
+// import { useUserContext } from "../context/UserContext";
 
 interface Props {
   data: ProductsType[];
@@ -59,30 +60,28 @@ const RegistrationForm: React.FC<Props> = ({ data }) => {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    const existingRegistrations = JSON.parse(
-      localStorage.getItem("registrationData") || "[]"
-    );
-
-    const newRegistration = { name, surname, email, password, repeatPassword };
-    const updatedRegistrations = [...existingRegistrations, newRegistration];
-
     if (password !== repeatPassword) {
       setPasswordsMatch(false);
       return;
     }
 
     if (!validatePassword()) {
+      // Password validation failed
       return;
     }
 
-    // localStorage.setItem(
-    //   "registrationData",
-    //   JSON.stringify({ name, surname, email, password, repeatPassword })
-    // );
-    localStorage.setItem(
-      "registrationData",
-      JSON.stringify(updatedRegistrations)
-    );
+    const newUser = {
+      name,
+      surname,
+      email,
+      password,
+      adress: "", // initialize with empty strings, since these fields are not present in RegistrationForm
+      phone: "", // initialize with empty strings, since these fields are not present in RegistrationForm
+      biography: "", // initialize with empty strings, since these fields are not present in RegistrationForm
+    };
+
+    localStorage.setItem("registrationData", JSON.stringify(newUser));
+
     setShowFinalRegistrationForm(true);
   };
 

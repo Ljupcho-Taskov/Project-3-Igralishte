@@ -142,16 +142,13 @@ const GiftCardPage: NextPage<Props> = ({ dataCardsPrice }) => {
           </div>
           <div className="row">
             {dataCardsPrice.map((price) => (
-              <div
-                className="col-12"
-                key={price.id}
-                onMouseEnter={() => setHoveredButton(price.id)}
-                onMouseLeave={() => setHoveredButton(null)}
-              >
+              <div className="col-12" key={price.id}>
                 {!buttonStates[price.id] ? (
                   <>
                     <button
-                      className="buttonPrice mb-3"
+                      onMouseEnter={() => setHoveredButton(price.id)}
+                      onMouseLeave={() => setHoveredButton(null)}
+                      className="buttonPrice mb-3 pointer"
                       onClick={() => handleAddToCart(price.id)}
                     >
                       {hoveredButton === price.id ? (
@@ -168,7 +165,7 @@ const GiftCardPage: NextPage<Props> = ({ dataCardsPrice }) => {
                 ) : (
                   <>
                     <button
-                      className="buttonPriceClick mb-3"
+                      className="buttonPriceClick pointer mb-3"
                       onClick={handleGoToCart}
                     >
                       <span className="btnSpanStars">

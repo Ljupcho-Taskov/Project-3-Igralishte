@@ -49,7 +49,7 @@ export const CartProvider: React.FC = ({ children }) => {
     setCart([]);
     setPriceCard([]);
     localStorage.removeItem("cart");
-    localStorage.removeItem("priceCart");
+    localStorage.removeItem("priceCarD");
   };
 
   const addToCart = (product: ProductsType) => {
