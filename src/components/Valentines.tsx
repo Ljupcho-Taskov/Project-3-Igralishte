@@ -14,7 +14,11 @@ const Valentines = () => {
             <img src="../images/coll 1.png" alt="" />
             <div className="circle left-7">
               <div className="circle-inner">
-                <div className="stars"></div>
+                <img
+                  className="stars"
+                  src="../logo/sparks-elements-and-symbols-isolated-on-white-background-free-vector 2.png"
+                  alt=""
+                />
                 <p>
                   Valentines gal <br /> Kолекција
                 </p>

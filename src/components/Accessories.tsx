@@ -14,7 +14,11 @@ const Accessories = () => {
             <img src="../images/IMG_6142 1.png" alt="" />
             <div className="circle right-7">
               <div className="circle-inner">
-                <div className="stars"></div>
+                <img
+                  className="stars"
+                  src="../logo/sparks-elements-and-symbols-isolated-on-white-background-free-vector 2.png"
+                  alt=""
+                />
                 <p>
                   Козметика & <br /> аксесоари
                 </p>
@@ -23,11 +27,6 @@ const Accessories = () => {
               </div>
             </div>
           </div>
-        </div>
-      </div>
-      <div className="row">
-        <div className="col">
-          <p className="trendi">Trendy парчиња во моментов</p>
         </div>
       </div>
     </div>

@@ -8,18 +8,21 @@ interface Props {
 
 const ImageCarousel: React.FC<Props> = ({ products }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [slideDirection, setSlideDirection] = useState<"left" | "right">();
   const touchStartXRef = useRef(0);
 
   const nextImage = () => {
     setCurrentImageIndex((prevIndex) =>
       prevIndex < products.length - 1 ? prevIndex + 1 : 0
     );
+    setSlideDirection("left");
   };
 
   const previousImage = () => {
     setCurrentImageIndex((prevIndex) =>
       prevIndex > 0 ? prevIndex - 1 : products.length - 1
     );
+    setSlideDirection("right");
   };
 
   const handleTouchStart = (e: React.TouchEvent) => {
@@ -41,17 +44,15 @@ const ImageCarousel: React.FC<Props> = ({ products }) => {
     <section>
       <div className="container py-5">
         <div
-          className="row mb-3"
+          className="row mb-2 image-carousel-container"
           onTouchStart={handleTouchStart}
           onTouchEnd={handleTouchEnd}
         >
-          <div className="col-12">
-            <div className="image-carousel">
-              <ProductItem
-                index={currentImageIndex}
-                {...products[currentImageIndex]}
-              />
-            </div>
+          <div className={`col-12 image-carousel ${slideDirection}`}>
+            <ProductItem
+              index={currentImageIndex}
+              {...products[currentImageIndex]}
+            />
           </div>
         </div>
         <div className="row">

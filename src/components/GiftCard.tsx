@@ -3,7 +3,7 @@ import React from "react";
 const GiftCard = () => {
   return (
     <div
-      className="container-fluid d-flex flex-column justify-content-between"
+      className="container-fluid d-flex flex-column"
       style={{
         height: "605px",
       }}
@@ -25,7 +25,11 @@ const GiftCard = () => {
             </div>
             <div className="circle">
               <div className="circle-inner">
-                <div className="stars"></div>
+                <img
+                  className="stars"
+                  src="../logo/sparks-elements-and-symbols-isolated-on-white-background-free-vector 2.png"
+                  alt=""
+                />
                 <p>GIFT CARDS</p>
                 <small>
                   Избери уникатен подарок за твоите најблиски со нашиот избор на

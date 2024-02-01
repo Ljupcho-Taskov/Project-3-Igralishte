@@ -180,8 +180,6 @@ li {
 .circle .stars {
   width: 49.435px;
   height: 48.927px;
-  flex-shrink: 0;
-  background: url("../logo/sparks-elements-and-symbols-isolated-on-white-background-free-vector\ 2.png");
   mix-blend-mode: darken;
 }
 .circle .arrow {
@@ -213,6 +211,18 @@ li {
   width: 31px;
   height: 31px;
   flex-shrink: 0;
+}
+
+.image-carousel {
+  transition: transform 0.5s ease;
+}
+
+.image-carousel.left {
+  transform: translateX(-100%);
+}
+
+.image-carousel.right {
+  transform: translateX(100%);
 }
 
 /*  */
