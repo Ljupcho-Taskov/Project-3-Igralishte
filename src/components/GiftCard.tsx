@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 
 const GiftCard = () => {
@@ -23,21 +24,25 @@ const GiftCard = () => {
                 alt=""
               />
             </div>
-            <div className="circle">
-              <div className="circle-inner">
-                <img
-                  className="stars"
-                  src="../logo/sparks-elements-and-symbols-isolated-on-white-background-free-vector 2.png"
-                  alt=""
-                />
-                <p>GIFT CARDS</p>
-                <small>
-                  Избери уникатен подарок за твоите најблиски со нашиот избор на
-                  ultra fancy картички за подарок.
-                </small>
-                <div className="arrow"></div>
+            <Link href="/giftCard">
+              <div className="circle pointer">
+                <div className="circle-inner">
+                  <img
+                    className="stars"
+                    src="../logo/sparks-elements-and-symbols-isolated-on-white-background-free-vector 2.png"
+                    alt=""
+                  />
+                  <p>GIFT CARDS</p>
+                  <small>
+                    Избери уникатен подарок за твоите најблиски со нашиот избор
+                    на ultra fancy картички за подарок.
+                  </small>
+                  <div className="arrow">
+                    <img src="../logo/Group 36.png" alt="" />
+                  </div>
+                </div>
               </div>
-            </div>
+            </Link>
           </div>
         </div>
       </div>

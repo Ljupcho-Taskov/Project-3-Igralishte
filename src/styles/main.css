@@ -184,10 +184,7 @@ li {
 }
 .circle .arrow {
   width: 46.198px;
-  height: 15.212px;
-  flex-shrink: 0;
-  background: url("../logo/Group\ 36.png");
-  mix-blend-mode: darken;
+  height: 30px;
 }
 .trendi {
   color: #000;
@@ -255,7 +252,7 @@ li {
   border-bottom-left-radius: 128.878px;
   border: 2px solid var(--Black, #232221);
   margin-left: auto;
-  margin-right: -25px;
+  margin-right: -15px;
 }
 
 .star img {

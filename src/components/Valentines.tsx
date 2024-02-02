@@ -12,7 +12,7 @@ const Valentines = () => {
         <div className="col">
           <div className="image-without-circle ml-auto">
             <img src="../images/coll 1.png" alt="" />
-            <div className="circle left-7">
+            <div className="circle left-7 pointer">
               <div className="circle-inner">
                 <img
                   className="stars"
@@ -23,7 +23,9 @@ const Valentines = () => {
                   Valentines gal <br /> Kолекција
                 </p>
                 <small>Погледни ги свежите љубовни парчиња</small>
-                <div className="arrow"></div>
+                <div className="arrow">
+                  <img src="../logo/Group 36.png" alt="" />
+                </div>
               </div>
             </div>
           </div>

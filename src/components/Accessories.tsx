@@ -12,7 +12,7 @@ const Accessories = () => {
         <div className="col">
           <div className="image-without-circle mr-auto ">
             <img src="../images/IMG_6142 1.png" alt="" />
-            <div className="circle right-7">
+            <div className="circle right-7 pointer">
               <div className="circle-inner">
                 <img
                   className="stars"
@@ -23,7 +23,9 @@ const Accessories = () => {
                   Козметика & <br /> аксесоари
                 </p>
                 <small>Погледни ги свежите љубовни парчиња</small>
-                <div className="arrow"></div>
+                <div className="arrow">
+                  <img src="../logo/Group 36.png" alt="" />
+                </div>
               </div>
             </div>
           </div>
