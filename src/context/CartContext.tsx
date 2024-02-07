@@ -10,7 +10,7 @@ interface CartContextProps {
   addPriceToCart: (price: CardsPriceType) => void;
   addToFavorites: (product: Partial<ProductsType>) => void;
   removeFromFavorites: (product: Partial<ProductsType>) => void;
-  clearCart: () => void;
+  // clearCart: () => void;
 }
 
 const CartContext = createContext<CartContextProps | undefined>(undefined);
@@ -45,12 +45,12 @@ export const CartProvider: React.FC = ({ children }) => {
     }
   }, []);
 
-  const clearCart = () => {
-    setCart([]);
-    setPriceCard([]);
-    localStorage.removeItem("cart");
-    localStorage.removeItem("priceCarD");
-  };
+  // const clearCart = () => {
+  //   setCart([]);
+  //   setPriceCard([]);
+  //   localStorage.removeItem("cart");
+  //   localStorage.removeItem("priceCarD");
+  // };
 
   const addToCart = (product: ProductsType) => {
     setCart((prevCart) => [...prevCart, product]);
@@ -120,7 +120,7 @@ export const CartProvider: React.FC = ({ children }) => {
         addToFavorites,
         removeFromFavorites,
         addPriceToCart,
-        clearCart,
+        // clearCart,
       }}
     >
       {children}

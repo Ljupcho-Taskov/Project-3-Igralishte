@@ -8,6 +8,7 @@ import Card from "../../components/Card";
 import Pagination from "../../components/Pagination";
 import Link from "next/link";
 import Head from "next/head";
+import Breadcrumps from "../../components/Breadcrumps";
 
 interface ProductsPageProps {
   data: ProductsType[];
@@ -124,7 +125,6 @@ const ProductsPage: NextPage<ProductsPageProps> = ({
       document.body.style.overflowY = "visible";
     }
   }, [isModalOpen, category]);
-  const headerCategory = category || "Сите";
 
   return (
     <>
@@ -136,17 +136,8 @@ const ProductsPage: NextPage<ProductsPageProps> = ({
       <Header />
       <div className="container">
         <div className="row">
-          <div className="col-12 my-3">
-            <p className="d-flex">
-              {`Почетна`}
-              {headerCategory ? (
-                <span className="d-flex align-items-center">
-                  <i className="fa-solid fa-angle-right mx-1"></i>
-                  {headerCategory}
-                </span>
-              ) : null}
-            </p>
-          </div>
+          <Breadcrumps />
+
           <div className="col-12 mb-3 d-flex justify-content-between">
             <Link href="/filterPage">
               <button className="searchFilter">
@@ -195,8 +186,8 @@ const ProductsPage: NextPage<ProductsPageProps> = ({
                 </svg>
               </button>
             </Link>
-            <div>
-              <span className="sort-span">Подреди според</span>
+            <div className="d-flex align-items-center">
+              <span className="sort-span mr-2">Подреди според</span>
               <select
                 value={selectedSortOption}
                 onChange={(e) =>
