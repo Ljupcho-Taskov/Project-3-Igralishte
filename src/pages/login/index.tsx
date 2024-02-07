@@ -94,7 +94,11 @@ const Login: NextPage = () => {
                     className="password-toggle-icon"
                     onClick={() => togglePasswordVisibility("showPassword")}
                   >
-                    👁️
+                    {showPassword ? (
+                      <i className="fa-regular fa-eye"></i>
+                    ) : (
+                      <i className="fa-regular fa-eye-slash"></i>
+                    )}
                   </span>
                 </div>
                 <br />

@@ -9,6 +9,7 @@ import { ProductsType } from "../../types/types";
 import Card from "../../components/Card";
 import Head from "next/head";
 import sparks from "../../logo/sparks-elements-and-symbols-isolated-on-white-background-free-vector 2.png";
+import Link from "next/link";
 
 interface BrandsPageProps {
   brandsData: ProductsType[];
@@ -67,7 +68,7 @@ const BrandsPage: NextPage<BrandsPageProps> = ({
         <div className="row mb-3">
           <div className="col-12">
             <p className="d-flex">
-              {`Почетна`}
+              <Link href="/">Почетна</Link>
               {headerBrand ? (
                 <span className="d-flex align-items-center">
                   <i className="fa-solid fa-angle-right mx-1"></i>

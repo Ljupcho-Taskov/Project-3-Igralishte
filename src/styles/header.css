@@ -8,13 +8,25 @@ header .container {
   width: 90%;
 }
 
-.hamburger {
-  width: 45px;
-  height: 45px;
-  flex-shrink: 0;
-  background-image: url("../logo/Frame\ 1.png");
-  cursor: pointer;
+.bar,
+.bar1,
+.bar2 {
+  width: 30px;
+  height: 3px;
+  background-color: var(--Black, #232221);
+  margin: 5px;
+  transition: ease-out 0.5s;
+  border-radius: 4px;
 }
+.bar1 {
+  transform: rotate(-45deg) translate(-6px, 0px);
+  transition: ease-out 0.5s;
+}
+.bar2 {
+  transform: rotate(45deg) translate(-5px, 0px);
+  transition: ease-out 0.5s;
+}
+
 .logo {
   width: 130px;
   height: 27.766px;
@@ -158,8 +170,7 @@ header .container {
   width: 36.925px;
   height: 36.546px;
   position: absolute;
-  left: 20px;
-  top: 74px;
+  left: 10px;
 }
 .sparksSmallAllBrands {
   width: 36.925px;

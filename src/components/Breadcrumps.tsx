@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
 
@@ -13,7 +14,7 @@ const Breadcrumps = () => {
   return (
     <div className="col-12 my-3">
       <p className="d-flex flex-wrap">
-        {`Почетна`}
+        <Link href="/">Почетна</Link>
         {headerCategory ? (
           <>
             {Array.isArray(headerCategory) ? (

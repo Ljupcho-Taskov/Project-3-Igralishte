@@ -1,7 +1,7 @@
 import Link from "next/link";
 import React, { useEffect, useRef, useState } from "react";
 import AnnouncementBar from "../AnnouncementBar";
-import router from "next/router";
+import router, { useRouter } from "next/router";
 
 interface DropdownStates {
   vintage: boolean;
@@ -17,6 +17,9 @@ const Header: React.FC = () => {
     brands: false,
     accessories: false,
   });
+  const router = useRouter();
+  const { category } = router.query;
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
 
   const [user, setUser] = useState<string | null>(null);
 
@@ -75,14 +78,28 @@ const Header: React.FC = () => {
     setIsSearchModalOpen(!isSearchModalOpen);
     setIsModalOpen(false);
   };
-
+  const handleCategoryClick = (category: string) => {
+    setSelectedCategory(category);
+  };
   return (
     <>
       <header>
         <div className="container">
           <div className="row">
             <div className="col-12 d-flex justify-content-between align-items-center">
-              <div onClick={handleButtonClick} className="hamburger"></div>
+              {isModalOpen ? (
+                <div className="pointer" onClick={handleButtonClick}>
+                  <div className="bar1"></div>
+                  <div className="bar2"></div>
+                </div>
+              ) : (
+                <div className="pointer" onClick={handleButtonClick}>
+                  <div className="bar"></div>
+                  <div className="bar"></div>
+                  <div className="bar"></div>
+                </div>
+              )}
+
               <Link href="/">
                 <div className="logo pointer"></div>
               </Link>
@@ -131,47 +148,151 @@ const Header: React.FC = () => {
                           dropdownStates.vintage ? "d-block" : "d-none"
                         }
                       >
-                        <img
-                          className="sparksSmallAll"
-                          src="../../logo/sparks-elements-and-symbols-isolated-on-white-background-free-vector 2.png"
-                          alt=""
-                        />
                         <li onClick={handleButtonClick}>
                           <Link href={"/product"}>
-                            <span className="li-olive">Види ги сите</span>
+                            <div className="d-flex align-items-center">
+                              {!category ? (
+                                <img
+                                  className="sparksSmallAll"
+                                  src="../../logo/sparks-elements-and-symbols-isolated-on-white-background-free-vector 2.png"
+                                  alt=""
+                                />
+                              ) : null}
+                              <span className={!category ? "li-olive" : ""}>
+                                Види ги сите
+                              </span>
+                            </div>
                           </Link>
                         </li>
                         <li onClick={handleButtonClick}>
-                          <Link href={"/product?category=Bluzi"}>Блузи</Link>
+                          <Link href={"/product?category=Bluzi"}>
+                            <div className="d-flex align-items-center">
+                              {category === "Bluzi" ? (
+                                <img
+                                  className="sparksSmallAll"
+                                  src="../../logo/sparks-elements-and-symbols-isolated-on-white-background-free-vector 2.png"
+                                  alt=""
+                                />
+                              ) : null}
+                              <span
+                                className={
+                                  category === "Bluzi" ? "li-olive" : ""
+                                }
+                              >
+                                Блузи
+                              </span>
+                            </div>
+                          </Link>
                         </li>
                         <li onClick={handleButtonClick}>
                           <Link href={"/product?category=Pantaloni"}>
-                            Панталони
+                            <div className="d-flex align-items-center">
+                              {category === "Pantaloni" ? (
+                                <img
+                                  className="sparksSmallAll"
+                                  src="../../logo/sparks-elements-and-symbols-isolated-on-white-background-free-vector 2.png"
+                                  alt=""
+                                />
+                              ) : null}
+                              <span
+                                className={
+                                  category === "Pantaloni" ? "li-olive" : ""
+                                }
+                              >
+                                Панталони
+                              </span>
+                            </div>
                           </Link>
                         </li>
                         <li onClick={handleButtonClick}>
                           <Link href={"/product?category=Zdolnishta"}>
-                            Здолништа /
+                            <div className="d-flex align-items-center">
+                              {category === "Zdolnishta" ? (
+                                <img
+                                  className="sparksSmallAll"
+                                  src="../../logo/sparks-elements-and-symbols-isolated-on-white-background-free-vector 2.png"
+                                  alt=""
+                                />
+                              ) : null}
+                              <span
+                                className={
+                                  category === "Zdolnishta" ? "li-olive" : ""
+                                }
+                              >
+                                Здолништа /
+                              </span>
+                            </div>
                           </Link>
                           <span>
                             <Link href={"/product?category=Shorcevi"}>
-                              шорцеви
+                              <span
+                                className={
+                                  category === "Zdolnishta" ? "li-olive" : ""
+                                }
+                              >
+                                шорцеви
+                              </span>
                             </Link>
                           </span>
                         </li>
                         <li onClick={handleButtonClick}>
                           <Link href={"/product?category=Fustani"}>
-                            Фустани
+                            <div className="d-flex align-items-center">
+                              {category === "Fustani" ? (
+                                <img
+                                  className="sparksSmallAll"
+                                  src="../../logo/sparks-elements-and-symbols-isolated-on-white-background-free-vector 2.png"
+                                  alt=""
+                                />
+                              ) : null}
+                              <span
+                                className={
+                                  category === "Fustani" ? "li-olive" : ""
+                                }
+                              >
+                                Фустани
+                              </span>
+                            </div>
                           </Link>
                         </li>
                         <li onClick={handleButtonClick}>
                           <Link href={"/product?category=Palta i jakni"}>
-                            Палта и јакни
+                            <div className="d-flex align-items-center">
+                              {category === "Palta i jakni" ? (
+                                <img
+                                  className="sparksSmallAll"
+                                  src="../../logo/sparks-elements-and-symbols-isolated-on-white-background-free-vector 2.png"
+                                  alt=""
+                                />
+                              ) : null}
+                              <span
+                                className={
+                                  category === "Palta i jakni" ? "li-olive" : ""
+                                }
+                              >
+                                Палта и јакни
+                              </span>
+                            </div>
                           </Link>
                         </li>
                         <li onClick={handleButtonClick}>
                           <Link href={"/product?category=Dolna obleka"}>
-                            Долна облека
+                            <div className="d-flex align-items-center">
+                              {category === "Dolna obleka" ? (
+                                <img
+                                  className="sparksSmallAll"
+                                  src="../../logo/sparks-elements-and-symbols-isolated-on-white-background-free-vector 2.png"
+                                  alt=""
+                                />
+                              ) : null}
+                              <span
+                                className={
+                                  category === "Dolna obleka" ? "li-olive" : ""
+                                }
+                              >
+                                Долна облека
+                              </span>
+                            </div>
                           </Link>
                         </li>
                       </ul>
@@ -190,11 +311,6 @@ const Header: React.FC = () => {
                       <ul
                         className={dropdownStates.brands ? "d-block" : "d-none"}
                       >
-                        <img
-                          className="sparksSmallAllBrands"
-                          src="../../logo/sparks-elements-and-symbols-isolated-on-white-background-free-vector 2.png"
-                          alt=""
-                        />
                         <Link href="/brands">
                           <li onClick={handleButtonClick}>
                             <img src="" alt="" />

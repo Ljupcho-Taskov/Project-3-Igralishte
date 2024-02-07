@@ -17,6 +17,9 @@ img {
 a:hover {
   color: #000;
 }
+a {
+  color: #000;
+}
 .pointer {
   cursor: pointer;
 }
@@ -734,7 +737,7 @@ li a {
 }
 
 .continue-button {
-  width: 155.635px;
+  width: 155;
   height: 41.098px;
   border-radius: 12.127px;
   border: 1.213px solid var(--Light-grey, #c2c2c2);
@@ -757,6 +760,7 @@ li a {
   font-weight: 400;
   line-height: 150%; /* 24px */
   letter-spacing: -0.176px;
+  margin-bottom: 10px;
 }
 .delete-button {
   border: none;
@@ -827,8 +831,7 @@ li a {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 300px;
-  height: 325px;
+  padding: 10px;
   border-radius: 8.322px;
   background: var(--Light-ribbon-pink, #fff6f6);
   box-shadow: 0px 0px 1.248px 0px rgba(0, 0, 0, 0.25);
@@ -878,5 +881,6 @@ li a {
 }
 .password-input-container {
   position: relative;
+  margin-bottom: 10px;
 }
 /*  */

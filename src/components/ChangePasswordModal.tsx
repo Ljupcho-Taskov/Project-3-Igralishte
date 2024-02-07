@@ -22,7 +22,6 @@ const ChangePasswordModal: React.FC<ChangePasswordModalProps> = ({
   const [passwordError, setPasswordError] = useState("");
 
   const validatePassword = () => {
-    // Password validation criteria
     const minLength = 8;
     const hasUpperCase = /[A-Z]/.test(newPassword);
     const hasNumber = /\d/.test(newPassword);
@@ -35,7 +34,7 @@ const ChangePasswordModal: React.FC<ChangePasswordModalProps> = ({
     }
 
     setPasswordError(errorMessage);
-    return !errorMessage; // Return true if there are no errors
+    return !errorMessage;
   };
 
   const handleSaveChanges = (e: React.FormEvent<HTMLFormElement>) => {
@@ -43,21 +42,16 @@ const ChangePasswordModal: React.FC<ChangePasswordModalProps> = ({
     setOldPasswordError("");
     setConfirmPasswordError("");
 
-    // Retrieve the correct old password object from local storage
     const registrationDataString = localStorage.getItem("registrationData");
 
     if (!registrationDataString) {
-      // Handle the case where registration data is not found in local storage
       console.error("Registration data not found in local storage");
       return;
     }
 
     const registrationData = JSON.parse(registrationDataString);
-
-    // Extract the correct old password from the registration data
     const correctOldPassword = registrationData && registrationData.password;
 
-    // Add validation logic
     if (oldPassword !== correctOldPassword) {
       setOldPasswordError("Wrong old password");
       return;
@@ -69,11 +63,9 @@ const ChangePasswordModal: React.FC<ChangePasswordModalProps> = ({
     }
 
     if (!validatePassword()) {
-      // Password validation failed
       return;
     }
 
-    // Save changes in local storage
     onSaveChanges(oldPassword, newPassword);
     onClose();
   };
@@ -113,7 +105,11 @@ const ChangePasswordModal: React.FC<ChangePasswordModalProps> = ({
                 className="password-toggle-icon"
                 onClick={() => togglePasswordVisibility("oldPassword")}
               >
-                👁️
+                {showOldPassword ? (
+                  <i className="fa-regular fa-eye"></i>
+                ) : (
+                  <i className="fa-regular fa-eye-slash"></i>
+                )}
               </span>
             </div>
             {oldPasswordError && (
@@ -133,7 +129,11 @@ const ChangePasswordModal: React.FC<ChangePasswordModalProps> = ({
                 className="password-toggle-icon"
                 onClick={() => togglePasswordVisibility("newPassword")}
               >
-                👁️
+                {showNewPassword ? (
+                  <i className="fa-regular fa-eye"></i>
+                ) : (
+                  <i className="fa-regular fa-eye-slash"></i>
+                )}
               </span>
             </div>
             {passwordError && <p className="text-danger">{passwordError}</p>}
@@ -151,7 +151,11 @@ const ChangePasswordModal: React.FC<ChangePasswordModalProps> = ({
                 className="password-toggle-icon"
                 onClick={() => togglePasswordVisibility("confirmPassword")}
               >
-                👁️
+                {showConfirmPassword ? (
+                  <i className="fa-regular fa-eye"></i>
+                ) : (
+                  <i className="fa-regular fa-eye-slash"></i>
+                )}
               </span>
             </div>
             {confirmPasswordError && (
