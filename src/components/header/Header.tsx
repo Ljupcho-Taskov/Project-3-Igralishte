@@ -607,7 +607,7 @@ const Header: React.FC = () => {
                         <img src="/logo/cart.png" alt="" />
                       </div>
 
-                      <Link href="/order">Кошничка</Link>
+                      <Link href="/order?cart=true">Кошничка</Link>
                     </li>
                     <li className="d-flex align-items-center">
                       <div className="heart mr-1">

@@ -9,6 +9,7 @@ import ProductItem from "../../components/ProductItem";
 import Pagination from "../../components/Pagination";
 import FourAccordions from "../../components/FourAccordions";
 import Footer from "../../components/footer/Footer";
+import Link from "next/link";
 
 interface Props {
   product: ProductsType;
@@ -137,7 +138,7 @@ const ProductDetailsPage: React.FC<Props> = ({ product, allProductsData }) => {
       <Header />
       <div className="col-12 d-flex flex-column py-3">
         <p className="d-flex mb-4">
-          {`Почетна`}
+          <Link href="/">Почетна</Link>
           {headerChlotes ? (
             <span className="d-flex align-items-center">
               <i className="fa-solid fa-angle-right mx-1"></i>

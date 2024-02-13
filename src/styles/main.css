@@ -127,6 +127,7 @@ li {
 
 .circle {
   position: absolute;
+  padding: 0 20px;
   bottom: -162px;
   width: 240px;
   height: 240px;
@@ -170,7 +171,6 @@ li {
 }
 
 .circle small {
-  width: 124.74px;
   color: var(--Dark-grey, #666560);
   text-align: center;
   font-family: Cormorant Garamond;
@@ -884,6 +884,3 @@ li a {
   margin-bottom: 10px;
 }
 /*  */
-a {
-  color: #000;
-}

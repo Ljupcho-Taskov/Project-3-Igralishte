@@ -37,7 +37,6 @@ const ProductItem: React.FC<ProductItemProps> = ({
           <div>
             <img src={img} alt="IMG-PRODUCT" />
             <div>
-              <p>Popust{discount}</p>
               <p className="my-1 productItemTitle">{title}</p>
               <p className="productItemTitle">{priceR} ден.</p>
               <p className="pHeart" onClick={handleToggleFavorite}>

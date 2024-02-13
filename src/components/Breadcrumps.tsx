@@ -5,7 +5,7 @@ import React from "react";
 const Breadcrumps = () => {
   const router = useRouter();
   const { category, brand, size, color, price } = router.query;
-  const headerCategory = category || "Сите";
+  const headerCategory = category;
   const headerBrand = brand ? (Array.isArray(brand) ? brand : [brand]) : [];
   const headerSize = size ? (Array.isArray(size) ? size : [size]) : [];
   const headerColor = color ? (Array.isArray(color) ? color : [color]) : [];
@@ -15,6 +15,12 @@ const Breadcrumps = () => {
     <div className="col-12 my-3">
       <p className="d-flex flex-wrap">
         <Link href="/">Почетна</Link>
+        {!brand && !category && !size && !color && !price && (
+          <span className="d-flex align-items-center">
+            <i className="fa-solid fa-angle-right mx-1"></i>
+            Сите
+          </span>
+        )}
         {headerCategory ? (
           <>
             {Array.isArray(headerCategory) ? (
