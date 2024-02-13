@@ -68,7 +68,16 @@ const BrandsPage: NextPage<BrandsPageProps> = ({
         <div className="row mb-3">
           <div className="col-12">
             <p className="d-flex">
-              <Link href="/">Почетна</Link>
+              <span
+                className="pointer"
+                onClick={() => {
+                  router.push({
+                    pathname: "/",
+                  });
+                }}
+              >
+                Почетна
+              </span>
               {headerBrand ? (
                 <span className="d-flex align-items-center">
                   <i className="fa-solid fa-angle-right mx-1"></i>

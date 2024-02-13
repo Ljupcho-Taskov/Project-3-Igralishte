@@ -14,7 +14,16 @@ const Breadcrumps = () => {
   return (
     <div className="col-12 my-3">
       <p className="d-flex flex-wrap">
-        <Link href="/">Почетна</Link>
+        <span
+          className="pointer"
+          onClick={() => {
+            router.push({
+              pathname: "/",
+            });
+          }}
+        >
+          Почетна
+        </span>
         {!brand && !category && !size && !color && !price && (
           <span className="d-flex align-items-center">
             <i className="fa-solid fa-angle-right mx-1"></i>
