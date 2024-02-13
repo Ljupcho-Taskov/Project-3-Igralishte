@@ -7,6 +7,8 @@ import React, { useState } from "react";
 const Login: NextPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [emailError, setEmailError] = useState<boolean>(false);
+  const [passwordError, setPasswordError] = useState<boolean>(false);
   const [showPassword, setShowPassword] = useState<boolean>(false);
   const router = useRouter();
 
@@ -16,29 +18,18 @@ const Login: NextPage = () => {
       localStorage.getItem("registrationData") || "[]"
     );
 
-    // Check if any registration matches the entered email and password
-    // const matchedRegistration = allRegistrations.find(
-    //   (userData: any) =>
-    //     userData.email === email && userData.password === password
-    // );
-
-    // if (matchedRegistration) {
-    //   // Successful login, redirect or perform other actions
-    //   router.push("/");
-    // } else {
-    //   console.error("Invalid credentials");
-    // }
-
     const storedUserData = localStorage.getItem("registrationData");
     if (storedUserData) {
       const userData = JSON.parse(storedUserData);
       if (userData.email === email && userData.password === password) {
         router.push("/");
-      } else {
-        console.error("Invalid credentials");
       }
-    } else {
-      console.error("User not registered");
+      if (userData.email !== email) {
+        setEmailError(true);
+      }
+      if (userData.password !== password) {
+        setPasswordError(true);
+      }
     }
   };
   const togglePasswordVisibility = (field: string) => {
@@ -71,19 +62,20 @@ const Login: NextPage = () => {
             <div className="col-12 d-flex flex-column align-items-center">
               <form className="mb-3" onSubmit={handleLogin}>
                 <label htmlFor="email">Email адреса</label> <br />
-                <input
-                  onChange={(e) => setEmail(e.target.value)}
-                  className="mb-3"
-                  value={email}
-                  type="email"
-                  name="email"
-                  id="email"
-                  placeholder="example@example.com"
-                />
-                <label htmlFor="password">Лозинка</label> <br />
-                <div className="password-input-container">
+                <div className="mb-3">
                   <input
-                    className="mb-3"
+                    onChange={(e) => setEmail(e.target.value)}
+                    value={email}
+                    type="email"
+                    name="email"
+                    id="email"
+                    placeholder="example@example.com"
+                  />
+                  {emailError && <p style={{ color: "red" }}>Wrong email</p>}
+                </div>
+                <label htmlFor="password">Лозинка</label> <br />
+                <div className="password-input-container mb-3">
+                  <input
                     id="password"
                     name="password"
                     type={showPassword ? "text" : "password"}
@@ -100,6 +92,10 @@ const Login: NextPage = () => {
                       <i className="fa-regular fa-eye-slash"></i>
                     )}
                   </span>
+
+                  {passwordError && (
+                    <p style={{ color: "red" }}>Invalid password</p>
+                  )}
                 </div>
                 <br />
                 <p className="mb-3">
