@@ -624,7 +624,9 @@ const Header: React.FC = () => {
                       <div className="cart mr-1">
                         <img src="/logo/cart.png" alt="" />
                       </div>
-                      <p>Кошничка</p>
+                      <div>
+                        <p>Кошничка</p>
+                      </div>
                     </li>
                     <li
                       className="d-flex align-items-center"
@@ -634,7 +636,9 @@ const Header: React.FC = () => {
                         <img src="/logo/ph_heart-straight-thin.png" alt="" />
                       </div>
 
-                      <p>Омилени</p>
+                      <div>
+                        <p>Омилени</p>
+                      </div>
                     </li>
                     <li className="d-flex align-items-center">
                       <div className="ph-user mr-1">
