@@ -7,9 +7,9 @@ import { CardsPriceType, ProductsType } from "../../types/types";
 import Pagination from "../../components/Pagination";
 import ProductItem from "../../components/ProductItem";
 import FourAccordions from "../../components/FourAccordions";
-import router from "next/router";
 import Link from "next/link";
 import Head from "next/head";
+import { useRouter } from "next/router";
 
 interface ProductsPageProps {
   productsData: ProductsType[];
@@ -20,6 +20,7 @@ interface ProductsPageProps {
 }
 
 const OrderPage: React.FC<ProductsPageProps> = ({ productsData }) => {
+  const router = useRouter();
   const { cart, favorites, priceCard, clearCart } = useCart();
   const [currentPage, setCurrentPage] = useState(1);
   const [isViewingFavorites, setIsViewingFavorites] = useState(false);
@@ -52,12 +53,12 @@ const OrderPage: React.FC<ProductsPageProps> = ({ productsData }) => {
   useEffect(() => {
     const { favorites: isViewingFavoritesParam } = router.query;
     setIsViewingFavorites(Boolean(isViewingFavoritesParam));
-  }, []);
+  }, [router.query]);
 
   useEffect(() => {
     const { cart: isViewingCartParam } = router.query;
     setIsViewingCart(Boolean(isViewingCartParam));
-  }, []);
+  }, [router.query]);
 
   useEffect(() => {
     const total = cart.reduce((sum, item) => sum + parseFloat(item.priceR), 0);
@@ -121,7 +122,7 @@ const OrderPage: React.FC<ProductsPageProps> = ({ productsData }) => {
         <div className="row py-4">
           <div className="col-12 d-flex justify-content-between">
             <Link href="/order?cart=true">
-              <button
+              <div
                 onClick={handleViewCart}
                 className={
                   isViewingCart
@@ -135,13 +136,13 @@ const OrderPage: React.FC<ProductsPageProps> = ({ productsData }) => {
                   src="../../logo/cart.png"
                   alt=""
                 />
-                <span className={isViewingCart ? "colorDark" : "darkGrey"}>
+                <span>
                   Кошничка ({cart.length > 0 ? `${cart.length}` : "0"})
                 </span>
-              </button>
+              </div>
             </Link>
             <Link href="/order?favorites=true">
-              <button
+              <div
                 className={
                   isViewingFavorites
                     ? "favorites-button colorDark pointer"
@@ -159,7 +160,7 @@ const OrderPage: React.FC<ProductsPageProps> = ({ productsData }) => {
                   Favorites (
                   {favorites.length > 0 ? `${favorites.length}` : "0"})
                 </span>
-              </button>
+              </div>
             </Link>
           </div>
           <div className="col-12">

@@ -1,16 +1,11 @@
 import { useEffect, useState } from "react";
-import { GetServerSideProps, NextPage } from "next";
+import { NextPage } from "next";
 import React from "react";
 import Registration from "../../components/Registration";
 import RegistrationForm from "../../components/RegistrationForm";
-import { ProductsType } from "../../types/types";
 import Head from "next/head";
 
-interface Props {
-  data: ProductsType[];
-}
-
-const Register: NextPage<Props> = ({ data }) => {
+const Register: NextPage = () => {
   const [showRegistrationForm, setShowRegistrationForm] = useState(false);
 
   useEffect(() => {
@@ -34,19 +29,10 @@ const Register: NextPage<Props> = ({ data }) => {
       {!showRegistrationForm ? (
         <Registration onShowRegistrationForm={handleShowRegistrationForm} />
       ) : (
-        <RegistrationForm data={data} />
+        <RegistrationForm />
       )}
     </>
   );
 };
 
 export default Register;
-
-export const getServerSideProps: GetServerSideProps = async () => {
-  const res = await fetch("https://igralishte.onrender.com/products/?_limit=3");
-  const data: ProductsType[] = await res.json();
-
-  return {
-    props: { data },
-  };
-};

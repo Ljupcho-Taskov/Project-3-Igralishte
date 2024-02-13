@@ -1,14 +1,7 @@
 import React, { useState } from "react";
 import FinalRegistrationForm from "./FinalRegistrationForm";
-import { ProductsType } from "../types/types";
-import { GetServerSideProps } from "next";
-// import { useUserContext } from "../context/UserContext";
 
-interface Props {
-  data: ProductsType[];
-}
-
-const RegistrationForm: React.FC<Props> = ({ data }) => {
+const RegistrationForm: React.FC = () => {
   const [name, setName] = useState("");
   const [surname, setSurname] = useState("");
   const [email, setEmail] = useState("");
@@ -66,7 +59,6 @@ const RegistrationForm: React.FC<Props> = ({ data }) => {
     }
 
     if (!validatePassword()) {
-      // Password validation failed
       return;
     }
 
@@ -75,9 +67,9 @@ const RegistrationForm: React.FC<Props> = ({ data }) => {
       surname,
       email,
       password,
-      adress: "", // initialize with empty strings, since these fields are not present in RegistrationForm
-      phone: "", // initialize with empty strings, since these fields are not present in RegistrationForm
-      biography: "", // initialize with empty strings, since these fields are not present in RegistrationForm
+      adress: "",
+      phone: "",
+      biography: "",
     };
 
     localStorage.setItem("registrationData", JSON.stringify(newUser));
@@ -86,7 +78,7 @@ const RegistrationForm: React.FC<Props> = ({ data }) => {
   };
 
   if (showFinalRegistrationForm) {
-    return <FinalRegistrationForm data={data} />;
+    return <FinalRegistrationForm />;
   }
   return (
     <section className="registration-section registration-bg-pink">
@@ -209,12 +201,3 @@ const RegistrationForm: React.FC<Props> = ({ data }) => {
 };
 
 export default RegistrationForm;
-
-export const getServerSideProps: GetServerSideProps = async () => {
-  const res = await fetch("http://localhost:5001/products/?_limit=3");
-  const data: ProductsType[] = await res.json();
-
-  return {
-    props: { data },
-  };
-};

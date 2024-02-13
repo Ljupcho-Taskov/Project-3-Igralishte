@@ -2,6 +2,7 @@ import Link from "next/link";
 import React, { useEffect, useRef, useState } from "react";
 import AnnouncementBar from "../AnnouncementBar";
 import router, { useRouter } from "next/router";
+import { useCart } from "../../context/CartContext";
 
 interface DropdownStates {
   vintage: boolean;
@@ -77,7 +78,21 @@ const Header: React.FC = () => {
     setIsSearchModalOpen(!isSearchModalOpen);
     setIsModalOpen(false);
   };
+  const handleViewCart = () => {
+    router.push({
+      pathname: "/order",
+      query: "cart=true",
+    }),
+      setIsModalOpen(false);
+  };
 
+  const handleViewFavorites = () => {
+    router.push({
+      pathname: "/order",
+      query: "favorites=true",
+    }),
+      setIsModalOpen(false);
+  };
   return (
     <>
       <header>
@@ -602,19 +617,24 @@ const Header: React.FC = () => {
               <div className="row">
                 <div className="col-12">
                   <ul className="p-0">
-                    <li className="d-flex align-items-center">
+                    <li
+                      className="d-flex align-items-center"
+                      onClick={handleViewCart}
+                    >
                       <div className="cart mr-1">
                         <img src="/logo/cart.png" alt="" />
                       </div>
-
-                      <Link href="/order?cart=true">Кошничка</Link>
+                      <p>Кошничка</p>
                     </li>
-                    <li className="d-flex align-items-center">
+                    <li
+                      className="d-flex align-items-center"
+                      onClick={handleViewFavorites}
+                    >
                       <div className="heart mr-1">
                         <img src="/logo/ph_heart-straight-thin.png" alt="" />
                       </div>
 
-                      <Link href="/order?favorites=true">Омилени</Link>
+                      <p>Омилени</p>
                     </li>
                     <li className="d-flex align-items-center">
                       <div className="ph-user mr-1">

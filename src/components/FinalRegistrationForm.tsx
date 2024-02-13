@@ -1,13 +1,8 @@
 import React, { useRef, useState } from "react";
 import Home from "../pages";
-import { GetServerSideProps } from "next";
-import { ProductsType } from "../types/types";
+import router, { Router } from "next/router";
 
-interface Props {
-  data: ProductsType[];
-}
-
-const FinalRegistrationForm: React.FC<Props> = ({ data }) => {
+const FinalRegistrationForm: React.FC = () => {
   const inputRef = useRef<HTMLInputElement | null>(null);
   const [adress, setAdress] = useState("");
   const [phone, setPhone] = useState("");
@@ -37,9 +32,12 @@ const FinalRegistrationForm: React.FC<Props> = ({ data }) => {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    router.push({
+      pathname: "/",
+    });
 
     const previousData = JSON.parse(
-      localStorage.getItem("registrationData") || "{}"
+      localStorage.getItem("registrationData") || "[]"
     );
 
     const newUser = {
@@ -61,10 +59,6 @@ const FinalRegistrationForm: React.FC<Props> = ({ data }) => {
 
     setShowFinalRegistrationForm(true);
   };
-
-  if (showFinalRegistrationForm) {
-    return <Home dataProducts={data} />;
-  }
 
   return (
     <section className="registration-section registration-bg-pink">
@@ -167,12 +161,3 @@ const FinalRegistrationForm: React.FC<Props> = ({ data }) => {
 };
 
 export default FinalRegistrationForm;
-
-export const getServerSideProps: GetServerSideProps = async () => {
-  const res = await fetch("http://localhost:5001/products/?_limit=3");
-  const data: ProductsType[] = await res.json();
-
-  return {
-    props: { data },
-  };
-};
