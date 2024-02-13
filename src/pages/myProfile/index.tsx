@@ -14,10 +14,9 @@ const MyProfile = () => {
   const [phone, setPhone] = useState<string>("");
   const [biography, setBiography] = useState<string>("");
   const [profileImage, setProfileImage] = useState<string | null>(null);
-  const [showFinalRegistrationForm, setShowFinalRegistrationForm] =
-    useState(false);
   const [isChangePasswordModalOpen, setIsChangePasswordModalOpen] =
     useState(false);
+  const [isSavedInfoModalOpen, setIsSaveInfoModalOpen] = useState(false);
 
   useEffect(() => {
     const storedData = localStorage.getItem("registrationData");
@@ -50,7 +49,12 @@ const MyProfile = () => {
   const handleCloseChangePasswordModal = () => {
     setIsChangePasswordModalOpen(false);
   };
-
+  const handleOpenSavedInfoModal = () => {
+    setIsSaveInfoModalOpen(true);
+  };
+  const handleCloseSavedInfoModal = () => {
+    setIsSaveInfoModalOpen(false);
+  };
   const handleSavePasswordChanges = (
     oldPassword: string,
     newPassword: string
@@ -105,10 +109,10 @@ const MyProfile = () => {
     setBiography(value);
   };
 
-  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (selectedFile) {
-      await saveImageToLocalStorage(selectedFile);
+      saveImageToLocalStorage(selectedFile);
     }
     updateLocalStorage({
       name,
@@ -120,7 +124,7 @@ const MyProfile = () => {
       biography,
     });
 
-    setShowFinalRegistrationForm(true);
+    // setShowFinalRegistrationForm(true);
   };
 
   const saveImageToLocalStorage = (file: File) => {
@@ -169,7 +173,7 @@ const MyProfile = () => {
         <div className="row">
           <div className="col py-5">
             <Link href="/">
-              <div className="logo-image"></div>
+              <div className="logo-image pointer"></div>
             </Link>
           </div>
         </div>
@@ -187,8 +191,6 @@ const MyProfile = () => {
             <div
               style={{
                 position: "relative",
-                overflow: "hidden",
-                display: "inline-block",
               }}
             >
               <button
@@ -199,7 +201,7 @@ const MyProfile = () => {
                 Change Image
               </button>
               <input
-                className="file-input"
+                className="file-input pointer"
                 type="file"
                 ref={inputRef}
                 onChange={handleFileChange}
@@ -211,7 +213,6 @@ const MyProfile = () => {
                   width: "100%",
                   height: "100%",
                   opacity: 0,
-                  cursor: "pointer",
                 }}
               />
             </div>

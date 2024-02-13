@@ -2,6 +2,7 @@
   "products": [
     {
       "id": "6c39f48f-987b-4dcc-8fe4-3a218b8cd277",
+      "discount": 20,
       "price": "500-1000",
       "priceR": "900",
       "chlotes": "Vintage облека",

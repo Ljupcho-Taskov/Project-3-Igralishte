@@ -18,8 +18,7 @@ const Header: React.FC = () => {
     accessories: false,
   });
   const router = useRouter();
-  const { category } = router.query;
-  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const { category, brand } = router.query;
 
   const [user, setUser] = useState<string | null>(null);
 
@@ -78,9 +77,7 @@ const Header: React.FC = () => {
     setIsSearchModalOpen(!isSearchModalOpen);
     setIsModalOpen(false);
   };
-  const handleCategoryClick = (category: string) => {
-    setSelectedCategory(category);
-  };
+
   return (
     <>
       <header>
@@ -219,21 +216,10 @@ const Header: React.FC = () => {
                                   category === "Zdolnishta" ? "li-olive" : ""
                                 }
                               >
-                                Здолништа /
+                                Здолништа / Шорцеви
                               </span>
                             </div>
                           </Link>
-                          <span>
-                            <Link href={"/product?category=Shorcevi"}>
-                              <span
-                                className={
-                                  category === "Zdolnishta" ? "li-olive" : ""
-                                }
-                              >
-                                шорцеви
-                              </span>
-                            </Link>
-                          </span>
                         </li>
                         <li onClick={handleButtonClick}>
                           <Link href={"/product?category=Fustani"}>
@@ -312,46 +298,265 @@ const Header: React.FC = () => {
                         className={dropdownStates.brands ? "d-block" : "d-none"}
                       >
                         <Link href="/brands">
-                          <li onClick={handleButtonClick}>
-                            <img src="" alt="" />
-                            <span className="li-olive">Види ги сите</span>
+                          <li
+                            className="d-flex align-items-center"
+                            onClick={handleButtonClick}
+                          >
+                            {!category && !brand ? (
+                              <img
+                                className="sparksSmallAll"
+                                src="../../logo/sparks-elements-and-symbols-isolated-on-white-background-free-vector 2.png"
+                                alt=""
+                              />
+                            ) : null}
+                            <span
+                              className={!category && !brand ? "li-olive" : ""}
+                            >
+                              Види ги сите
+                            </span>
                           </li>
                         </Link>
                         <Link href="/brands?category=Pinc Partywear&brand=Stranski Brendovi">
-                          <li onClick={handleButtonClick}>Pinc Partywear</li>
+                          <li
+                            className="d-flex align-items-center"
+                            onClick={handleButtonClick}
+                          >
+                            {category === "Pinc Partywear" ? (
+                              <img
+                                className="sparksSmallAll"
+                                src="../../logo/sparks-elements-and-symbols-isolated-on-white-background-free-vector 2.png"
+                                alt=""
+                              />
+                            ) : null}
+                            <span
+                              className={
+                                category === "Pinc Partywear" ? "li-olive" : ""
+                              }
+                            >
+                              Pinc Partywear
+                            </span>
+                          </li>
                         </Link>
                         <Link href="/brands?category=Factory Girl&brand=Stranski Brendovi">
-                          <li onClick={handleButtonClick}>Factory Girl</li>
+                          <li
+                            className="d-flex align-items-center"
+                            onClick={handleButtonClick}
+                          >
+                            {category === "Factory Girl" ? (
+                              <img
+                                className="sparksSmallAll"
+                                src="../../logo/sparks-elements-and-symbols-isolated-on-white-background-free-vector 2.png"
+                                alt=""
+                              />
+                            ) : null}
+                            <span
+                              className={
+                                category === "Factory Girl" ? "li-olive" : ""
+                              }
+                            >
+                              Factory Girl
+                            </span>
+                          </li>
                         </Link>
                         <Link href="/brands?category=Main Days&brand=Stranski Brendovi">
-                          <li onClick={handleButtonClick}>Main Days</li>
+                          <li
+                            className="d-flex align-items-center"
+                            onClick={handleButtonClick}
+                          >
+                            {category === "Main Days" ? (
+                              <img
+                                className="sparksSmallAll"
+                                src="../../logo/sparks-elements-and-symbols-isolated-on-white-background-free-vector 2.png"
+                                alt=""
+                              />
+                            ) : null}
+                            <span
+                              className={
+                                category === "Main Days" ? "li-olive" : ""
+                              }
+                            >
+                              Main Days
+                            </span>
+                          </li>
                         </Link>
                         <Link href="/brands?category=Nezno&brand=Localni brendovi">
-                          <li onClick={handleButtonClick}>Нежно</li>
+                          <li
+                            className="d-flex align-items-center"
+                            onClick={handleButtonClick}
+                          >
+                            {category === "Nezno" ? (
+                              <img
+                                className="sparksSmallAll"
+                                src="../../logo/sparks-elements-and-symbols-isolated-on-white-background-free-vector 2.png"
+                                alt=""
+                              />
+                            ) : null}
+                            <span
+                              className={category === "Nezno" ? "li-olive" : ""}
+                            >
+                              Нежно
+                            </span>
+                          </li>
                         </Link>
                         <Link href="/brands?category=Red&brand=Localni brendovi">
-                          <li onClick={handleButtonClick}>Ред</li>
+                          <li
+                            className="d-flex align-items-center"
+                            onClick={handleButtonClick}
+                          >
+                            {category === "Red" ? (
+                              <img
+                                className="sparksSmallAll"
+                                src="../../logo/sparks-elements-and-symbols-isolated-on-white-background-free-vector 2.png"
+                                alt=""
+                              />
+                            ) : null}
+                            <span
+                              className={category === "Red" ? "li-olive" : ""}
+                            >
+                              Ред
+                            </span>
+                          </li>
                         </Link>
                         <Link href="/brands?category=Nash&brand=Localni brendovi">
-                          <li onClick={handleButtonClick}>Наш</li>
+                          <li
+                            className="d-flex align-items-center"
+                            onClick={handleButtonClick}
+                          >
+                            {category === "Nash" ? (
+                              <img
+                                className="sparksSmallAll"
+                                src="../../logo/sparks-elements-and-symbols-isolated-on-white-background-free-vector 2.png"
+                                alt=""
+                              />
+                            ) : null}
+                            <span
+                              className={category === "Nash" ? "li-olive" : ""}
+                            >
+                              Наш
+                            </span>
+                          </li>
                         </Link>
                         <Link href="/brands?category=Zsh da ne&brand=Localni brendovi">
-                          <li onClick={handleButtonClick}>Зш да не</li>
+                          <li
+                            className="d-flex align-items-center"
+                            onClick={handleButtonClick}
+                          >
+                            {category === "Zsh da ne" ? (
+                              <img
+                                className="sparksSmallAll"
+                                src="../../logo/sparks-elements-and-symbols-isolated-on-white-background-free-vector 2.png"
+                                alt=""
+                              />
+                            ) : null}
+                            <span
+                              className={
+                                category === "Zsh da ne" ? "li-olive" : ""
+                              }
+                            >
+                              Зш да не
+                            </span>
+                          </li>
                         </Link>
                         <Link href="/brands?category=Fraeil&brand=Stranski Brendovi">
-                          <li onClick={handleButtonClick}>Fraeil</li>
+                          <li
+                            className="d-flex align-items-center"
+                            onClick={handleButtonClick}
+                          >
+                            {category === "Fraeil" ? (
+                              <img
+                                className="sparksSmallAll"
+                                src="../../logo/sparks-elements-and-symbols-isolated-on-white-background-free-vector 2.png"
+                                alt=""
+                              />
+                            ) : null}
+                            <span
+                              className={
+                                category === "Fraeil" ? "li-olive" : ""
+                              }
+                            >
+                              Fraeil
+                            </span>
+                          </li>
                         </Link>
                         <Link href="/brands?category=Urma&brand=Stranski Brendovi">
-                          <li onClick={handleButtonClick}>Urma</li>
+                          <li
+                            className="d-flex align-items-center"
+                            onClick={handleButtonClick}
+                          >
+                            {category === "Urma" ? (
+                              <img
+                                className="sparksSmallAll"
+                                src="../../logo/sparks-elements-and-symbols-isolated-on-white-background-free-vector 2.png"
+                                alt=""
+                              />
+                            ) : null}
+                            <span
+                              className={category === "Urma" ? "li-olive" : ""}
+                            >
+                              Urma
+                            </span>
+                          </li>
                         </Link>
                         <Link href="/brands?category=Candle Nest&brand=Stranski Brendovi">
-                          <li onClick={handleButtonClick}>Candle nest</li>
+                          <li
+                            className="d-flex align-items-center"
+                            onClick={handleButtonClick}
+                          >
+                            {category === "Candle nest" ? (
+                              <img
+                                className="sparksSmallAll"
+                                src="../../logo/sparks-elements-and-symbols-isolated-on-white-background-free-vector 2.png"
+                                alt=""
+                              />
+                            ) : null}
+                            <span
+                              className={
+                                category === "Candle nest" ? "li-olive" : ""
+                              }
+                            >
+                              Candle nest
+                            </span>
+                          </li>
                         </Link>
                         <Link href="/brands?category=Beyond Green&brand=Stranski Brendovi">
-                          <li onClick={handleButtonClick}>Beyond green</li>
+                          <li
+                            className="d-flex align-items-center"
+                            onClick={handleButtonClick}
+                          >
+                            {category === "Beyond green" ? (
+                              <img
+                                className="sparksSmallAll"
+                                src="../../logo/sparks-elements-and-symbols-isolated-on-white-background-free-vector 2.png"
+                                alt=""
+                              />
+                            ) : null}
+                            <span
+                              className={
+                                category === "Beyond green" ? "li-olive" : ""
+                              }
+                            >
+                              Beyond green
+                            </span>
+                          </li>
                         </Link>
                         <Link href="/brands?category=Gatta&brand=Stranski Brendovi">
-                          <li onClick={handleButtonClick}>Gatta</li>
+                          <li
+                            className="d-flex align-items-center"
+                            onClick={handleButtonClick}
+                          >
+                            {category === "Gatta" ? (
+                              <img
+                                className="sparksSmallAll"
+                                src="../../logo/sparks-elements-and-symbols-isolated-on-white-background-free-vector 2.png"
+                                alt=""
+                              />
+                            ) : null}
+                            <span
+                              className={category === "Gatta" ? "li-olive" : ""}
+                            >
+                              Gatta
+                            </span>
+                          </li>
                         </Link>
                       </ul>
                     </li>

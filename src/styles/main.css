@@ -737,7 +737,7 @@ li a {
 }
 
 .continue-button {
-  width: 155;
+  width: 155px;
   height: 41.098px;
   border-radius: 12.127px;
   border: 1.213px solid var(--Light-grey, #c2c2c2);

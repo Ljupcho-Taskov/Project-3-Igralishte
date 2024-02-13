@@ -12,6 +12,7 @@ const ProductItem: React.FC<ProductItemProps> = ({
   img,
   title,
   priceR,
+  discount,
 }) => {
   const { addToFavorites, removeFromFavorites, favorites } = useCart();
 
@@ -23,9 +24,9 @@ const ProductItem: React.FC<ProductItemProps> = ({
     event.stopPropagation();
 
     if (isFavorite) {
-      removeFromFavorites({ id, img, title, priceR });
+      removeFromFavorites({ id, img, title, priceR, discount });
     } else {
-      addToFavorites({ id, img, title, priceR });
+      addToFavorites({ id, img, title, priceR, discount });
     }
   };
 
@@ -36,6 +37,7 @@ const ProductItem: React.FC<ProductItemProps> = ({
           <div>
             <img src={img} alt="IMG-PRODUCT" />
             <div>
+              <p>Popust{discount}</p>
               <p className="my-1 productItemTitle">{title}</p>
               <p className="productItemTitle">{priceR} ден.</p>
               <p className="pHeart" onClick={handleToggleFavorite}>

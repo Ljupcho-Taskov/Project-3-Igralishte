@@ -125,8 +125,8 @@ const OrderPage: React.FC<ProductsPageProps> = ({ productsData }) => {
                 onClick={handleViewCart}
                 className={
                   isViewingCart
-                    ? "order-button colorDark"
-                    : "order-button darkGrey"
+                    ? "order-button colorDark pointer"
+                    : "order-button darkGrey pointer"
                 }
               >
                 <img
@@ -144,8 +144,8 @@ const OrderPage: React.FC<ProductsPageProps> = ({ productsData }) => {
               <button
                 className={
                   isViewingFavorites
-                    ? "favorites-button colorDark"
-                    : "favorites-button darkGrey"
+                    ? "favorites-button colorDark pointer"
+                    : "favorites-button darkGrey pointer"
                 }
                 onClick={handleViewFavorites}
               >
