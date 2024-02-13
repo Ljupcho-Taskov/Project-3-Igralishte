@@ -621,24 +621,21 @@ const Header: React.FC = () => {
                       className="d-flex align-items-center"
                       onClick={handleViewCart}
                     >
-                      <div className="cart mr-1">
+                      <span className="cart mr-1">
                         <img src="/logo/cart.png" alt="" />
-                      </div>
-                      <div>
-                        <p>Кошничка</p>
-                      </div>
+                      </span>
+
+                      <span>Кошничка</span>
                     </li>
                     <li
                       className="d-flex align-items-center"
                       onClick={handleViewFavorites}
                     >
-                      <div className="heart mr-1">
+                      <span className="heart mr-1">
                         <img src="/logo/ph_heart-straight-thin.png" alt="" />
-                      </div>
+                      </span>
 
-                      <div>
-                        <p>Омилени</p>
-                      </div>
+                      <span>Омилени</span>
                     </li>
                     <li className="d-flex align-items-center">
                       <div className="ph-user mr-1">
