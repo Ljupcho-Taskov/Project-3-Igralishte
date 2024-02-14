@@ -3,11 +3,15 @@ import React, { useEffect, useRef, useState } from "react";
 import AnnouncementBar from "../AnnouncementBar";
 import router, { useRouter } from "next/router";
 import { useCart } from "../../context/CartContext";
+import { ProductsType } from "../../types/types";
 
 interface DropdownStates {
   vintage: boolean;
   brands: boolean;
   accessories: boolean;
+}
+interface Data {
+  products: ProductsType[];
 }
 
 const Header: React.FC = () => {
@@ -93,6 +97,13 @@ const Header: React.FC = () => {
     }),
       setIsModalOpen(false);
   };
+  const handleViewDiscountedProducts = () => {
+    router.push({
+      pathname: "/product",
+      query: { discount: true },
+    });
+    setIsModalOpen(false);
+  };
   return (
     <>
       <header>
@@ -134,6 +145,7 @@ const Header: React.FC = () => {
                 <div className="col-12">
                   <ul className="p-0">
                     <li
+                      onClick={() => router.push({ pathname: "/product" })}
                       style={{
                         fontWeight: "700",
                         textDecoration: "underline",
@@ -603,6 +615,7 @@ const Header: React.FC = () => {
                     </Link>
 
                     <li
+                      onClick={handleViewDiscountedProducts}
                       style={{
                         fontWeight: "700",
                         fontStyle: "italic",

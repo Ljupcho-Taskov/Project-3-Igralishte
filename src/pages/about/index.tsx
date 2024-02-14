@@ -6,6 +6,7 @@ import Header from "../../components/header/Header";
 import OurStory from "../../components/OurStory";
 import OurWork from "../../components/OurWork";
 import Head from "next/head";
+import router from "next/router";
 
 const About: NextPage = () => {
   const [selectedComponent, setSelectedComponent] = useState("ourStory");
@@ -27,7 +28,16 @@ const About: NextPage = () => {
           <div className="row mb-3">
             <div className="col-12">
               <p>
-                <span className="mr-1">Почетна</span>
+                <span
+                  onClick={() => {
+                    router.push({
+                      pathname: "/",
+                    });
+                  }}
+                  className="mr-1 pointer"
+                >
+                  Почетна
+                </span>
 
                 <i className="fa-solid fa-angle-right"></i>
 
@@ -38,8 +48,11 @@ const About: NextPage = () => {
 
           <div className="row mb-3">
             <div className="col d-flex align-items-center justify-content-center">
-              <div className="us-image" />
-
+              <img
+                className="us-image"
+                src="../../logo/sparks-elements-and-symbols-isolated-on-white-background-free-vector 2.png"
+                alt=""
+              />
               <h2 className="us">За Нас</h2>
             </div>
           </div>

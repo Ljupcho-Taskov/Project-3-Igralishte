@@ -7,7 +7,8 @@ export interface ProductsType {
   category: string;
   maintenance: string;
   chlotes: string;
-  discount: number;
+  discount: boolean;
+  discountProcent: number;
   img: string;
   brand: string;
   description: string;

@@ -27,7 +27,7 @@ const OrderPage: React.FC<ProductsPageProps> = ({ productsData }) => {
   const [isViewingCart, setIsViewingCart] = useState(false);
   const [totalPrice, setTotalPrice] = useState<number>(0);
   const [productInfo, setProductInfo] = useState<
-    { name: string; priceR: number; discount: number }[]
+    { name: string; priceR: number; discountProcent: number }[]
   >([]);
   const deliveryCost = 150;
 
@@ -44,9 +44,9 @@ const OrderPage: React.FC<ProductsPageProps> = ({ productsData }) => {
 
   const calculateDiscountedAmount = (
     originalPrice: number,
-    discount: number
+    discountProcent: number
   ): number => {
-    const discountAmount = (discount / 100) * originalPrice;
+    const discountAmount = (discountProcent / 100) * originalPrice;
     return discountAmount;
   };
 
@@ -72,13 +72,13 @@ const OrderPage: React.FC<ProductsPageProps> = ({ productsData }) => {
     const products = cart.map((item) => ({
       name: item.title,
       priceR: parseFloat(item.priceR),
-      discount: item.discount || 0,
+      discountProcent: item.discountProcent || 0,
     }));
 
     const giftCardProducts = priceCard.map((giftCard) => ({
       name: giftCard.title,
       priceR: parseFloat(giftCard.price),
-      discount: 0,
+      discountProcent: 0,
     }));
 
     setProductInfo([...products, ...giftCardProducts]);
@@ -214,35 +214,37 @@ const OrderPage: React.FC<ProductsPageProps> = ({ productsData }) => {
                     </div>
                   ))}
                   {productInfo
-                    .filter((product) => product.discount > 0)
+                    .filter((product) => product.discountProcent > 0)
                     .map((product) => (
                       <div
                         className="mb-3 d-flex justify-content-between"
                         key={product.name}
                       >
-                        <p className="productName red-alert ">{`1 x -${product.discount}% попуст!`}</p>
+                        <p className="productName red-alert ">{`1 x -${product.discountProcent}% попуст!`}</p>
                         <p className="productName red-alert ">
                           -
                           {calculateDiscountedAmount(
                             product.priceR,
-                            product.discount
+                            product.discountProcent
                           )}
                           ден.
                         </p>
                       </div>
                     ))}
 
-                  {productInfo.some((product) => product.discount > 0) && (
+                  {productInfo.some(
+                    (product) => product.discountProcent > 0
+                  ) && (
                     <div className=" mb-3 d-flex justify-content-between">
                       <p className="productName">Total Discount</p>
                       <p>
                         -
                         {productInfo
-                          .filter((product) => product.discount > 0)
+                          .filter((product) => product.discountProcent > 0)
                           .map((product) =>
                             calculateDiscountedAmount(
                               product.priceR,
-                              product.discount
+                              product.discountProcent
                             )
                           )
                           .reduce((sum, discount) => sum + discount, 0)}{" "}
@@ -261,14 +263,17 @@ const OrderPage: React.FC<ProductsPageProps> = ({ productsData }) => {
                     <p className="total">
                       {totalPrice -
                         productInfo
-                          .filter((product) => product.discount > 0)
+                          .filter((product) => product.discountProcent > 0)
                           .map((product) =>
                             calculateDiscountedAmount(
                               product.priceR,
-                              product.discount
+                              product.discountProcent
                             )
                           )
-                          .reduce((sum, discount) => sum + discount, 0)}
+                          .reduce(
+                            (sum, discountProcent) => sum + discountProcent,
+                            0
+                          )}
                       ден.
                     </p>
                   </div>

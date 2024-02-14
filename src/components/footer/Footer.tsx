@@ -2,15 +2,6 @@ import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
 const Footer: React.FC = () => {
-  // const [user, setUser] = useState(
-  //   typeof window !== "undefined"
-  //     ? localStorage.getItem("registrationData")
-  //     : null
-  // );
-  // useEffect(() => {
-  //   const item = localStorage.getItem("registrationData");
-  //   setUser(item);
-  // }, []);
   const [user, setUser] = useState<string | null>(null);
 
   useEffect(() => {
@@ -18,12 +9,8 @@ const Footer: React.FC = () => {
       return window.localStorage.getItem("registrationData");
     };
 
-    // Check if window is defined before accessing it
     if (typeof window !== "undefined") {
       setUser(getUserFromLocalStorage());
-
-      // Use window as needed
-      // For example, window.addEventListener, window.innerWidth, etc.
     }
   }, []);
   return (
@@ -37,10 +24,15 @@ const Footer: React.FC = () => {
               и нови колекции.
             </p>
             <form className="text-left">
-              <label className="mb-3" htmlFor="email">
+              <label className="mb-3" htmlFor="emailAdress">
                 E-mail адреса:
               </label>
-              <input className="w-100 mb-3" type="email" />
+              <input
+                className="w-100 mb-3"
+                type="email"
+                id="emailAdress"
+                name="emailAdress"
+              />
               <button className="w-100" type="submit">
                 Зачлени се!
               </button>

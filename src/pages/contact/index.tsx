@@ -3,6 +3,7 @@ import React from "react";
 import Header from "../../components/header/Header";
 import Footer from "../../components/footer/Footer";
 import Head from "next/head";
+import router from "next/router";
 
 const Contact: NextPage = () => {
   return (
@@ -18,19 +19,32 @@ const Contact: NextPage = () => {
           <div className="row mb-3">
             <div className="col-12">
               <p>
-                <span className="mr-1">Почетна</span>
+                <span
+                  onClick={() => {
+                    router.push({
+                      pathname: "/",
+                    });
+                  }}
+                  className="mr-1 pointer"
+                >
+                  Почетна
+                </span>
 
                 <i className="fa-solid fa-angle-right"></i>
 
-                <span className="ml-1">За Нас</span>
+                <span className="ml-1">Контакт</span>
               </p>
             </div>
           </div>
 
           <div className="row mb-3">
             <div className="col d-flex align-items-center justify-content-center">
+              <img
+                className="us-image"
+                src="../../logo/sparks-elements-and-symbols-isolated-on-white-background-free-vector 2.png"
+                alt=""
+              />
               <h2 className="us">Контакт</h2>
-              <div className="us-image"></div>
             </div>
           </div>
 
@@ -66,7 +80,14 @@ const Contact: NextPage = () => {
               <p className="text-center w-100">Сабота 12:00 - 17:00</p>
             </div>
             <div className="col-12 text-center">
-              <button>Кон продавницата</button>
+              <button
+                className="pointer"
+                onClick={() => {
+                  router.push({ pathname: "/product" });
+                }}
+              >
+                Кон продавницата
+              </button>
             </div>
           </div>
         </div>

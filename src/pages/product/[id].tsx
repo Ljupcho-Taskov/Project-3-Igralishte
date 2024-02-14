@@ -138,7 +138,14 @@ const ProductDetailsPage: React.FC<Props> = ({ product, allProductsData }) => {
       <Header />
       <div className="col-12 d-flex flex-column py-3">
         <p className="d-flex mb-4">
-          <Link href="/">Почетна</Link>
+          <span
+            className="pointer"
+            onClick={() => {
+              router.push({ pathname: "/" });
+            }}
+          >
+            Почетна
+          </span>
           {headerChlotes ? (
             <span className="d-flex align-items-center">
               <i className="fa-solid fa-angle-right mx-1"></i>

@@ -189,6 +189,7 @@ const ProductsPage: NextPage<ProductsPageProps> = ({
             <div className="d-flex align-items-center">
               <span className="sort-span mr-2">Подреди според</span>
               <select
+                id="sorting"
                 value={selectedSortOption}
                 onChange={(e) =>
                   setSelectedSortOption(e.target.value as "newest" | "oldest")

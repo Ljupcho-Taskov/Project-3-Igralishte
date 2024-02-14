@@ -8,8 +8,6 @@ import Pagination from "../../components/Pagination";
 import { ProductsType } from "../../types/types";
 import Card from "../../components/Card";
 import Head from "next/head";
-import sparks from "../../logo/sparks-elements-and-symbols-isolated-on-white-background-free-vector 2.png";
-import Link from "next/link";
 
 interface BrandsPageProps {
   brandsData: ProductsType[];
