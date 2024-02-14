@@ -497,6 +497,7 @@ li a {
   );
 }
 .filtering-button {
+  cursor: pointer;
   width: 300px;
   height: 51px;
   border-radius: 15px;
@@ -521,14 +522,18 @@ li a {
   font-size: 20px;
   font-style: normal;
   font-weight: 500;
-  line-height: 150%; /* 30px */
+  line-height: 150%;
   letter-spacing: -0.22px;
-  text-decoration-line: underline;
   border: none;
   background: inherit;
+  margin-top: 10px;
+  cursor: pointer;
+}
+.decline-button:hover {
+  text-decoration: underline;
 }
 .filtering-div {
-  background: white;
+  background: var(--Light-ribbon-pink, #fff6f6);
   position: fixed;
   bottom: 0;
   left: 0;
@@ -735,6 +740,7 @@ li a {
 }
 
 .continue-button {
+  cursor: pointer;
   width: 155px;
   height: 41.098px;
   border-radius: 12.127px;
@@ -763,6 +769,7 @@ li a {
 .delete-button {
   border: none;
   background: inherit;
+  cursor: pointer;
 }
 /*  */
 /* form order page */
@@ -800,9 +807,12 @@ li a {
   font-weight: 400;
   line-height: 150%; /* 24px */
   letter-spacing: -0.176px;
-  text-decoration-line: underline;
   border: none;
   background: inherit;
+  cursor: pointer;
+}
+.cancel-order-button:hover {
+  text-decoration: underline;
 }
 .box-none {
   box-shadow: none;
@@ -819,9 +829,12 @@ li a {
   bottom: 0;
   left: 0;
   z-index: 1050;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .order-modal-content {
-  display: flex;
+  /* display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
@@ -829,6 +842,15 @@ li a {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  padding: 10px;
+  border-radius: 8.322px;
+  background: var(--Light-ribbon-pink, #fff6f6);
+  box-shadow: 0px 0px 1.248px 0px rgba(0, 0, 0, 0.25); */
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
   padding: 10px;
   border-radius: 8.322px;
   background: var(--Light-ribbon-pink, #fff6f6);

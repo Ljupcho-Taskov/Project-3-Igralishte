@@ -41,7 +41,9 @@
   line-height: normal;
   width: 100%;
 }
-
+.registration-section {
+  min-height: 100vh;
+}
 .socials-button {
   display: flex;
   justify-content: center;
@@ -136,6 +138,8 @@
   font-style: normal;
   font-weight: 700;
   line-height: normal;
+  width: 100%;
+  cursor: pointer;
 }
 .registration-terms {
   color: var(--Black, #232221);

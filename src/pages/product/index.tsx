@@ -138,9 +138,9 @@ const ProductsPage: NextPage<ProductsPageProps> = ({
         <div className="row">
           <Breadcrumps />
 
-          <div className="col-12 mb-3 d-flex justify-content-between">
+          <div className="col-12 mb-3 d-flex justify-content-between align-items-center">
             <Link href="/filterPage">
-              <button className="searchFilter">
+              <button className="searchFilter pointer">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="20"
@@ -189,13 +189,16 @@ const ProductsPage: NextPage<ProductsPageProps> = ({
             <div className="d-flex align-items-center">
               <span className="sort-span mr-2">Подреди според</span>
               <select
+                className="pointer"
                 id="sorting"
                 value={selectedSortOption}
                 onChange={(e) =>
                   setSelectedSortOption(e.target.value as "newest" | "oldest")
                 }
               >
-                <option value="newest">Најново</option>
+                <option style={{ height: 30 }} value="newest">
+                  Најново
+                </option>
                 <option value="oldest">Најcтаро</option>
               </select>
             </div>
@@ -204,21 +207,24 @@ const ProductsPage: NextPage<ProductsPageProps> = ({
 
         <div className="row">
           {noResultsProducts ? (
-            <div>There are no results</div>
+            <div className="col-12 py-5 text-center">
+              Нема резултати од вашето филтрирање
+            </div>
           ) : (
             currentProducts.map((item, index) => (
               <Card index={index} key={item.id} {...item} />
             ))
           )}
         </div>
-
-        <Pagination
-          currentPage={currentPage}
-          totalPages={totalPages}
-          handlePageChange={handlePageChange}
-          handlePrevPage={handlePrevPage}
-          handleNextPage={handleNextPage}
-        />
+        {noResultsProducts ? null : (
+          <Pagination
+            currentPage={currentPage}
+            totalPages={totalPages}
+            handlePageChange={handlePageChange}
+            handlePrevPage={handlePrevPage}
+            handleNextPage={handleNextPage}
+          />
+        )}
       </div>
 
       <Footer />

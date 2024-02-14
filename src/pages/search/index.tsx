@@ -121,8 +121,8 @@ const SearchPage: NextPage<SearchPageProps> = ({
         </div>
         <div className="row py-3">
           {noResultsProducts ? (
-            <div className="col pb-5">
-              <p>There are no product results</p>
+            <div className="col-6 offset-3 pb-5">
+              <p>Нема резултати од вашето пребарување</p>
             </div>
           ) : (
             <>

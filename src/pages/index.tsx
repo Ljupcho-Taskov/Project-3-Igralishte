@@ -1,4 +1,4 @@
-import type { GetServerSideProps, NextPage } from "next";
+import type { GetServerSideProps, GetStaticProps, NextPage } from "next";
 import Head from "next/head";
 import Valentines from "../components/Valentines";
 import {
@@ -42,7 +42,7 @@ export const Home: NextPage<HomeProps> = ({ dataProducts }) => {
 
 export default Home;
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
   const resProducts = await fetch("https://igralishte.onrender.com/products/");
   const dataProducts: ProductsType[] = await resProducts.json();
 

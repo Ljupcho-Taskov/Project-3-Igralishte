@@ -332,13 +332,7 @@ const MyProfile = () => {
           </div>
         </div>
       </div>
-      <p className="registration-terms">
-        Со вашата регистрација, се согласувате со
-        <span>
-          <a href=""> Правилата и Условите </a>
-        </span>
-        за кориснички сајтови.
-      </p>
+
       {isChangePasswordModalOpen && (
         <ChangePasswordModal
           isOpen={isChangePasswordModalOpen}

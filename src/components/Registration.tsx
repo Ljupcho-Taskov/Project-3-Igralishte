@@ -19,20 +19,20 @@ const Registration: React.FC<RegistrationProps> = ({
         <div className="row">
           <div className="col-12 d-flex flex-column align-items-center">
             <button
-              className="socials-button mb-3"
+              className="socials-button mb-3 pointer"
               onClick={() => onShowRegistrationForm()}
             >
               <span>Регистрирај се со емаил адреса</span>
             </button>
 
             <p className="text-center mb-3">или</p>
-            <button className="socials-button mb-3">
+            <button className="socials-button mb-3 pointer">
               <span>
                 <i className="fa-solid fa-g"></i>
               </span>
               <span>Најави се преку Google</span>
             </button>
-            <button className="socials-button mb-3">
+            <button className="socials-button mb-3 pointer">
               <span>
                 <i className="fa-brands fa-facebook"></i>
               </span>
