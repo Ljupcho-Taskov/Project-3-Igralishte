@@ -60,7 +60,7 @@ header .container {
   overflow-y: auto;
 }
 .modal-transition {
-  transition: right 0.5s ease-in-out; /* Adjust the duration as needed */
+  transition: right 0.5s ease-in-out;
 }
 
 .modal-overlay.open {
@@ -76,7 +76,7 @@ header .container {
   font-size: 22px;
   font-style: normal;
   font-weight: 500;
-  line-height: 150%; /* 33px */
+  line-height: 150%;
   letter-spacing: -0.242px;
   cursor: pointer;
   margin-bottom: 10px;

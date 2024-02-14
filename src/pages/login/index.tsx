@@ -14,9 +14,6 @@ const Login: NextPage = () => {
 
   const handleLogin = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const allRegistrations = JSON.parse(
-      localStorage.getItem("registrationData") || "[]"
-    );
 
     const storedUserData = localStorage.getItem("registrationData");
     if (storedUserData) {

@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import { ProductsType } from "../types/types";
 import Link from "next/link";
 import { useCart } from "../context/CartContext";

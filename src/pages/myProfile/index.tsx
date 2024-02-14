@@ -16,7 +16,6 @@ const MyProfile = () => {
   const [profileImage, setProfileImage] = useState<string | null>(null);
   const [isChangePasswordModalOpen, setIsChangePasswordModalOpen] =
     useState(false);
-  const [isSavedInfoModalOpen, setIsSaveInfoModalOpen] = useState(false);
 
   useEffect(() => {
     const storedData = localStorage.getItem("registrationData");
@@ -49,12 +48,7 @@ const MyProfile = () => {
   const handleCloseChangePasswordModal = () => {
     setIsChangePasswordModalOpen(false);
   };
-  const handleOpenSavedInfoModal = () => {
-    setIsSaveInfoModalOpen(true);
-  };
-  const handleCloseSavedInfoModal = () => {
-    setIsSaveInfoModalOpen(false);
-  };
+
   const handleSavePasswordChanges = (
     oldPassword: string,
     newPassword: string
@@ -123,8 +117,6 @@ const MyProfile = () => {
       phone,
       biography,
     });
-
-    // setShowFinalRegistrationForm(true);
   };
 
   const saveImageToLocalStorage = (file: File) => {

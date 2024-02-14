@@ -1,9 +1,10 @@
 import React, { useRef, useState } from "react";
-import Home from "../pages";
-import router, { Router } from "next/router";
+
+import { useRouter } from "next/router";
 
 const FinalRegistrationForm: React.FC = () => {
   const inputRef = useRef<HTMLInputElement | null>(null);
+  const router = useRouter();
   const [adress, setAdress] = useState("");
   const [phone, setPhone] = useState("");
   const [biography, setBiography] = useState("");

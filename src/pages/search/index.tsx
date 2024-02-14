@@ -1,7 +1,7 @@
 import type { GetServerSideProps, NextPage } from "next";
 import { ProductsType } from "../../types/types";
 import ProductItem from "../../components/ProductItem";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import router from "next/router";
 import Link from "next/link";
 import Pagination from "../../components/Pagination";

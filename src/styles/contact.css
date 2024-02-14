@@ -8,7 +8,7 @@
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
-  line-height: 150%; /* 24px */
+  line-height: 150%;
   letter-spacing: -0.176px;
 }
 .contact h2 {
@@ -18,7 +18,7 @@
   font-size: 22px;
   font-style: normal;
   font-weight: 700;
-  line-height: 160%; /* 35.2px */
+  line-height: 160%;
   letter-spacing: -0.242px;
 }
 .contact p {
@@ -56,6 +56,6 @@
   font-size: 25px;
   font-style: normal;
   font-weight: 400;
-  line-height: 150%; /* 37.5px */
+  line-height: 150%;
   letter-spacing: -0.275px;
 }

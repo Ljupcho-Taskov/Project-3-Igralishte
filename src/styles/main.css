@@ -164,7 +164,7 @@ li {
   font-size: 20px;
   font-style: normal;
   font-weight: 400;
-  line-height: 150%; /* 30px */
+  line-height: 150%;
   letter-spacing: -0.22px;
 }
 
@@ -194,7 +194,7 @@ li {
   font-size: 22px;
   font-style: normal;
   font-weight: 400;
-  line-height: 150%; /* 33px */
+  line-height: 150%;
   letter-spacing: -0.242px;
 }
 /*  */
@@ -340,7 +340,7 @@ li {
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
-  line-height: 150%; /* 24px */
+  line-height: 150%;
   letter-spacing: -0.176px;
 }
 
@@ -358,7 +358,7 @@ select option {
   font-size: 12px;
   font-style: normal;
   font-weight: 500;
-  line-height: 150%; /* 18px */
+  line-height: 150%;
   letter-spacing: -0.132px;
 }
 /*  */
@@ -706,10 +706,9 @@ li a {
 .productItemTitle {
   color: var(--Black, #232221);
   font-family: Cormorant Garamond, sans-serif;
-  /* font-size: 22px; */
   font-style: normal;
   font-weight: 400;
-  line-height: 150%; /* 33px */
+  line-height: 150%;
   letter-spacing: -0.242px;
 }
 
@@ -719,7 +718,7 @@ li a {
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
-  line-height: 150%; /* 24px */
+  line-height: 150%;
   letter-spacing: -0.176px;
 }
 .red-alert {
@@ -735,7 +734,7 @@ li a {
   font-size: 20px;
   font-style: normal;
   font-weight: 400;
-  line-height: 150%; /* 30px */
+  line-height: 150%;
   letter-spacing: -0.22px;
 }
 
@@ -834,18 +833,6 @@ li a {
   align-items: center;
 }
 .order-modal-content {
-  /* display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-evenly;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  padding: 10px;
-  border-radius: 8.322px;
-  background: var(--Light-ribbon-pink, #fff6f6);
-  box-shadow: 0px 0px 1.248px 0px rgba(0, 0, 0, 0.25); */
   width: 70%;
   display: flex;
   flex-direction: column;
@@ -863,7 +850,7 @@ li a {
   font-size: 20px;
   font-style: normal;
   font-weight: 400;
-  line-height: 150%; /* 30px */
+  line-height: 150%;
   letter-spacing: -0.22px;
 }
 
@@ -874,7 +861,7 @@ li a {
   font-size: 16px;
   font-style: normal;
   font-weight: 500;
-  line-height: 150%; /* 24px */
+  line-height: 150%;
   letter-spacing: -0.176px;
 }
 

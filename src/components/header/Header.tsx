@@ -1,17 +1,13 @@
 import Link from "next/link";
 import React, { useEffect, useRef, useState } from "react";
 import AnnouncementBar from "../AnnouncementBar";
-import router, { useRouter } from "next/router";
-import { useCart } from "../../context/CartContext";
+import { useRouter } from "next/router";
 import { ProductsType } from "../../types/types";
 
 interface DropdownStates {
   vintage: boolean;
   brands: boolean;
   accessories: boolean;
-}
-interface Data {
-  products: ProductsType[];
 }
 
 const Header: React.FC = () => {

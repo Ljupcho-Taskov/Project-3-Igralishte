@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { ColorsType, ProductsType } from "../../types/types";
+import { ProductsType } from "../../types/types";
 import Head from "next/head";
 import { GetStaticPaths, GetStaticProps } from "next";
 import Header from "../../components/header/Header";
@@ -9,7 +9,6 @@ import ProductItem from "../../components/ProductItem";
 import Pagination from "../../components/Pagination";
 import FourAccordions from "../../components/FourAccordions";
 import Footer from "../../components/footer/Footer";
-import Link from "next/link";
 
 interface Props {
   product: ProductsType;
@@ -18,7 +17,6 @@ interface Props {
 
 const ProductDetailsPage: React.FC<Props> = ({ product, allProductsData }) => {
   const router = useRouter();
-  const { category } = router.query;
   const [selectedImage, setSelectedImage] = useState<string>(product.img);
   const {
     cart,
@@ -32,8 +30,6 @@ const ProductDetailsPage: React.FC<Props> = ({ product, allProductsData }) => {
   const [isAddedToFavorites, setIsAddedToFavorites] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [relatedProducts, setRelatedProducts] = useState<ProductsType[]>([]);
-  const [selectedProducts, setSelectedProducts] = useState<string[]>([]);
-  const [headerText, setHeaderText] = useState<string>("");
 
   const productsPerPage = 6;
 

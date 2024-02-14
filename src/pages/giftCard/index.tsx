@@ -3,7 +3,7 @@ import Header from "../../components/header/Header";
 import Footer from "../../components/footer/Footer";
 import { CardsPriceType, GiftCardsType } from "../../types/types";
 import { GetServerSideProps, NextPage } from "next";
-import router from "next/router";
+import { useRouter } from "next/router";
 import { useCart } from "../../context/CartContext";
 import Head from "next/head";
 
@@ -15,6 +15,7 @@ interface Props {
 
 const GiftCardPage: NextPage<Props> = ({ dataCardsPrice }) => {
   const { priceCard, addPriceToCart } = useCart();
+  const router = useRouter();
 
   const [buttonStates, setButtonStates] = useState<{ [key: string]: boolean }>(
     {}

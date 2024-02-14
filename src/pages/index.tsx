@@ -1,12 +1,7 @@
-import type { GetServerSideProps, GetStaticProps, NextPage } from "next";
+import type { GetStaticProps, NextPage } from "next";
 import Head from "next/head";
 import Valentines from "../components/Valentines";
-import {
-  AccessoriesType,
-  BrandType,
-  ColorsType,
-  ProductsType,
-} from "../types/types";
+import { ProductsType } from "../types/types";
 import ImageCarousel from "../components/ImageCarousel";
 import Accessories from "../components/Accessories";
 import GiftCard from "../components/GiftCard";

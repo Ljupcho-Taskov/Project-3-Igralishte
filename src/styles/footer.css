@@ -30,7 +30,7 @@ footer form label {
   font-size: 20px;
   font-style: normal;
   font-weight: 400;
-  line-height: 150%; /* 30px */
+  line-height: 150%;
   letter-spacing: -0.22px;
   text-align: left;
   width: 100%;
@@ -85,7 +85,7 @@ li .svg {
   font-size: 12px;
   font-style: normal;
   font-weight: 500;
-  line-height: 150%; /* 18px */
+  line-height: 150%;
   letter-spacing: -0.132px;
   text-align: left;
 }
