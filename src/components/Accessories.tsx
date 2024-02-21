@@ -11,7 +11,10 @@ const Accessories = () => {
       <div className="row">
         <div className="col">
           <div className="image-without-circle mr-auto ">
-            <img src="../images/IMG_6142 1.png" alt="" />
+            <img
+              src="../images/red-bags/0_acd997b5-2773-4fda-8edb-d314984f8348.jpg"
+              alt=""
+            />
             <div className="circle right-7 pointer">
               <div className="circle-inner">
                 <img
