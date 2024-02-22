@@ -2,11 +2,11 @@ import type { GetStaticProps, NextPage } from "next";
 import Head from "next/head";
 import Valentines from "../components/Valentines";
 import { ProductsType } from "../types/types";
-import ImageCarousel from "../components/ImageCarousel";
 import Accessories from "../components/Accessories";
 import GiftCard from "../components/GiftCard";
 import Header from "../components/header/Header";
 import Footer from "../components/footer/Footer";
+import SlickCarousel from "../components/SlickCarousel";
 
 interface HomeProps {
   dataProducts: ProductsType[];
@@ -25,7 +25,7 @@ export const Home: NextPage<HomeProps> = ({ dataProducts }) => {
         <Header />
         <div className="home-page">
           <Valentines />
-          <ImageCarousel products={dataProducts} />
+          <SlickCarousel products={dataProducts} />
           <Accessories />
           <GiftCard />
           <Footer />

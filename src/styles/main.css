@@ -888,3 +888,7 @@ li a {
   margin-bottom: 10px;
 }
 /*  */
+.slick-next,
+.slick-prev {
+  display: none;
+}

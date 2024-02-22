@@ -32,7 +32,7 @@ const ProductItem: React.FC<ProductItemProps> = ({
 
   return (
     <div className="row" key={id}>
-      <div className="col-12 pointer">
+      <div className="col-12 pointer" style={{ maxWidth: "330px" }}>
         <Link href={`/product/${id}`}>
           <div>
             <img src={img} alt="IMG-PRODUCT" />

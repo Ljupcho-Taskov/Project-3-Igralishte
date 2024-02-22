@@ -31,7 +31,7 @@ const Valentines = () => {
           </div>
         </div>
       </div>
-      <div className="row">
+      <div className="row mt-3">
         <div className="col">
           <p className="trendi">Trendy парчиња во моментов</p>
         </div>

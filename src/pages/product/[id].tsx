@@ -66,18 +66,6 @@ const ProductDetailsPage: React.FC<Props> = ({ product, allProductsData }) => {
     setRelatedProducts(filteredRelated);
   }, [product.brand, product.id, allProductsData]);
 
-  const handleNextPage = () => {
-    setCurrentPage((prev) => Math.min(prev + 1, relatedTotalPages));
-  };
-
-  const handlePrevPage = () => {
-    setCurrentPage((prev) => Math.max(prev - 1, 1));
-  };
-
-  const handlePageChange = (page: number) => {
-    setCurrentPage(page);
-  };
-
   const handleThumbnailClick = (image: string) => {
     setSelectedImage(image);
   };
@@ -445,13 +433,10 @@ const ProductDetailsPage: React.FC<Props> = ({ product, allProductsData }) => {
                 <h3>Парчиња од брендот:</h3>
               </div>
             </div>
-            <div className="row">
-              {currentRelatedProducts.map((item, index) => (
-                <div className="col-6" key={item.id}>
-                  <ProductItem index={index} {...item} />
-                </div>
-              ))}
-            </div>
+
+            {currentRelatedProducts.map((item, index) => (
+              <ProductItem index={index} {...item} key={item.id} />
+            ))}
           </>
         ) : null}
       </div>
