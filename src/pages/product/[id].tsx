@@ -434,9 +434,11 @@ const ProductDetailsPage: React.FC<Props> = ({ product, allProductsData }) => {
               </div>
             </div>
 
-            {currentRelatedProducts.map((item, index) => (
-              <ProductItem index={index} {...item} key={item.id} />
-            ))}
+            <div className="row">
+              {currentRelatedProducts.map((item, index) => (
+                <ProductItem index={index} {...item} key={item.id} />
+              ))}
+            </div>
           </>
         ) : null}
       </div>
