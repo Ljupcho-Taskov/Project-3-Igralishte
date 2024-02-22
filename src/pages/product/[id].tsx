@@ -436,27 +436,23 @@ const ProductDetailsPage: React.FC<Props> = ({ product, allProductsData }) => {
         <p className="mb-3">Насоки за одржување: {product.maintenance}</p>
         <hr className="hrYellow" />
       </div>
-      <div className="container d-flex flex-column align-items-center">
+      <div className="container d-flex flex-column">
         <FourAccordions />
         {currentRelatedProducts.length > 0 ? (
-          <div className="row">
-            <div className="col-12">
-              <h3>Drugi Parcinja</h3>
-            </div>
-            {currentRelatedProducts.map((item, index) => (
-              <div className="col-6" key={item.id}>
-                <ProductItem index={index} {...item} />
+          <>
+            <div className="row my-3">
+              <div className="col-12 d-flex align-items-start">
+                <h3>Парчиња од брендот:</h3>
               </div>
-            ))}
-
-            <Pagination
-              currentPage={currentPage}
-              totalPages={relatedTotalPages}
-              handlePageChange={handlePageChange}
-              handlePrevPage={handlePrevPage}
-              handleNextPage={handleNextPage}
-            />
-          </div>
+            </div>
+            <div className="row">
+              {currentRelatedProducts.map((item, index) => (
+                <div className="col-6" key={item.id}>
+                  <ProductItem index={index} {...item} />
+                </div>
+              ))}
+            </div>
+          </>
         ) : null}
       </div>
       <Footer />

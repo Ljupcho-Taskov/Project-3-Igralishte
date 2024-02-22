@@ -8,6 +8,7 @@ import Pagination from "../../components/Pagination";
 import { ProductsType } from "../../types/types";
 import Card from "../../components/Card";
 import Head from "next/head";
+import ProductItem from "../../components/ProductItem";
 
 interface BrandsPageProps {
   brandsData: ProductsType[];
@@ -108,22 +109,28 @@ const BrandsPage: NextPage<BrandsPageProps> = ({
           ))}
         </div>
         {filteredProducts.length > 0 ? (
-          <div className="row my-3">
-            <div className="col-12 py-5">
-              <p className="other-brands">Парчиња од брендот:</p>
+          <>
+            <div className="row my-3">
+              <div className="col-12">
+                <h3>Парчиња од брендот:</h3>
+              </div>
             </div>
-            {filteredProducts.map((item, index) => (
-              <Card index={index} key={item.id} {...item} />
-            ))}
-          </div>
+            <div className="row">
+              {filteredProducts.map((item, index) => (
+                <div className="col-6" key={item.id}>
+                  <ProductItem index={index} {...item} />
+                </div>
+              ))}
+            </div>
+          </>
         ) : null}
-        <Pagination
+        {/* <Pagination
           currentPage={currentPage}
           totalPages={totalPages}
           handlePageChange={handlePageChange}
           handlePrevPage={handlePrevPage}
           handleNextPage={handleNextPage}
-        />
+        /> */}
       </div>
       <Footer />
     </>

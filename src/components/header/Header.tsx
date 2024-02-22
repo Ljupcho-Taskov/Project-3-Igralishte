@@ -12,14 +12,18 @@ interface DropdownStates {
 
 const Header: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [products, setProducts] = useState<ProductsType[]>([]);
+  const [brands, setBrands] = useState<ProductsType[]>([]);
   const [isSearchModalOpen, setIsSearchModalOpen] = useState(false);
   const [dropdownStates, setDropdownStates] = useState<DropdownStates>({
     vintage: false,
     brands: false,
     accessories: false,
   });
+  const [clickedCategory, setClickedCategory] = useState<string>();
+  const [clickedBrand, setClickedBrand] = useState<string>();
   const router = useRouter();
-  const { category, brand } = router.query;
+  // const { category, brand } = router.query;
 
   const [user, setUser] = useState<string | null>(null);
 
@@ -32,6 +36,37 @@ const Header: React.FC = () => {
       setUser(getUserFromLocalStorage());
     }
   }, []);
+
+  useEffect(() => {
+    fetch("https://igralishte.onrender.com/products")
+      .then((res) => res.json())
+      .then((data) => {
+        setProducts(data);
+      });
+  }, []);
+  useEffect(() => {
+    fetch("https://igralishte.onrender.com/brands")
+      .then((res) => res.json())
+      .then((data) => {
+        setBrands(data);
+      });
+  }, []);
+
+  const productCategory: string[] = [];
+  const brandCategory: string[] = [];
+
+  brands.forEach((brand) => {
+    if (!brandCategory.includes(brand.category)) {
+      brandCategory.push(brand.category);
+    }
+  });
+
+  products.forEach((product) => {
+    if (!productCategory.includes(product.category)) {
+      productCategory.push(product.category);
+    }
+  });
+
   const inputRef = useRef<HTMLInputElement>(null);
 
   const handleOnSubmitProduct = (e: React.FormEvent<HTMLFormElement>) => {
@@ -63,9 +98,23 @@ const Header: React.FC = () => {
     };
   }, [isModalOpen]);
 
-  const handleButtonClick = () => {
+  const handleModalClick = () => {
     setIsModalOpen(!isModalOpen);
     setIsSearchModalOpen(false);
+  };
+  const handleClickedCategory = (category: string) => {
+    if (!category) {
+      setClickedCategory("Види ги сите");
+    } else {
+      setClickedCategory(category);
+    }
+  };
+  const handleClickedBrand = (brand: string) => {
+    if (!brand) {
+      setClickedBrand("Види ги сите");
+    } else {
+      setClickedBrand(brand);
+    }
   };
 
   const handleDropDown = (dropdownKey: keyof DropdownStates) => {
@@ -107,12 +156,12 @@ const Header: React.FC = () => {
           <div className="row">
             <div className="col-12 d-flex justify-content-between align-items-center">
               {isModalOpen ? (
-                <div className="pointer" onClick={handleButtonClick}>
+                <div className="pointer" onClick={handleModalClick}>
                   <div className="bar1"></div>
                   <div className="bar2"></div>
                 </div>
               ) : (
-                <div className="pointer" onClick={handleButtonClick}>
+                <div className="pointer" onClick={handleModalClick}>
                   <div className="bar"></div>
                   <div className="bar"></div>
                   <div className="bar"></div>
@@ -168,144 +217,66 @@ const Header: React.FC = () => {
                           dropdownStates.vintage ? "d-block" : "d-none"
                         }
                       >
-                        <li onClick={handleButtonClick}>
+                        <li
+                          onClick={() => {
+                            handleClickedCategory("Види ги сите");
+                            handleModalClick();
+                          }}
+                        >
                           <Link href={"/product"}>
                             <div className="d-flex align-items-center">
-                              {!category ? (
+                              {clickedCategory === "Види ги сите" && (
                                 <img
                                   className="sparksSmallAll"
                                   src="../../logo/sparks-elements-and-symbols-isolated-on-white-background-free-vector 2.png"
                                   alt=""
                                 />
-                              ) : null}
-                              <span className={!category ? "li-olive" : ""}>
+                              )}
+                              <span
+                                className={
+                                  clickedCategory === "Види ги сите"
+                                    ? "li-olive"
+                                    : ""
+                                }
+                              >
                                 Види ги сите
                               </span>
                             </div>
                           </Link>
                         </li>
-                        <li onClick={handleButtonClick}>
-                          <Link href={"/product?category=Bluzi"}>
-                            <div className="d-flex align-items-center">
-                              {category === "Bluzi" ? (
-                                <img
-                                  className="sparksSmallAll"
-                                  src="../../logo/sparks-elements-and-symbols-isolated-on-white-background-free-vector 2.png"
-                                  alt=""
-                                />
-                              ) : null}
-                              <span
-                                className={
-                                  category === "Bluzi" ? "li-olive" : ""
-                                }
-                              >
-                                Блузи
-                              </span>
-                            </div>
-                          </Link>
-                        </li>
-                        <li onClick={handleButtonClick}>
-                          <Link href={"/product?category=Pantaloni"}>
-                            <div className="d-flex align-items-center">
-                              {category === "Pantaloni" ? (
-                                <img
-                                  className="sparksSmallAll"
-                                  src="../../logo/sparks-elements-and-symbols-isolated-on-white-background-free-vector 2.png"
-                                  alt=""
-                                />
-                              ) : null}
-                              <span
-                                className={
-                                  category === "Pantaloni" ? "li-olive" : ""
-                                }
-                              >
-                                Панталони
-                              </span>
-                            </div>
-                          </Link>
-                        </li>
-                        <li onClick={handleButtonClick}>
-                          <Link href={"/product?category=Zdolnishta"}>
-                            <div className="d-flex align-items-center">
-                              {category === "Zdolnishta" ? (
-                                <img
-                                  className="sparksSmallAll"
-                                  src="../../logo/sparks-elements-and-symbols-isolated-on-white-background-free-vector 2.png"
-                                  alt=""
-                                />
-                              ) : null}
-                              <span
-                                className={
-                                  category === "Zdolnishta" ? "li-olive" : ""
-                                }
-                              >
-                                Здолништа / Шорцеви
-                              </span>
-                            </div>
-                          </Link>
-                        </li>
-                        <li onClick={handleButtonClick}>
-                          <Link href={"/product?category=Fustani"}>
-                            <div className="d-flex align-items-center">
-                              {category === "Fustani" ? (
-                                <img
-                                  className="sparksSmallAll"
-                                  src="../../logo/sparks-elements-and-symbols-isolated-on-white-background-free-vector 2.png"
-                                  alt=""
-                                />
-                              ) : null}
-                              <span
-                                className={
-                                  category === "Fustani" ? "li-olive" : ""
-                                }
-                              >
-                                Фустани
-                              </span>
-                            </div>
-                          </Link>
-                        </li>
-                        <li onClick={handleButtonClick}>
-                          <Link href={"/product?category=Palta i jakni"}>
-                            <div className="d-flex align-items-center">
-                              {category === "Palta i jakni" ? (
-                                <img
-                                  className="sparksSmallAll"
-                                  src="../../logo/sparks-elements-and-symbols-isolated-on-white-background-free-vector 2.png"
-                                  alt=""
-                                />
-                              ) : null}
-                              <span
-                                className={
-                                  category === "Palta i jakni" ? "li-olive" : ""
-                                }
-                              >
-                                Палта и јакни
-                              </span>
-                            </div>
-                          </Link>
-                        </li>
-                        <li onClick={handleButtonClick}>
-                          <Link href={"/product?category=Dolna obleka"}>
-                            <div className="d-flex align-items-center">
-                              {category === "Dolna obleka" ? (
-                                <img
-                                  className="sparksSmallAll"
-                                  src="../../logo/sparks-elements-and-symbols-isolated-on-white-background-free-vector 2.png"
-                                  alt=""
-                                />
-                              ) : null}
-                              <span
-                                className={
-                                  category === "Dolna obleka" ? "li-olive" : ""
-                                }
-                              >
-                                Долна облека
-                              </span>
-                            </div>
-                          </Link>
-                        </li>
+                        {productCategory.map((category, index) => (
+                          <li
+                            onClick={() => {
+                              handleClickedCategory(category);
+                              handleModalClick();
+                            }}
+                            key={index}
+                          >
+                            <Link href={`/product?category=${category}`}>
+                              <div className="d-flex align-items-center">
+                                {clickedCategory === category && (
+                                  <img
+                                    className="sparksSmallAll"
+                                    src="../../logo/sparks-elements-and-symbols-isolated-on-white-background-free-vector 2.png"
+                                    alt=""
+                                  />
+                                )}
+                                <span
+                                  className={
+                                    clickedCategory === category
+                                      ? "li-olive"
+                                      : ""
+                                  }
+                                >
+                                  {category}
+                                </span>
+                              </div>
+                            </Link>
+                          </li>
+                        ))}
                       </ul>
                     </li>
+
                     <li onClick={() => handleDropDown("brands")}>
                       <div className="d-flex justify-content-between">
                         <span>Брендови</span>
@@ -323,9 +294,12 @@ const Header: React.FC = () => {
                         <Link href="/brands">
                           <li
                             className="d-flex align-items-center"
-                            onClick={handleButtonClick}
+                            onClick={() => {
+                              handleClickedBrand("Види ги сите");
+                              handleModalClick();
+                            }}
                           >
-                            {!category && !brand ? (
+                            {clickedBrand === "Види ги сите" ? (
                               <img
                                 className="sparksSmallAll"
                                 src="../../logo/sparks-elements-and-symbols-isolated-on-white-background-free-vector 2.png"
@@ -333,16 +307,49 @@ const Header: React.FC = () => {
                               />
                             ) : null}
                             <span
-                              className={!category && !brand ? "li-olive" : ""}
+                              className={
+                                clickedBrand === "Види ги сите"
+                                  ? "li-olive"
+                                  : ""
+                              }
                             >
                               Види ги сите
                             </span>
                           </li>
                         </Link>
-                        <Link href="/brands?category=Pinc Partywear&brand=Stranski Brendovi">
+
+                        {brandCategory.map((brand, index) => (
+                          <li
+                            onClick={() => {
+                              handleClickedBrand(brand);
+                              handleModalClick();
+                            }}
+                            key={index}
+                          >
+                            <Link href={`/brands?category=${brand}`}>
+                              <div className="d-flex align-items-center">
+                                {clickedBrand === brand && (
+                                  <img
+                                    className="sparksSmallAll"
+                                    src="../../logo/sparks-elements-and-symbols-isolated-on-white-background-free-vector 2.png"
+                                    alt=""
+                                  />
+                                )}
+                                <span
+                                  className={
+                                    clickedBrand === brand ? "li-olive" : ""
+                                  }
+                                >
+                                  {brand}
+                                </span>
+                              </div>
+                            </Link>
+                          </li>
+                        ))}
+                        {/* <Link href="/brands?category=Pinc Partywear&brand=Stranski Brendovi">
                           <li
                             className="d-flex align-items-center"
-                            onClick={handleButtonClick}
+                            onClick={handleModalClick}
                           >
                             {category === "Pinc Partywear" ? (
                               <img
@@ -363,7 +370,7 @@ const Header: React.FC = () => {
                         <Link href="/brands?category=Factory Girl&brand=Stranski Brendovi">
                           <li
                             className="d-flex align-items-center"
-                            onClick={handleButtonClick}
+                            onClick={handleModalClick}
                           >
                             {category === "Factory Girl" ? (
                               <img
@@ -384,7 +391,7 @@ const Header: React.FC = () => {
                         <Link href="/brands?category=Main Days&brand=Stranski Brendovi">
                           <li
                             className="d-flex align-items-center"
-                            onClick={handleButtonClick}
+                            onClick={handleModalClick}
                           >
                             {category === "Main Days" ? (
                               <img
@@ -405,7 +412,7 @@ const Header: React.FC = () => {
                         <Link href="/brands?category=Nezno&brand=Localni brendovi">
                           <li
                             className="d-flex align-items-center"
-                            onClick={handleButtonClick}
+                            onClick={handleModalClick}
                           >
                             {category === "Nezno" ? (
                               <img
@@ -424,7 +431,7 @@ const Header: React.FC = () => {
                         <Link href="/brands?category=Red&brand=Localni brendovi">
                           <li
                             className="d-flex align-items-center"
-                            onClick={handleButtonClick}
+                            onClick={handleModalClick}
                           >
                             {category === "Red" ? (
                               <img
@@ -443,7 +450,7 @@ const Header: React.FC = () => {
                         <Link href="/brands?category=Nash&brand=Localni brendovi">
                           <li
                             className="d-flex align-items-center"
-                            onClick={handleButtonClick}
+                            onClick={handleModalClick}
                           >
                             {category === "Nash" ? (
                               <img
@@ -462,7 +469,7 @@ const Header: React.FC = () => {
                         <Link href="/brands?category=Zsh da ne&brand=Localni brendovi">
                           <li
                             className="d-flex align-items-center"
-                            onClick={handleButtonClick}
+                            onClick={handleModalClick}
                           >
                             {category === "Zsh da ne" ? (
                               <img
@@ -483,7 +490,7 @@ const Header: React.FC = () => {
                         <Link href="/brands?category=Fraeil&brand=Stranski Brendovi">
                           <li
                             className="d-flex align-items-center"
-                            onClick={handleButtonClick}
+                            onClick={handleModalClick}
                           >
                             {category === "Fraeil" ? (
                               <img
@@ -504,7 +511,7 @@ const Header: React.FC = () => {
                         <Link href="/brands?category=Urma&brand=Stranski Brendovi">
                           <li
                             className="d-flex align-items-center"
-                            onClick={handleButtonClick}
+                            onClick={handleModalClick}
                           >
                             {category === "Urma" ? (
                               <img
@@ -523,7 +530,7 @@ const Header: React.FC = () => {
                         <Link href="/brands?category=Candle Nest&brand=Stranski Brendovi">
                           <li
                             className="d-flex align-items-center"
-                            onClick={handleButtonClick}
+                            onClick={handleModalClick}
                           >
                             {category === "Candle nest" ? (
                               <img
@@ -544,7 +551,7 @@ const Header: React.FC = () => {
                         <Link href="/brands?category=Beyond Green&brand=Stranski Brendovi">
                           <li
                             className="d-flex align-items-center"
-                            onClick={handleButtonClick}
+                            onClick={handleModalClick}
                           >
                             {category === "Beyond green" ? (
                               <img
@@ -565,7 +572,7 @@ const Header: React.FC = () => {
                         <Link href="/brands?category=Gatta&brand=Stranski Brendovi">
                           <li
                             className="d-flex align-items-center"
-                            onClick={handleButtonClick}
+                            onClick={handleModalClick}
                           >
                             {category === "Gatta" ? (
                               <img
@@ -580,7 +587,7 @@ const Header: React.FC = () => {
                               Gatta
                             </span>
                           </li>
-                        </Link>
+                        </Link> */}
                       </ul>
                     </li>
                     <li onClick={() => handleDropDown("accessories")}>

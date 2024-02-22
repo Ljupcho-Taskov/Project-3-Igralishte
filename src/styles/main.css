@@ -430,9 +430,6 @@ select option {
 button:focus {
   outline: none;
 }
-.w-90 {
-  width: 90%;
-}
 
 .brand-name {
   position: absolute;
