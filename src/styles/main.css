@@ -888,13 +888,13 @@ li a {
   margin-bottom: 10px;
 }
 /*  */
-/* .slick-next,
+.slick-next,
 .slick-prev {
   display: none !important;
-} */
+}
 .slick-next {
-  right: 0;
+  right: 0 !important;
 }
 .slick-prev {
-  left: 0;
+  left: 0 !important;
 }
