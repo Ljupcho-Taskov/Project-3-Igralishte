@@ -9,8 +9,24 @@ const RegistrationForm: React.FC = () => {
   const [repeatPassword, setRepeatPassword] = useState("");
   const [passwordsMatch, setPasswordsMatch] = useState(true);
   const [passwordError, setPasswordError] = useState("");
+  const [showPassword, setShowPassword] = useState<boolean>(false);
+  const [showConfirmPassword, setShowConfirmPassword] =
+    useState<boolean>(false);
   const [showFinalRegistrationForm, setShowFinalRegistrationForm] =
     useState(false);
+
+  const togglePasswordVisibility = (field: string) => {
+    switch (field) {
+      case "showPassword":
+        setShowPassword(!showPassword);
+        break;
+      case "confirmPassword":
+        setShowConfirmPassword(!showConfirmPassword);
+        break;
+      default:
+        break;
+    }
+  };
 
   const handleNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setName(event.target.value);
@@ -123,32 +139,57 @@ const RegistrationForm: React.FC = () => {
               />
 
               <label htmlFor="password">Лозинка</label>
-              <input
-                className="mb-3"
-                type="password"
-                id="password"
-                name="password"
-                value={password}
-                onChange={handlePasswordChange}
-                required
-              />
-              {passwordError && <p className="text-danger">{passwordError}</p>}
+              <div className="password-input-container">
+                <input
+                  className="mb-3"
+                  type={showPassword ? "text" : "password"}
+                  id="password"
+                  name="password"
+                  value={password}
+                  onChange={handlePasswordChange}
+                  required
+                />
+                {passwordError && (
+                  <p className="text-danger">{passwordError}</p>
+                )}
+                <span
+                  className="password-toggle-icon"
+                  onClick={() => togglePasswordVisibility("showPassword")}
+                >
+                  {showPassword ? (
+                    <i className="fa-regular fa-eye"></i>
+                  ) : (
+                    <i className="fa-regular fa-eye-slash"></i>
+                  )}
+                </span>
+              </div>
 
               <label htmlFor="repeatPassword">Повтори лозинка</label>
-              <input
-                className="mb-3"
-                type="password"
-                id="repeatPassword"
-                name="repeatPassword"
-                value={repeatPassword}
-                onChange={handleRepeatPasswordChange}
-                required
-              />
+              <div className="password-input-container">
+                <input
+                  className="mb-3"
+                  type={showConfirmPassword ? "text" : "password"}
+                  id="repeatPassword"
+                  name="repeatPassword"
+                  value={repeatPassword}
+                  onChange={handleRepeatPasswordChange}
+                  required
+                />
 
-              {!passwordsMatch && (
-                <p className="error-message">Лозинките не се совпаѓаат.</p>
-              )}
-
+                {!passwordsMatch && (
+                  <p className="error-message">Лозинките не се совпаѓаат.</p>
+                )}
+                <span
+                  className="password-toggle-icon"
+                  onClick={() => togglePasswordVisibility("confirmPassword")}
+                >
+                  {showConfirmPassword ? (
+                    <i className="fa-regular fa-eye"></i>
+                  ) : (
+                    <i className="fa-regular fa-eye-slash"></i>
+                  )}
+                </span>
+              </div>
               <div className="d-flex mb-5"></div>
 
               <button className="pointer" type="submit">

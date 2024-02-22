@@ -4,9 +4,7 @@ import { useRouter } from "next/router";
 import Header from "../../components/header/Header";
 import Footer from "../../components/footer/Footer";
 import BrandItem from "../../components/BrandItem";
-import Pagination from "../../components/Pagination";
 import { ProductsType } from "../../types/types";
-import Card from "../../components/Card";
 import Head from "next/head";
 import ProductItem from "../../components/ProductItem";
 
@@ -34,20 +32,6 @@ const BrandsPage: NextPage<BrandsPageProps> = ({
     indexOfFirstProduct,
     indexOfLastProduct
   );
-
-  const totalPages = Math.ceil(brandsData.length / productsPerPage);
-
-  const handleNextPage = () => {
-    setCurrentPage((prev) => Math.min(prev + 1, totalPages));
-  };
-
-  const handlePrevPage = () => {
-    setCurrentPage((prev) => Math.max(prev - 1, 1));
-  };
-
-  const handlePageChange = (page: number) => {
-    setCurrentPage(page);
-  };
 
   const headerBrand = brand ? brand : "";
   const headerCategory = category || "Сите";
@@ -117,20 +101,11 @@ const BrandsPage: NextPage<BrandsPageProps> = ({
             </div>
             <div className="row">
               {filteredProducts.map((item, index) => (
-                <div className="col-6" key={item.id}>
-                  <ProductItem index={index} {...item} />
-                </div>
+                <ProductItem index={index} {...item} key={item.id} />
               ))}
             </div>
           </>
         ) : null}
-        {/* <Pagination
-          currentPage={currentPage}
-          totalPages={totalPages}
-          handlePageChange={handlePageChange}
-          handlePrevPage={handlePrevPage}
-          handleNextPage={handleNextPage}
-        /> */}
       </div>
       <Footer />
     </>

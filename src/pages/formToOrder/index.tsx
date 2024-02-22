@@ -84,21 +84,21 @@ const FormToOrderPage: NextPage = () => {
                 className="addInfoLabel d-flex align-items-center justify-content-center"
               >
                 <input
-                  className="mr-3"
+                  className="mr-2"
                   id="addInformation"
                   name="addInformation"
                   type="checkbox"
                   checked={useProfileInfo}
                   onChange={handleCheckboxChange}
                 />
-                вметни ги информациите од мојот профил
+                <small> вметни ги информациите од мојот профил</small>
               </label>
             </div>
           </div>
           <div className="row">
             <div className="col-12 d-flex flex-column align-items-center">
               <form
-                className="d-flex flex-column mb-3"
+                className="d-flex flex-column mb-3 w-100"
                 onSubmit={handleOrderButtonClick}
               >
                 <label htmlFor="name">
@@ -152,14 +152,6 @@ const FormToOrderPage: NextPage = () => {
                   placeholder="example@example.com"
                   required
                 />
-
-                <p className="d-flex mb-5">
-                  <input className="box-none" type="checkbox" />
-                  <small>
-                    сакам да добивам новости за идни попусти, нови колекции и
-                    промоции на мојата емаил адреса..
-                  </small>
-                </p>
 
                 <div className="d-flex ">
                   <button className="continue-button" type="submit">

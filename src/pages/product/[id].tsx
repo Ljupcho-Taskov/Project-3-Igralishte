@@ -409,13 +409,17 @@ const ProductDetailsPage: React.FC<Props> = ({ product, allProductsData }) => {
           растегнува. Одговара на наведената величина.
         </p>
         <hr className="hrYellow" />
-        <div className="mb-3 d-flex align-items-center">
-          <p>Боја:</p>
-          <p
-            className="colorSquare"
-            style={{ backgroundColor: `${product.color}` }}
-          ></p>
-          <p>{product.color}</p>
+        <div className="row mb-3">
+          <div className="col-1">
+            <p>Боја:</p>
+          </div>
+          <div className="col-3 d-flex align-items-center">
+            <p className="mr-2">{product.color}</p>
+            <p
+              className="colorSquare"
+              style={{ backgroundColor: `${product.color}` }}
+            ></p>
+          </div>
         </div>
         <p>Материјал:</p>
         <p className="mb-3">{product.material}</p>

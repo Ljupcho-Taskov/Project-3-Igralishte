@@ -190,14 +190,14 @@ const OrderPage: React.FC<ProductsPageProps> = ({ productsData }) => {
       ) : (
         <div className="container">
           {isViewingFavorites ? (
-            <div>
+            <div className="row">
               {favorites.map((item, index) => (
                 <ProductItem index={index} {...item} key={item.id} />
               ))}
             </div>
           ) : (
             <>
-              <div>
+              <div className="row">
                 {cart.map((item, index) => (
                   <ProductItem index={index} {...item} key={item.id} />
                 ))}
@@ -316,12 +316,10 @@ const OrderPage: React.FC<ProductsPageProps> = ({ productsData }) => {
         <FourAccordions />
         <div className="row">
           <div className="col-12">
-            <p className=" mb-4 productItemTitle ">Други парчиња:</p>
+            <h3 className=" mb-4">Други парчиња:</h3>
           </div>
           {currentProducts.map((item, index) => (
-            <div className="col-6" key={item.id}>
-              <ProductItem index={index} {...item} />
-            </div>
+            <ProductItem index={index} {...item} key={item.id} />
           ))}
         </div>
 
