@@ -7,6 +7,7 @@ import GiftCard from "../components/GiftCard";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import SlickCarousel from "../components/SlickCarousel";
+import Reveal from "../components/Reveal";
 
 interface HomeProps {
   dataProducts: ProductsType[];
@@ -24,11 +25,19 @@ export const Home: NextPage<HomeProps> = ({ dataProducts }) => {
       <>
         <Header />
         <div className="home-page">
-          <Valentines />
+          <Reveal>
+            <Valentines />
+          </Reveal>
           <SlickCarousel products={dataProducts} />
-          <Accessories />
-          <GiftCard />
-          <Footer />
+          <Reveal>
+            <Accessories />
+          </Reveal>
+          <Reveal>
+            <GiftCard />
+          </Reveal>
+          <Reveal>
+            <Footer />
+          </Reveal>
         </div>
       </>
     </>

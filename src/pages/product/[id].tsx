@@ -401,8 +401,8 @@ const ProductDetailsPage: React.FC<Props> = ({ product, allProductsData }) => {
         <hr className="hrYellow" />
 
         <p className="mb-3">
-          Величина:
-          {product.size}
+          <span>Величина: </span>
+          <span> {product.size}</span>
         </p>
         <p className="mb-3">
           Совет за величина: ова парче е направено од материјал кој не се
@@ -414,7 +414,6 @@ const ProductDetailsPage: React.FC<Props> = ({ product, allProductsData }) => {
             <p>Боја:</p>
           </div>
           <div className="col-3 d-flex align-items-center">
-            <p className="mr-2">{product.color}</p>
             <p
               className="colorSquare"
               style={{ backgroundColor: `${product.color}` }}

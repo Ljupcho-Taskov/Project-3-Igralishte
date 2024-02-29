@@ -290,7 +290,7 @@ const Header: React.FC = () => {
                       <ul
                         className={dropdownStates.brands ? "d-block" : "d-none"}
                       >
-                        <Link href="/brands">
+                        {/* <Link href="/brands">
                           <li
                             className="d-flex align-items-center"
                             onClick={() => {
@@ -315,7 +315,7 @@ const Header: React.FC = () => {
                               Види ги сите
                             </span>
                           </li>
-                        </Link>
+                        </Link> */}
 
                         {brandCategory.map((brand, index) => (
                           <li
