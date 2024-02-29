@@ -4,8 +4,8 @@ import Valentines from "../components/Valentines";
 import { ProductsType } from "../types/types";
 import Accessories from "../components/Accessories";
 import GiftCard from "../components/GiftCard";
-import Header from "../components/header/Header";
-import Footer from "../components/footer/Footer";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 import SlickCarousel from "../components/SlickCarousel";
 
 interface HomeProps {

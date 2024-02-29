@@ -34,7 +34,7 @@ const ProductItem: React.FC<ProductItemProps> = ({
     <div className="col-6 pointer mb-3" key={id} style={{ maxWidth: "400px" }}>
       <Link href={`/product/${id}`}>
         <div>
-          <img src={img} alt="IMG-PRODUCT" />
+          <img style={{ maxHeight: "400px" }} src={img} alt="IMG-PRODUCT" />
           <div>
             <p className="my-1 productItemTitle">{title}</p>
             <p className="productItemTitle">{priceR} ден.</p>

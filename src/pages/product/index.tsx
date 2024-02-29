@@ -1,8 +1,8 @@
 import type { GetServerSideProps, NextPage } from "next";
 import { ProductsType } from "../../types/types";
 import { useEffect, useState } from "react";
-import Header from "../../components/header/Header";
-import Footer from "../../components/footer/Footer";
+import Header from "../../components/Header";
+import Footer from "../../components/Footer";
 import { useRouter } from "next/router";
 import Card from "../../components/Card";
 import Pagination from "../../components/Pagination";

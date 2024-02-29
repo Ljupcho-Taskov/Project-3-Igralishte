@@ -1,8 +1,8 @@
 import Link from "next/link";
 import React, { useEffect, useRef, useState } from "react";
-import AnnouncementBar from "../AnnouncementBar";
+import AnnouncementBar from "./AnnouncementBar";
 import { useRouter } from "next/router";
-import { ProductsType } from "../../types/types";
+import { ProductsType } from "../types/types";
 
 interface DropdownStates {
   vintage: boolean;
@@ -23,7 +23,6 @@ const Header: React.FC = () => {
   const [clickedCategory, setClickedCategory] = useState<string>();
   const [clickedBrand, setClickedBrand] = useState<string>();
   const router = useRouter();
-  // const { category, brand } = router.query;
 
   const [user, setUser] = useState<string | null>(null);
 

@@ -22,7 +22,6 @@ const SlickCarousel: React.FC<Props> = ({ products }) => {
     }
   };
   const settings = {
-    // className: "center",
     centerMode: true,
     infinite: true,
     speed: 500,
@@ -30,7 +29,13 @@ const SlickCarousel: React.FC<Props> = ({ products }) => {
     slidesToScroll: 1,
   };
   return (
-    <div className="my-5">
+    <div className="container py-5 mb-5">
+      <div className="row mb-5">
+        <div className="col-12">
+          <p className="trendi">Trendy парчиња во моментов</p>
+        </div>
+      </div>
+
       <div className="slider-container">
         <Slider
           ref={sliderRef}

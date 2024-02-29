@@ -3,7 +3,7 @@ import React from "react";
 const Accessories = () => {
   return (
     <div
-      className="container-fluid d-flex flex-column justify-content-between"
+      className="container-fluid d-flex flex-column justify-content-between mb-5"
       style={{
         height: "605px",
       }}

@@ -187,41 +187,52 @@ li {
   width: 46.198px;
   height: 30px;
 }
+
+/*  */
+
+/* Slick-Carousel */
 .trendi {
-  color: #000;
   text-align: center;
-  font-family: Cormorant Infant;
-  font-size: 22px;
-  font-style: normal;
+  color: #000;
+  font-size: 26px;
   font-weight: 400;
   line-height: 150%;
   letter-spacing: -0.242px;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-style: italic;
+  overflow: hidden;
+  white-space: nowrap;
+  animation: revealText 3s linear forwards;
+}
+
+@keyframes revealText {
+  0% {
+    width: 0;
+    margin-left: 100%;
+    transform: translateX(-100%);
+  }
+  100% {
+    width: 100%;
+    margin-left: 0;
+    transform: translateX(0);
+  }
+}
+.slick-next,
+.slick-prev {
+  display: none !important;
+}
+.slick-next {
+  right: 0 !important;
+}
+.slick-prev {
+  left: 0 !important;
+}
+
+.slick-initialized .slick-slide {
+  display: flex !important;
+  justify-content: center !important;
 }
 /*  */
-
-/* Sliders */
-.image-carousel {
-  max-width: 300px;
-  min-height: 400px;
-  margin: 0 auto;
-}
-.arrow-sliders {
-  width: 31px;
-  height: 31px;
-  flex-shrink: 0;
-}
-
-.image-carousel {
-  transition: transform 0.5s ease;
-}
-
-.image-carousel.left {
-  transform: translateX(-100%);
-}
-
-.image-carousel.right {
-  transform: translateX(100%);
-}
 
 /*  */
 /* Accessories */
@@ -889,13 +900,3 @@ li a {
   margin-bottom: 10px;
 }
 /*  */
-.slick-next,
-.slick-prev {
-  display: none !important;
-}
-.slick-next {
-  right: 0 !important;
-}
-.slick-prev {
-  left: 0 !important;
-}

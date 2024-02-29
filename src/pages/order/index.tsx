@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import Header from "../../components/header/Header";
+import Header from "../../components/Header";
 import { useCart } from "../../context/CartContext";
-import Footer from "../../components/footer/Footer";
+import Footer from "../../components/Footer";
 import { GetServerSideProps } from "next";
 import { CardsPriceType, ProductsType } from "../../types/types";
 import Pagination from "../../components/Pagination";

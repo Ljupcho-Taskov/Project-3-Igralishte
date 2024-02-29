@@ -1,7 +1,7 @@
 import { GetStaticProps, NextPage } from "next";
 import React from "react";
-import Header from "../../components/header/Header";
-import Footer from "../../components/footer/Footer";
+import Header from "../../components/Header";
+import Footer from "../../components/Footer";
 import { FaqType } from "../../types/types";
 import Head from "next/head";
 

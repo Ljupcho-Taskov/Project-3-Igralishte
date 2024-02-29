@@ -3,13 +3,13 @@ import React from "react";
 const Valentines = () => {
   return (
     <div
-      className="container-fluid d-flex flex-column justify-content-between"
+      className="container-fluid d-flex flex-column justify-content-between pb-5"
       style={{
         height: "605px",
       }}
     >
       <div className="row">
-        <div className="col">
+        <div className="col-12">
           <div className="image-without-circle ml-auto">
             <img src="../images/coll 1.png" alt="" />
             <div className="circle left-7 pointer">
@@ -29,11 +29,6 @@ const Valentines = () => {
               </div>
             </div>
           </div>
-        </div>
-      </div>
-      <div className="row mt-3">
-        <div className="col">
-          <p className="trendi">Trendy парчиња во моментов</p>
         </div>
       </div>
     </div>

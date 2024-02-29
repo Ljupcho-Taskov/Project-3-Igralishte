@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import React, { useEffect, useRef, useState } from "react";
-import Header from "../../components/header/Header";
+import Header from "../../components/Header";
 import { ProductsType } from "../../types/types";
 import { GetServerSideProps, NextPage } from "next";
 

@@ -2,13 +2,13 @@ import React, { useEffect, useState } from "react";
 import { ProductsType } from "../../types/types";
 import Head from "next/head";
 import { GetStaticPaths, GetStaticProps } from "next";
-import Header from "../../components/header/Header";
+import Header from "../../components/Header";
 import { useCart } from "../../context/CartContext";
 import { useRouter } from "next/router";
 import ProductItem from "../../components/ProductItem";
 import Pagination from "../../components/Pagination";
 import FourAccordions from "../../components/FourAccordions";
-import Footer from "../../components/footer/Footer";
+import Footer from "../../components/Footer";
 
 interface Props {
   product: ProductsType;

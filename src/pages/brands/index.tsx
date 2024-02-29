@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { NextPage, GetServerSideProps } from "next";
 import { useRouter } from "next/router";
-import Header from "../../components/header/Header";
-import Footer from "../../components/footer/Footer";
+import Header from "../../components/Header";
+import Footer from "../../components/Footer";
 import BrandItem from "../../components/BrandItem";
 import { ProductsType } from "../../types/types";
 import Head from "next/head";
