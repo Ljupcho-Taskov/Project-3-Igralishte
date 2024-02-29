@@ -411,7 +411,7 @@ const ProductDetailsPage: React.FC<Props> = ({ product, allProductsData }) => {
         <hr className="hrYellow" />
         <div className="row mb-3">
           <div className="col-1">
-            <p>Боја:</p>
+            <p>Боја: </p>
           </div>
           <div className="col-3 d-flex align-items-center">
             <p
