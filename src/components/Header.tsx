@@ -45,6 +45,7 @@ const Header: React.FC = () => {
       .then((data) => {
         setProducts(data);
       });
+    setLoading(false);
   }, []);
   useEffect(() => {
     fetch("https://igralishte.onrender.com/brands")
@@ -52,6 +53,7 @@ const Header: React.FC = () => {
       .then((data) => {
         setBrands(data);
       });
+    setLoading(false);
   }, []);
   // useEffect(() => {
   //   fetch("https://igralishte.onrender.com/products")
