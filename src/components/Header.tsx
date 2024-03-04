@@ -55,29 +55,6 @@ const Header: React.FC = () => {
       });
     setLoading(false);
   }, []);
-  // useEffect(() => {
-  //   fetch("https://igralishte.onrender.com/products")
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       setProducts(data);
-  //       const categories: string[] = Array.from(
-  //         new Set(data.map((product: ProductsType) => product.category))
-  //       );
-  //       setProductCategories(categories);
-  //       setLoading(false);
-  //     });
-
-  //   fetch("https://igralishte.onrender.com/brands")
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       setBrands(data);
-  //       const brands: string[] = Array.from(
-  //         new Set(data.map((brand: ProductsType) => brand.category))
-  //       );
-  //       setBrandCategories(brands);
-  //       setLoading(false);
-  //     });
-  // }, []);
 
   useEffect(() => {
     const categoryFromQuery = router.query.category as string;
@@ -108,7 +85,7 @@ const Header: React.FC = () => {
   const handleOnSubmitProduct = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     router.push({
-      pathname: "/product",
+      pathname: "/products",
       query: {
         category: inputRef?.current?.value,
       },
@@ -143,10 +120,18 @@ const Header: React.FC = () => {
       setClickedCategory("Види ги сите");
     } else {
       setClickedCategory(category);
+      router.push({
+        pathname: "/product",
+        query: { category: category },
+      });
     }
   };
   const handleClickedBrand = (brand: string) => {
     setClickedBrand(brand);
+    router.push({
+      pathname: "/brands",
+      query: { category: brand },
+    });
   };
 
   const handleDropDown = (dropdownKey: keyof DropdownStates) => {
@@ -181,6 +166,7 @@ const Header: React.FC = () => {
     });
     setIsModalOpen(false);
   };
+
   return (
     <>
       <header>
@@ -287,7 +273,7 @@ const Header: React.FC = () => {
                               onClick={() => {
                                 handleClickedCategory(category);
                                 handleModalClick();
-                                router.push(`product?category=${category}`);
+                                // handleCategoryClick(category);
                               }}
                               key={index}
                             >
@@ -337,7 +323,7 @@ const Header: React.FC = () => {
                               onClick={() => {
                                 handleClickedBrand(brand);
                                 handleModalClick();
-                                router.push(`brands?category=${brand}`);
+                                // handleBrandClick(brand);
                               }}
                               key={index}
                             >
