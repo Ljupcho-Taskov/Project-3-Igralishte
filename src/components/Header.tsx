@@ -39,43 +39,43 @@ const Header: React.FC = () => {
     }
   }, []);
 
-  // useEffect(() => {
-  //   fetch("https://igralishte.onrender.com/products")
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       setProducts(data);
-  //     });
-  // }, []);
-  // useEffect(() => {
-  //   fetch("https://igralishte.onrender.com/brands")
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       setBrands(data);
-  //     });
-  // }, []);
   useEffect(() => {
     fetch("https://igralishte.onrender.com/products")
       .then((res) => res.json())
       .then((data) => {
         setProducts(data);
-        const categories: string[] = Array.from(
-          new Set(data.map((product: ProductsType) => product.category))
-        );
-        setProductCategories(categories);
-        setLoading(false);
       });
-
+  }, []);
+  useEffect(() => {
     fetch("https://igralishte.onrender.com/brands")
       .then((res) => res.json())
       .then((data) => {
         setBrands(data);
-        const brands: string[] = Array.from(
-          new Set(data.map((brand: ProductsType) => brand.category))
-        );
-        setBrandCategories(brands);
-        setLoading(false);
       });
   }, []);
+  // useEffect(() => {
+  //   fetch("https://igralishte.onrender.com/products")
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       setProducts(data);
+  //       const categories: string[] = Array.from(
+  //         new Set(data.map((product: ProductsType) => product.category))
+  //       );
+  //       setProductCategories(categories);
+  //       setLoading(false);
+  //     });
+
+  //   fetch("https://igralishte.onrender.com/brands")
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       setBrands(data);
+  //       const brands: string[] = Array.from(
+  //         new Set(data.map((brand: ProductsType) => brand.category))
+  //       );
+  //       setBrandCategories(brands);
+  //       setLoading(false);
+  //     });
+  // }, []);
 
   useEffect(() => {
     const categoryFromQuery = router.query.category as string;
