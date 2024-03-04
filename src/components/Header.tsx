@@ -24,6 +24,7 @@ const Header: React.FC = () => {
   const [clickedBrand, setClickedBrand] = useState<string>();
   const [productCategories, setProductCategories] = useState<string[]>([]);
   const [brandCategories, setBrandCategories] = useState<string[]>([]);
+  const [loading, setLoading] = useState(true);
   const router = useRouter();
 
   const [user, setUser] = useState<string | null>(null);
@@ -61,6 +62,7 @@ const Header: React.FC = () => {
           new Set(data.map((product: ProductsType) => product.category))
         );
         setProductCategories(categories);
+        setLoading(false);
       });
 
     fetch("https://igralishte.onrender.com/brands")
@@ -71,6 +73,7 @@ const Header: React.FC = () => {
           new Set(data.map((brand: ProductsType) => brand.category))
         );
         setBrandCategories(brands);
+        setLoading(false);
       });
   }, []);
 
@@ -274,33 +277,39 @@ const Header: React.FC = () => {
                             </span>
                           </div>
                         </li>
-                        {productCategory.map((category, index) => (
-                          <li
-                            onClick={() => {
-                              handleClickedCategory(category);
-                              handleModalClick();
-                              router.push(`product?category=${category}`);
-                            }}
-                            key={index}
-                          >
-                            <div className="d-flex align-items-center">
-                              {clickedCategory === category && (
-                                <img
-                                  className="sparksSmallAll"
-                                  src="../../logo/sparks-elements-and-symbols-isolated-on-white-background-free-vector 2.png"
-                                  alt=""
-                                />
-                              )}
-                              <span
-                                className={
-                                  clickedCategory === category ? "li-olive" : ""
-                                }
-                              >
-                                {category}
-                              </span>
-                            </div>
-                          </li>
-                        ))}
+                        {loading ? (
+                          <div>Loading Data</div>
+                        ) : (
+                          productCategory.map((category, index) => (
+                            <li
+                              onClick={() => {
+                                handleClickedCategory(category);
+                                handleModalClick();
+                                router.push(`product?category=${category}`);
+                              }}
+                              key={index}
+                            >
+                              <div className="d-flex align-items-center">
+                                {clickedCategory === category && (
+                                  <img
+                                    className="sparksSmallAll"
+                                    src="../../logo/sparks-elements-and-symbols-isolated-on-white-background-free-vector 2.png"
+                                    alt=""
+                                  />
+                                )}
+                                <span
+                                  className={
+                                    clickedCategory === category
+                                      ? "li-olive"
+                                      : ""
+                                  }
+                                >
+                                  {category}
+                                </span>
+                              </div>
+                            </li>
+                          ))
+                        )}
                       </ul>
                     </li>
 
@@ -318,36 +327,40 @@ const Header: React.FC = () => {
                       <ul
                         className={dropdownStates.brands ? "d-block" : "d-none"}
                       >
-                        {brandCategory.map((brand, index) => (
-                          <li
-                            onClick={() => {
-                              handleClickedBrand(brand);
-                              handleModalClick();
-                              router.push(`brands?category=${brand}`);
-                            }}
-                            key={index}
-                          >
-                            <div
-                              onClick={() => {}}
-                              className="d-flex align-items-center"
+                        {loading ? (
+                          <div>Loading Data...</div>
+                        ) : (
+                          brandCategory.map((brand, index) => (
+                            <li
+                              onClick={() => {
+                                handleClickedBrand(brand);
+                                handleModalClick();
+                                router.push(`brands?category=${brand}`);
+                              }}
+                              key={index}
                             >
-                              {clickedBrand === brand && (
-                                <img
-                                  className="sparksSmallAll"
-                                  src="../../logo/sparks-elements-and-symbols-isolated-on-white-background-free-vector 2.png"
-                                  alt=""
-                                />
-                              )}
-                              <span
-                                className={
-                                  clickedBrand === brand ? "li-olive" : ""
-                                }
+                              <div
+                                onClick={() => {}}
+                                className="d-flex align-items-center"
                               >
-                                {brand}
-                              </span>
-                            </div>
-                          </li>
-                        ))}
+                                {clickedBrand === brand && (
+                                  <img
+                                    className="sparksSmallAll"
+                                    src="../../logo/sparks-elements-and-symbols-isolated-on-white-background-free-vector 2.png"
+                                    alt=""
+                                  />
+                                )}
+                                <span
+                                  className={
+                                    clickedBrand === brand ? "li-olive" : ""
+                                  }
+                                >
+                                  {brand}
+                                </span>
+                              </div>
+                            </li>
+                          ))
+                        )}
                       </ul>
                     </li>
                     <li onClick={() => handleDropDown("accessories")}>
