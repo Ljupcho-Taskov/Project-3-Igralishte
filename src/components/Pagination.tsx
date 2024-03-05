@@ -19,11 +19,27 @@ const Pagination: React.FC<PaginationProps> = ({
   const startPage = Math.max(1, currentPage - Math.floor(pagesToShow / 2));
   const endPage = Math.min(totalPages, startPage + pagesToShow - 1);
 
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+  const handlePrevPageWithScroll = () => {
+    handlePrevPage();
+    setTimeout(scrollToTop);
+  };
+
+  const handleNextPageWithScroll = () => {
+    handleNextPage();
+    setTimeout(scrollToTop);
+  };
+
   return (
     <div className="col-12 d-flex justify-content-between">
       <button
         className="svg-button"
-        onClick={handlePrevPage}
+        onClick={handlePrevPageWithScroll}
         disabled={currentPage === 1}
       >
         <svg
@@ -43,7 +59,13 @@ const Pagination: React.FC<PaginationProps> = ({
       </button>
       {startPage > 1 && (
         <>
-          <button className="button-number" onClick={() => handlePageChange(1)}>
+          <button
+            className="button-number"
+            onClick={() => {
+              handlePageChange(1);
+              scrollToTop();
+            }}
+          >
             1
           </button>
           {startPage > 2 && <span>...</span>}
@@ -52,7 +74,10 @@ const Pagination: React.FC<PaginationProps> = ({
       {Array.from({ length: endPage - startPage + 1 }, (_, i) => (
         <button
           key={startPage + i}
-          onClick={() => handlePageChange(startPage + i)}
+          onClick={() => {
+            handlePageChange(startPage + i);
+            scrollToTop();
+          }}
           className={`button-number ${
             currentPage === startPage + i ? "button-number-active" : ""
           }`}
@@ -65,7 +90,10 @@ const Pagination: React.FC<PaginationProps> = ({
           {endPage < totalPages - 1 && <span>...</span>}
           <button
             className="button-number"
-            onClick={() => handlePageChange(totalPages)}
+            onClick={() => {
+              handlePageChange(totalPages);
+              scrollToTop();
+            }}
           >
             {totalPages}
           </button>
@@ -73,7 +101,7 @@ const Pagination: React.FC<PaginationProps> = ({
       )}
       <button
         className="svg-button"
-        onClick={handleNextPage}
+        onClick={handleNextPageWithScroll}
         disabled={currentPage === totalPages}
       >
         <svg

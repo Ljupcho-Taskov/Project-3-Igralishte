@@ -4,11 +4,11 @@ import { useEffect, useState } from "react";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import { useRouter } from "next/router";
-import Card from "../../components/Card";
 import Pagination from "../../components/Pagination";
 import Link from "next/link";
 import Head from "next/head";
 import Breadcrumps from "../../components/Breadcrumps";
+import ProductItem from "../../components/ProductItem";
 
 interface ProductsPageProps {
   data: ProductsType[];
@@ -85,15 +85,24 @@ const ProductsPage: NextPage<ProductsPageProps> = ({
     indexOfFirstProduct,
     indexOfLastProduct
   );
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });
+  };
 
   const totalPages = Math.ceil(data.length / productsPerPage);
 
   const handleNextPage = () => {
     setCurrentPage((prev) => Math.min(prev + 1, totalPages));
+    scrollToTop();
   };
 
   const handlePrevPage = () => {
     setCurrentPage((prev) => Math.max(prev - 1, 1));
+    scrollToTop();
   };
 
   const handlePageChange = (page: number) => {
@@ -212,7 +221,7 @@ const ProductsPage: NextPage<ProductsPageProps> = ({
             </div>
           ) : (
             currentProducts.map((item, index) => (
-              <Card index={index} key={item.id} {...item} />
+              <ProductItem index={index} key={item.id} {...item} />
             ))
           )}
         </div>

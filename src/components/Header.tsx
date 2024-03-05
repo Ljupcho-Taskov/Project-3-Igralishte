@@ -39,54 +39,54 @@ const Header: React.FC = () => {
     }
   }, []);
 
-  useEffect(() => {
-    fetch("https://igralishte.onrender.com/products")
-      .then((res) => res.json())
-      .then((data) => {
-        setProducts(data);
-      });
-    setLoading(false);
-  }, []);
-  useEffect(() => {
-    fetch("https://igralishte.onrender.com/brands")
-      .then((res) => res.json())
-      .then((data) => {
-        setBrands(data);
-      });
-    setLoading(false);
-  }, []);
   // useEffect(() => {
   //   fetch("https://igralishte.onrender.com/products")
   //     .then((res) => res.json())
   //     .then((data) => {
   //       setProducts(data);
-  //       const categories: string[] = Array.from(
-  //         new Set(data.map((product: ProductsType) => product.category))
-  //       );
-  //       setProductCategories(categories);
-  //       setLoading(false);
   //     });
-
+  //   setLoading(false);
+  // }, []);
+  // useEffect(() => {
   //   fetch("https://igralishte.onrender.com/brands")
   //     .then((res) => res.json())
   //     .then((data) => {
   //       setBrands(data);
-  //       const categories: string[] = Array.from(
-  //         new Set(data.map((brand: ProductsType) => brand.category))
-  //       );
-  //       setBrandCategories(categories);
-  //       setLoading(false);
   //     });
+  //   setLoading(false);
   // }, []);
+  useEffect(() => {
+    fetch("https://igralishte.onrender.com/products")
+      .then((res) => res.json())
+      .then((data) => {
+        setProducts(data);
+        const categories: string[] = Array.from(
+          new Set(data.map((product: ProductsType) => product.category))
+        );
+        setProductCategories(categories);
+        setLoading(false);
+      });
 
-  // useEffect(() => {
-  //   const categoryFromQuery = router.query.category as string;
-  //   setClickedCategory(categoryFromQuery || "Види ги сите");
-  // }, [router.query.category]);
-  // useEffect(() => {
-  //   const brandCategoryFromQuery = router.query.category as string;
-  //   setClickedBrand(brandCategoryFromQuery);
-  // }, [router.query.category]);
+    fetch("https://igralishte.onrender.com/brands")
+      .then((res) => res.json())
+      .then((data) => {
+        setBrands(data);
+        const categories: string[] = Array.from(
+          new Set(data.map((brand: ProductsType) => brand.category))
+        );
+        setBrandCategories(categories);
+        setLoading(false);
+      });
+  }, []);
+
+  useEffect(() => {
+    const categoryFromQuery = router.query.category as string;
+    setClickedCategory(categoryFromQuery || "Види ги сите");
+  }, [router.query.category]);
+  useEffect(() => {
+    const brandCategoryFromQuery = router.query.category as string;
+    setClickedBrand(brandCategoryFromQuery);
+  }, [router.query.category]);
 
   const productCategory: string[] = [];
   const brandCategory: string[] = [];
@@ -139,15 +139,11 @@ const Header: React.FC = () => {
     setIsSearchModalOpen(false);
   };
   const handleClickedCategory = (category: string) => {
-    if (!category) {
-      setClickedCategory("Види ги сите");
-    } else {
-      setClickedCategory(category);
-      router.push({
-        pathname: "/product",
-        query: { category: category },
-      });
-    }
+    setClickedCategory(category);
+    router.push({
+      pathname: "/product",
+      query: { category: category },
+    });
   };
   const handleClickedBrand = (brand: string) => {
     setClickedBrand(brand);
@@ -263,7 +259,6 @@ const Header: React.FC = () => {
                       >
                         <li
                           onClick={() => {
-                            handleClickedCategory("Види ги сите");
                             handleModalClick();
                           }}
                         >
@@ -273,13 +268,13 @@ const Header: React.FC = () => {
                             }}
                             className="d-flex align-items-center"
                           >
-                            {clickedCategory === "Види ги сите" && (
+                            {clickedCategory === "Види ги сите" ? (
                               <img
                                 className="sparksSmallAll"
                                 src="../../logo/sparks-elements-and-symbols-isolated-on-white-background-free-vector 2.png"
                                 alt=""
                               />
-                            )}
+                            ) : null}
                             <span
                               className={
                                 clickedCategory === "Види ги сите"
@@ -299,7 +294,6 @@ const Header: React.FC = () => {
                               onClick={() => {
                                 handleClickedCategory(category);
                                 handleModalClick();
-                                // handleCategoryClick(category);
                               }}
                               key={index}
                             >
@@ -349,7 +343,6 @@ const Header: React.FC = () => {
                               onClick={() => {
                                 handleClickedBrand(brand);
                                 handleModalClick();
-                                // handleBrandClick(brand);
                               }}
                               key={index}
                             >
