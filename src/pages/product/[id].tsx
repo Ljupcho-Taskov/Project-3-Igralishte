@@ -33,8 +33,6 @@ const ProductDetailsPage: React.FC<Props> = ({ product, allProductsData }) => {
 
   const productsPerPage = 6;
 
-  const relatedTotalPages = Math.ceil(relatedProducts.length / productsPerPage);
-
   const indexOfLastRelatedProduct = currentPage * productsPerPage;
   const indexOfFirstRelatedProduct =
     indexOfLastRelatedProduct - productsPerPage;

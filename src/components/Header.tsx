@@ -39,22 +39,6 @@ const Header: React.FC = () => {
     }
   }, []);
 
-  // useEffect(() => {
-  //   fetch("https://igralishte.onrender.com/products")
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       setProducts(data);
-  //     });
-  //   setLoading(false);
-  // }, []);
-  // useEffect(() => {
-  //   fetch("https://igralishte.onrender.com/brands")
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       setBrands(data);
-  //     });
-  //   setLoading(false);
-  // }, []);
   useEffect(() => {
     fetch("https://igralishte.onrender.com/products")
       .then((res) => res.json())
