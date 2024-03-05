@@ -39,21 +39,44 @@ const Header: React.FC = () => {
     }
   }, []);
 
+  // useEffect(() => {
+  //   fetch("https://igralishte.onrender.com/products")
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       setProducts(data);
+  //     });
+  //   setLoading(false);
+  // }, []);
+  // useEffect(() => {
+  //   fetch("https://igralishte.onrender.com/brands")
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       setBrands(data);
+  //     });
+  //   setLoading(false);
+  // }, []);
   useEffect(() => {
     fetch("https://igralishte.onrender.com/products")
       .then((res) => res.json())
       .then((data) => {
         setProducts(data);
+        const categories: string[] = Array.from(
+          new Set(data.map((product: ProductsType) => product.category))
+        );
+        setProductCategories(categories);
+        setLoading(false);
       });
-    setLoading(false);
-  }, []);
-  useEffect(() => {
+
     fetch("https://igralishte.onrender.com/brands")
       .then((res) => res.json())
       .then((data) => {
         setBrands(data);
+        const categories: string[] = Array.from(
+          new Set(data.map((brand: ProductsType) => brand.category))
+        );
+        setBrandCategories(categories);
+        setLoading(false);
       });
-    setLoading(false);
   }, []);
 
   useEffect(() => {
