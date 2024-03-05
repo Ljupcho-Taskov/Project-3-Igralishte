@@ -39,54 +39,54 @@ const Header: React.FC = () => {
     }
   }, []);
 
-  // useEffect(() => {
-  //   fetch("https://igralishte.onrender.com/products")
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       setProducts(data);
-  //     });
-  //   setLoading(false);
-  // }, []);
-  // useEffect(() => {
-  //   fetch("https://igralishte.onrender.com/brands")
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       setBrands(data);
-  //     });
-  //   setLoading(false);
-  // }, []);
   useEffect(() => {
     fetch("https://igralishte.onrender.com/products")
       .then((res) => res.json())
       .then((data) => {
         setProducts(data);
-        const categories: string[] = Array.from(
-          new Set(data.map((product: ProductsType) => product.category))
-        );
-        setProductCategories(categories);
-        setLoading(false);
       });
-
+    setLoading(false);
+  }, []);
+  useEffect(() => {
     fetch("https://igralishte.onrender.com/brands")
       .then((res) => res.json())
       .then((data) => {
         setBrands(data);
-        const categories: string[] = Array.from(
-          new Set(data.map((brand: ProductsType) => brand.category))
-        );
-        setBrandCategories(categories);
-        setLoading(false);
       });
+    setLoading(false);
   }, []);
+  // useEffect(() => {
+  //   fetch("https://igralishte.onrender.com/products")
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       setProducts(data);
+  //       const categories: string[] = Array.from(
+  //         new Set(data.map((product: ProductsType) => product.category))
+  //       );
+  //       setProductCategories(categories);
+  //       setLoading(false);
+  //     });
 
-  useEffect(() => {
-    const categoryFromQuery = router.query.category as string;
-    setClickedCategory(categoryFromQuery || "Види ги сите");
-  }, [router.query.category]);
-  useEffect(() => {
-    const brandCategoryFromQuery = router.query.category as string;
-    setClickedBrand(brandCategoryFromQuery);
-  }, [router.query.category]);
+  //   fetch("https://igralishte.onrender.com/brands")
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       setBrands(data);
+  //       const categories: string[] = Array.from(
+  //         new Set(data.map((brand: ProductsType) => brand.category))
+  //       );
+  //       setBrandCategories(categories);
+  //       setLoading(false);
+  //     });
+  // }, []);
+
+  // useEffect(() => {
+  //   const categoryFromQuery = router.query.category as string;
+  //   setClickedCategory(categoryFromQuery || "Види ги сите");
+  // }, [router.query.category]);
+  // useEffect(() => {
+  //   const brandCategoryFromQuery = router.query.category as string;
+  //   setClickedBrand(brandCategoryFromQuery);
+  // }, [router.query.category]);
 
   const productCategory: string[] = [];
   const brandCategory: string[] = [];
@@ -231,7 +231,10 @@ const Header: React.FC = () => {
                 <div className="col-12">
                   <ul className="p-0">
                     <li
-                      onClick={() => router.push({ pathname: "/product" })}
+                      onClick={() => {
+                        router.push({ pathname: "/product" }),
+                          setIsModalOpen(false);
+                      }}
                       style={{
                         fontWeight: "700",
                         textDecoration: "underline",
