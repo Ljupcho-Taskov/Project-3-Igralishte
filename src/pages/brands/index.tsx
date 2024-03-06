@@ -120,14 +120,16 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
 
   if (query.category) {
     brandsRes = await fetch(
-      `https://igralishte.onrender.com/brands?q=${query.category}`
+      `https://backend-igralishte.onrender.com/brands?q=${query.category}`
     );
     productsRes = await fetch(
-      `https://igralishte.onrender.com/products?q=${query.category}`
+      `https://backend-igralishte.onrender.com/products?q=${query.category}`
     );
   } else {
-    brandsRes = await fetch("https://igralishte.onrender.com/brands");
-    productsRes = await fetch("https://igralishte.onrender.com/products");
+    brandsRes = await fetch("https://backend-igralishte.onrender.com/brands");
+    productsRes = await fetch(
+      "https://backend-igralishte.onrender.com/products"
+    );
   }
 
   const brandsData: ProductsType[] = await brandsRes.json();

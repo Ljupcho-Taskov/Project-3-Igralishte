@@ -450,7 +450,9 @@ const ProductDetailsPage: React.FC<Props> = ({ product, allProductsData }) => {
 export default ProductDetailsPage;
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const ProductsRes = await fetch("https://igralishte.onrender.com/products");
+  const ProductsRes = await fetch(
+    "https://backend-igralishte.onrender.com/products"
+  );
   const ProductsData: ProductsType[] = await ProductsRes.json();
 
   const paths = ProductsData.map((product) => {
@@ -469,7 +471,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const allProductsRes = await fetch(
-    "https://igralishte.onrender.com/products"
+    "https://backend-igralishte.onrender.com/products"
   );
   const allProductsData: ProductsType[] = await allProductsRes.json();
 
@@ -477,7 +479,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
   if (params?.id) {
     const featuredProductRes = await fetch(
-      `https://igralishte.onrender.com/products/${params.id}`
+      `https://backend-igralishte.onrender.com/products/${params.id}`
     );
     product = await featuredProductRes.json();
   }

@@ -260,10 +260,10 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
 
   if (queryParams) {
     res = await fetch(
-      `https://igralishte.onrender.com/products?${queryParams}`
+      `https://backend-igralishte.onrender.com/products?${queryParams}`
     );
   } else {
-    res = await fetch("https://igralishte.onrender.com/products");
+    res = await fetch("https://backend-igralishte.onrender.com/products");
   }
 
   data = await res.json();

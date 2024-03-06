@@ -47,7 +47,9 @@ export const Home: NextPage<HomeProps> = ({ dataProducts }) => {
 export default Home;
 
 export const getStaticProps: GetStaticProps = async () => {
-  const resProducts = await fetch("https://igralishte.onrender.com/products/");
+  const resProducts = await fetch(
+    "https://backend-igralishte.onrender.com/products"
+  );
   const dataProducts: ProductsType[] = await resProducts.json();
 
   return {

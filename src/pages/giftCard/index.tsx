@@ -243,11 +243,13 @@ const GiftCardPage: NextPage<Props> = ({ dataCardsPrice }) => {
 export default GiftCardPage;
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const resGiftCards = await fetch("https://igralishte.onrender.com/giftCards");
+  const resGiftCards = await fetch(
+    "https://backend-igralishte.onrender.com/priceCards"
+  );
   const dataGiftCards: GiftCardsType[] = await resGiftCards.json();
 
   const resCardsPrice = await fetch(
-    "https://igralishte.onrender.com/priceCards"
+    "https://backend-igralishte.onrender.com/priceCards"
   );
   const dataCardsPrice: CardsPriceType[] = await resCardsPrice.json();
 

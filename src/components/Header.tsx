@@ -40,7 +40,7 @@ const Header: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    fetch("https://igralishte.onrender.com/products")
+    fetch("https://backend-igralishte.onrender.com/products")
       .then((res) => res.json())
       .then((data) => {
         setProducts(data);
@@ -51,7 +51,7 @@ const Header: React.FC = () => {
         setLoading(false);
       });
 
-    fetch("https://igralishte.onrender.com/brands")
+    fetch("https://backend-igralishte.onrender.com/brands")
       .then((res) => res.json())
       .then((data) => {
         setBrands(data);
