@@ -226,24 +226,29 @@ const FilterPage: NextPage<ProductsPageProps> = ({ data }) => {
               </h4>
 
               {Array.from(new Set(data.map((product) => product.category))).map(
-                (category, index) => (
-                  <label
-                    htmlFor={`category-${index}`}
-                    className="d-flex align-items-center"
-                    key={index}
-                  >
-                    <input
-                      id={`category-${index}`}
-                      className="input-check"
-                      type="checkbox"
-                      checked={selectedCategories.includes(category)}
-                      onChange={() =>
-                        handleCheckboxChange("category", category)
-                      }
-                    />
-                    {category}({getCountForFilter(category)})
-                  </label>
-                )
+                (category, index) => {
+                  if (!category) {
+                    return null;
+                  }
+                  return (
+                    <label
+                      htmlFor={`category-${index}`}
+                      className="d-flex align-items-center"
+                      key={index}
+                    >
+                      <input
+                        id={`category-${index}`}
+                        className="input-check"
+                        type="checkbox"
+                        checked={selectedCategories.includes(category)}
+                        onChange={() =>
+                          handleCheckboxChange("category", category)
+                        }
+                      />
+                      {category} ({getCountForFilter(category)})
+                    </label>
+                  );
+                }
               )}
 
               <h4 className="headersH4 brandsHr">
@@ -276,46 +281,56 @@ const FilterPage: NextPage<ProductsPageProps> = ({ data }) => {
 
               {Array.from(
                 new Set(data.map((product) => product.accessories))
-              ).map((accessories, index) => (
-                <label
-                  htmlFor={`accessories-${index}`}
-                  className="d-flex align-items-center"
-                  key={index}
-                >
-                  <input
-                    id={`accessories-${index}`}
-                    className="input-check"
-                    type="checkbox"
-                    checked={selectedAccessories.includes(accessories)}
-                    onChange={() =>
-                      handleCheckboxChange("accessories", accessories)
-                    }
-                  />
-                  {accessories}({getCountForFilter(accessories)})
-                </label>
-              ))}
+              ).map((accessories, index) => {
+                if (!accessories) {
+                  return null;
+                }
+                return (
+                  <label
+                    htmlFor={`accessories-${index}`}
+                    className="d-flex align-items-center"
+                    key={index}
+                  >
+                    <input
+                      id={`accessories-${index}`}
+                      className="input-check"
+                      type="checkbox"
+                      checked={selectedAccessories.includes(accessories)}
+                      onChange={() =>
+                        handleCheckboxChange("accessories", accessories)
+                      }
+                    />
+                    {accessories} ({getCountForFilter(accessories)})
+                  </label>
+                );
+              })}
               <h4 className="headersH4 sizesHr">
                 Величина
                 <hr className="line-hr mb-3" />
               </h4>
 
               {Array.from(new Set(data.map((product) => product.size))).map(
-                (size, index) => (
-                  <label
-                    htmlFor={`size-${index}`}
-                    className="d-flex align-items-center"
-                    key={index}
-                  >
-                    <input
-                      id={`size-${index}`}
-                      className="input-check"
-                      type="checkbox"
-                      checked={selectedSizes.includes(size)}
-                      onChange={() => handleCheckboxChange("size", size)}
-                    />
-                    {size}
-                  </label>
-                )
+                (size, index) => {
+                  if (!size) {
+                    return null;
+                  }
+                  return (
+                    <label
+                      htmlFor={`size-${index}`}
+                      className="d-flex align-items-center"
+                      key={index}
+                    >
+                      <input
+                        id={`size-${index}`}
+                        className="input-check"
+                        type="checkbox"
+                        checked={selectedSizes.includes(size)}
+                        onChange={() => handleCheckboxChange("size", size)}
+                      />
+                      {size}
+                    </label>
+                  );
+                }
               )}
               <h4 className="headersH4 colorsHr">
                 Боја
@@ -326,26 +341,31 @@ const FilterPage: NextPage<ProductsPageProps> = ({ data }) => {
                 <div className="col-6 d-flex flex-wrap ">
                   {Array.from(
                     new Set(data.map((product) => product.color))
-                  ).map((color, index) => (
-                    <div
-                      className="mr-1 p-1"
-                      style={{ position: "relative" }}
-                      key={index}
-                    >
-                      <input
-                        id={`color${index}`}
-                        className="input-check"
-                        type="checkbox"
-                        checked={selectedColors.includes(color)}
-                        onChange={() => handleCheckboxChange("color", color)}
-                      />
-                      <span
-                        className={`color-square ${getColorSquareClassName(
-                          color
-                        )}`}
-                      />
-                    </div>
-                  ))}
+                  ).map((color, index) => {
+                    if (!color) {
+                      return null;
+                    }
+                    return (
+                      <div
+                        className="mr-1 p-1"
+                        style={{ position: "relative" }}
+                        key={index}
+                      >
+                        <input
+                          id={`color${index}`}
+                          className="input-check"
+                          type="checkbox"
+                          checked={selectedColors.includes(color)}
+                          onChange={() => handleCheckboxChange("color", color)}
+                        />
+                        <span
+                          className={`color-square ${getColorSquareClassName(
+                            color
+                          )}`}
+                        />
+                      </div>
+                    );
+                  })}
                 </div>
               </div>
 

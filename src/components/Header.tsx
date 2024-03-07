@@ -2,7 +2,7 @@ import Link from "next/link";
 import React, { useEffect, useRef, useState } from "react";
 import AnnouncementBar from "./AnnouncementBar";
 import { useRouter } from "next/router";
-import { ProductsType } from "../types/types";
+import { AccessoryType, ProductsType } from "../types/types";
 
 interface DropdownStates {
   vintage: boolean;
@@ -14,6 +14,7 @@ const Header: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [products, setProducts] = useState<ProductsType[]>([]);
   const [brands, setBrands] = useState<ProductsType[]>([]);
+  const [accessories, setAccessories] = useState<AccessoryType[]>([]);
   const [isSearchModalOpen, setIsSearchModalOpen] = useState(false);
   const [dropdownStates, setDropdownStates] = useState<DropdownStates>({
     vintage: false,
@@ -22,8 +23,12 @@ const Header: React.FC = () => {
   });
   const [clickedCategory, setClickedCategory] = useState<string | null>(null);
   const [clickedBrand, setClickedBrand] = useState<string>();
+  const [clickedAccessory, setClickedAccessory] = useState<string>();
   const [productCategories, setProductCategories] = useState<string[]>([]);
   const [brandCategories, setBrandCategories] = useState<string[]>([]);
+  const [accessoriesCategories, setAccessoriesCategories] = useState<string[]>(
+    []
+  );
   const [loading, setLoading] = useState(true);
   const router = useRouter();
 
@@ -61,6 +66,19 @@ const Header: React.FC = () => {
         setBrandCategories(categories);
         setLoading(false);
       });
+
+    fetch("https://backend-igralishte.onrender.com/products")
+      .then((res) => res.json())
+      .then((data) => {
+        setAccessories(data);
+        const accessories: string[] = Array.from(
+          new Set(
+            data.map((accessories: AccessoryType) => accessories.accessories)
+          )
+        );
+        setAccessoriesCategories(accessories);
+        setLoading(false);
+      });
   }, []);
 
   useEffect(() => {
@@ -71,9 +89,14 @@ const Header: React.FC = () => {
     const brandCategoryFromQuery = router.query.category as string;
     setClickedBrand(brandCategoryFromQuery);
   }, [router.query.category]);
+  useEffect(() => {
+    const accessoryCategoryFromQuery = router.query.accessories as string;
+    setClickedAccessory(accessoryCategoryFromQuery);
+  }, [router.query.accessories]);
 
   const productCategory: string[] = [];
   const brandCategory: string[] = [];
+  const accessoryCategory: string[] = [];
 
   brands.forEach((brand) => {
     if (!brandCategory.includes(brand.category)) {
@@ -84,6 +107,11 @@ const Header: React.FC = () => {
   products.forEach((product) => {
     if (!productCategory.includes(product.category)) {
       productCategory.push(product.category);
+    }
+  });
+  accessories.forEach((accessory) => {
+    if (!accessoryCategory.includes(accessory.accessories)) {
+      accessoryCategory.push(accessory.accessories);
     }
   });
 
@@ -134,6 +162,13 @@ const Header: React.FC = () => {
     router.push({
       pathname: "/brands",
       query: { category: brand },
+    });
+  };
+  const handleClickedAccessory = (accessory: string) => {
+    setClickedAccessory(accessory);
+    router.push({
+      pathname: "/product",
+      query: { accessories: accessory },
     });
   };
 
@@ -320,7 +355,7 @@ const Header: React.FC = () => {
                         className={dropdownStates.brands ? "d-block" : "d-none"}
                       >
                         {loading ? (
-                          <div>Loading Data...</div>
+                          <div>Loading Data</div>
                         ) : (
                           brandCategory.map((brand, index) => (
                             <li
@@ -330,10 +365,7 @@ const Header: React.FC = () => {
                               }}
                               key={index}
                             >
-                              <div
-                                onClick={() => {}}
-                                className="d-flex align-items-center"
-                              >
+                              <div className="d-flex align-items-center">
                                 {clickedBrand === brand && (
                                   <img
                                     className="sparksSmallAll"
@@ -354,9 +386,10 @@ const Header: React.FC = () => {
                         )}
                       </ul>
                     </li>
+
                     <li onClick={() => handleDropDown("accessories")}>
                       <div className="d-flex justify-content-between">
-                        <span>Аксесоари </span>
+                        <span>Aксесоари</span>
                         <i
                           className={
                             dropdownStates.accessories
@@ -370,9 +403,43 @@ const Header: React.FC = () => {
                           dropdownStates.accessories ? "d-block" : "d-none"
                         }
                       >
-                        <li>Види ги сите</li>
-                        <li>Ташни</li>
-                        <li>Накит</li>
+                        {loading ? (
+                          <div>Loading Data</div>
+                        ) : (
+                          accessoryCategory.map((accessory, index) => {
+                            if (!accessory) {
+                              return null;
+                            }
+                            return (
+                              <li
+                                onClick={() => {
+                                  handleClickedAccessory(accessory);
+                                  handleModalClick();
+                                }}
+                                key={index}
+                              >
+                                <div className="d-flex align-items-center">
+                                  {clickedAccessory === accessory && (
+                                    <img
+                                      className="sparksSmallAll"
+                                      src="../../logo/sparks-elements-and-symbols-isolated-on-white-background-free-vector 2.png"
+                                      alt=""
+                                    />
+                                  )}
+                                  <span
+                                    className={
+                                      clickedAccessory === accessory
+                                        ? "li-olive"
+                                        : ""
+                                    }
+                                  >
+                                    {accessory}
+                                  </span>
+                                </div>
+                              </li>
+                            );
+                          })
+                        )}
                       </ul>
                     </li>
                     <li>Lifestyle</li>

@@ -5,6 +5,39 @@ export interface ProductsType {
   title: string;
   material: string;
   category: string;
+  accessories: string;
+  maintenance: string;
+  chlotes: string;
+  discount: boolean;
+  discountProcent: number;
+  img: string;
+  brand: string;
+  description: string;
+  color: string;
+  size: string;
+  amount: string;
+  sizeDesc: string;
+  date: Date;
+  formattedDate: string;
+  images: {
+    id: string;
+    img: string;
+  }[];
+  desc1: string;
+  desc2: string;
+  desc3: string;
+  desc4: string;
+  desc5: string;
+  desc6: string;
+  desc7: string;
+}
+export interface AccessoryType {
+  id: string;
+  price: string;
+  priceR: string;
+  title: string;
+  material: string;
+  category: string;
   maintenance: string;
   chlotes: string;
   discount: boolean;
