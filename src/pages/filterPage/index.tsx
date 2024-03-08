@@ -3,7 +3,6 @@ import React, { useEffect, useRef, useState } from "react";
 import Header from "../../components/Header";
 import { ProductsType } from "../../types/types";
 import { GetServerSideProps, NextPage } from "next";
-
 import Head from "next/head";
 
 interface ProductsPageProps {
@@ -30,7 +29,7 @@ const FilterPage: NextPage<ProductsPageProps> = ({ data }) => {
   };
   const router = useRouter();
   const [inputValue, setInputValue] = useState("");
-  const { category, brand, color, size, price, accessories } = router.query;
+  const { category, brand, color, size, priceR, accessories } = router.query;
 
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const [selectedBrands, setSelectedBrands] = useState<string[]>([]);
@@ -69,9 +68,9 @@ const FilterPage: NextPage<ProductsPageProps> = ({ data }) => {
     setSelectedBrands(getArrayFromQuery(brand));
     setSelectedColors(getArrayFromQuery(color));
     setSelectedSizes(getArrayFromQuery(size));
-    setSelectedPrices(getArrayFromQuery(price));
+    setSelectedPrices(getArrayFromQuery(priceR));
     setSelectedAccessories(getArrayFromQuery(accessories));
-  }, [category, brand, color, size, price, accessories]);
+  }, [category, brand, color, size, priceR, accessories]);
 
   const handleCheckboxChange = (type: string, value: string) => {
     const setFunction =
@@ -83,7 +82,7 @@ const FilterPage: NextPage<ProductsPageProps> = ({ data }) => {
         ? setSelectedColors
         : type === "size"
         ? setSelectedSizes
-        : type === "price"
+        : type === "priceR"
         ? setSelectedPrices
         : type === "accessories"
         ? setSelectedAccessories
@@ -102,8 +101,6 @@ const FilterPage: NextPage<ProductsPageProps> = ({ data }) => {
 
   const handleFilterButtonClick = () => {
     const filtered = data.filter((product) => {
-      const productPrice = product.price;
-
       return (
         (selectedCategories.length === 0 ||
           selectedCategories.includes(product.category)) &&
@@ -114,7 +111,7 @@ const FilterPage: NextPage<ProductsPageProps> = ({ data }) => {
         (selectedSizes.length === 0 || selectedSizes.includes(product.size)) &&
         (selectedAccessories.length === 0 ||
           selectedAccessories.includes(product.accessories)) &&
-        (selectedPrices.length === 0 || selectedPrices.includes(product.price))
+        (selectedPrices.length === 0 || selectedPrices.includes(product.priceR))
       );
     });
 
@@ -125,7 +122,7 @@ const FilterPage: NextPage<ProductsPageProps> = ({ data }) => {
         brand: selectedBrands,
         color: selectedColors,
         size: selectedSizes,
-        price: selectedPrices,
+        priceR: selectedPrices,
         accessories: selectedAccessories,
       },
     });
@@ -233,12 +230,12 @@ const FilterPage: NextPage<ProductsPageProps> = ({ data }) => {
                   return (
                     <label
                       htmlFor={`category-${index}`}
-                      className="d-flex align-items-center"
+                      className="d-flex align-items-center pointer"
                       key={index}
                     >
                       <input
                         id={`category-${index}`}
-                        className="input-check"
+                        className="input-check pointer mr-1"
                         type="checkbox"
                         checked={selectedCategories.includes(category)}
                         onChange={() =>
@@ -260,23 +257,23 @@ const FilterPage: NextPage<ProductsPageProps> = ({ data }) => {
                 (brand, index) => (
                   <label
                     htmlFor={`brand-${index}`}
-                    className="d-flex align-items-center"
+                    className="d-flex align-items-center pointer"
                     key={index}
                   >
                     <input
                       id={`brand-${index}`}
-                      className="input-check"
+                      className="input-check pointer mr-1"
                       type="checkbox"
                       checked={selectedBrands.includes(brand)}
                       onChange={() => handleCheckboxChange("brand", brand)}
                     />
-                    {brand}({getCountForFilter(brand)})
+                    {brand} ({getCountForFilter(brand)})
                   </label>
                 )
               )}
               <h4 className="headersH4 accessosiesHr">
                 Аксесоари
-                <span className="line-hr mb-3" />
+                <hr className="line-hr mb-3" />
               </h4>
 
               {Array.from(
@@ -288,12 +285,12 @@ const FilterPage: NextPage<ProductsPageProps> = ({ data }) => {
                 return (
                   <label
                     htmlFor={`accessories-${index}`}
-                    className="d-flex align-items-center"
+                    className="d-flex align-items-center pointer"
                     key={index}
                   >
                     <input
                       id={`accessories-${index}`}
-                      className="input-check"
+                      className="input-check pointer mr-1"
                       type="checkbox"
                       checked={selectedAccessories.includes(accessories)}
                       onChange={() =>
@@ -317,12 +314,12 @@ const FilterPage: NextPage<ProductsPageProps> = ({ data }) => {
                   return (
                     <label
                       htmlFor={`size-${index}`}
-                      className="d-flex align-items-center"
+                      className="d-flex align-items-center pointer"
                       key={index}
                     >
                       <input
                         id={`size-${index}`}
-                        className="input-check"
+                        className="input-check pointer mr-1"
                         type="checkbox"
                         checked={selectedSizes.includes(size)}
                         onChange={() => handleCheckboxChange("size", size)}
@@ -353,13 +350,13 @@ const FilterPage: NextPage<ProductsPageProps> = ({ data }) => {
                       >
                         <input
                           id={`color${index}`}
-                          className="input-check"
+                          className="input-check pointer mr-1"
                           type="checkbox"
                           checked={selectedColors.includes(color)}
                           onChange={() => handleCheckboxChange("color", color)}
                         />
                         <span
-                          className={`color-square ${getColorSquareClassName(
+                          className={`color-square pointer ${getColorSquareClassName(
                             color
                           )}`}
                         />
@@ -370,46 +367,33 @@ const FilterPage: NextPage<ProductsPageProps> = ({ data }) => {
               </div>
 
               <h4 className="headersH4 pricesHr">
-                Prices
+                Ценa
                 <hr className="line-hr mb-3" />
               </h4>
 
-              <label htmlFor="price1">
-                <input
-                  id="price1"
-                  type="checkbox"
-                  checked={selectedPrices.includes("500-1000")}
-                  onChange={() => handleCheckboxChange("price", "500-1000")}
-                />
-                500 - 1000 den
-              </label>
-              <label htmlFor="price2">
-                <input
-                  id="price2"
-                  type="checkbox"
-                  checked={selectedPrices.includes("1500-2000")}
-                  onChange={() => handleCheckboxChange("price", "1500-2000")}
-                />
-                1500 - 2000 den
-              </label>
-              <label htmlFor="price3">
-                <input
-                  id="price3"
-                  type="checkbox"
-                  checked={selectedPrices.includes("2000-2500")}
-                  onChange={() => handleCheckboxChange("price", "2000-2500")}
-                />
-                2000 - 2500 den
-              </label>
-              <label htmlFor="price4">
-                <input
-                  id="price4"
-                  type="checkbox"
-                  checked={selectedPrices.includes("above 2500")}
-                  onChange={() => handleCheckboxChange("price", "above 2500")}
-                />
-                above 2500den
-              </label>
+              {Array.from(new Set(data.map((product) => product.priceR))).map(
+                (priceR, index) => {
+                  if (!priceR) {
+                    return null;
+                  }
+                  return (
+                    <label
+                      htmlFor={`priceR-${index}`}
+                      className="d-flex align-items-center pointer"
+                      key={index}
+                    >
+                      <input
+                        id={`priceR-${index}`}
+                        className="input-check pointer mr-1"
+                        type="checkbox"
+                        checked={selectedPrices.includes(priceR)}
+                        onChange={() => handleCheckboxChange("priceR", priceR)}
+                      />
+                      {priceR} денари
+                    </label>
+                  );
+                }
+              )}
 
               <div className="d-flex flex-column align-items-center filtering-div">
                 <button

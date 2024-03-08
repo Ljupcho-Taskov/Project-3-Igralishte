@@ -15,7 +15,6 @@ export interface ProductsType {
   description: string;
   color: string;
   size: string;
-  amount: string;
   sizeDesc: string;
   date: Date;
   formattedDate: string;

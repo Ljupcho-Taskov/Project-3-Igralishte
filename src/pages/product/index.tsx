@@ -44,19 +44,11 @@ const ProductsPage: NextPage<ProductsPageProps> = ({
           (selectedCategories.length === 0 ||
             selectedCategories.includes(product.category)) &&
           (selectedBrands.length === 0 ||
-            selectedBrands.includes(product.brand))
+            selectedBrands.includes(product.brand)) &&
+          (selectedPrices.length === 0 ||
+            selectedPrices.includes(product.priceR))
       )
-      .filter((product) => {
-        const productPrice = parseInt(product.price);
 
-        return (
-          selectedPrices.length === 0 ||
-          selectedPrices.some((range) => {
-            const [min, max] = range.split("-").map(Number);
-            return productPrice >= min && productPrice <= max;
-          })
-        );
-      })
       .sort((a, b) => {
         const dateA = new Date(a.date);
         const dateB = new Date(b.date);

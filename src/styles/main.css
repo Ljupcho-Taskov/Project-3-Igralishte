@@ -276,19 +276,14 @@ li {
 }
 
 /* Product Details */
+
 .image-slider {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 10px;
-}
-.image-slider img {
-  width: 90px;
   height: 100px;
   cursor: pointer;
   border: 2px solid #ccc;
 }
 
-.image-slider img:hover {
+.image-slider:hover {
   border-color: #ff5b29;
 }
 
@@ -617,19 +612,7 @@ li a {
 .boxShadowNone {
   box-shadow: none;
 }
-.hrYellow {
-  width: 300px;
-  margin-left: 0;
-  height: 0.674px;
-  background: linear-gradient(
-    99deg,
-    #fff0bf -10.68%,
-    #efc990 18.14%,
-    #fdd292 43.87%,
-    rgba(240, 199, 73, 0.42) 81.17%,
-    #d4af37 100%
-  );
-}
+
 /* Accordions */
 .accordion-row {
   width: 100%;
@@ -771,7 +754,7 @@ li a {
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
-  line-height: 150%; /* 24px */
+  line-height: 150%;
   letter-spacing: -0.176px;
   margin-bottom: 10px;
 }
@@ -779,6 +762,12 @@ li a {
   border: none;
   background: inherit;
   cursor: pointer;
+}
+.line-through {
+  text-decoration: line-through;
+}
+.discountP {
+  color: green;
 }
 /*  */
 /* form order page */
@@ -843,7 +832,7 @@ li a {
   align-items: center;
 }
 .order-modal-content {
-  width: 70%;
+  width: 80%;
   display: flex;
   flex-direction: column;
   align-items: center;

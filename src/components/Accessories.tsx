@@ -1,8 +1,16 @@
 import React from "react";
+import { useRouter } from "next/router";
 
 const Accessories = () => {
+  const router = useRouter();
   return (
     <div
+      onClick={() => {
+        router.push({
+          pathname: "/product",
+          query: "accessories=Обетки&accessories=Ташни",
+        });
+      }}
       className="container-fluid d-flex flex-column justify-content-between mb-5"
       style={{
         height: "605px",

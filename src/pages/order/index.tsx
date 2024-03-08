@@ -27,7 +27,7 @@ const OrderPage: React.FC<ProductsPageProps> = ({ productsData }) => {
   const [isViewingCart, setIsViewingCart] = useState(false);
   const [totalPrice, setTotalPrice] = useState<number>(0);
   const [productInfo, setProductInfo] = useState<
-    { name: string; priceR: number; discountProcent: number }[]
+    { name: string; price: number; discountProcent: number }[]
   >([]);
   const deliveryCost = 150;
 
@@ -61,7 +61,7 @@ const OrderPage: React.FC<ProductsPageProps> = ({ productsData }) => {
   }, [router.query]);
 
   useEffect(() => {
-    const total = cart.reduce((sum, item) => sum + parseFloat(item.priceR), 0);
+    const total = cart.reduce((sum, item) => sum + parseFloat(item.price), 0);
     const totalGiftCard = priceCard.reduce(
       (sum, item) => sum + parseFloat(item.price),
       0
@@ -71,13 +71,13 @@ const OrderPage: React.FC<ProductsPageProps> = ({ productsData }) => {
 
     const products = cart.map((item) => ({
       name: item.title,
-      priceR: parseFloat(item.priceR),
+      price: parseFloat(item.price),
       discountProcent: item.discountProcent || 0,
     }));
 
     const giftCardProducts = priceCard.map((giftCard) => ({
       name: giftCard.title,
-      priceR: parseFloat(giftCard.price),
+      price: parseFloat(giftCard.price),
       discountProcent: 0,
     }));
 
@@ -210,7 +210,7 @@ const OrderPage: React.FC<ProductsPageProps> = ({ productsData }) => {
                       key={index}
                     >
                       <p className="productName">{product.name}</p>
-                      <p className="productName">{product.priceR} ден.</p>
+                      <p className="productName">{product.price} ден.</p>
                     </div>
                   ))}
                   {productInfo
@@ -224,7 +224,7 @@ const OrderPage: React.FC<ProductsPageProps> = ({ productsData }) => {
                         <p className="productName red-alert ">
                           -
                           {calculateDiscountedAmount(
-                            product.priceR,
+                            product.price,
                             product.discountProcent
                           )}
                           ден.
@@ -243,7 +243,7 @@ const OrderPage: React.FC<ProductsPageProps> = ({ productsData }) => {
                           .filter((product) => product.discountProcent > 0)
                           .map((product) =>
                             calculateDiscountedAmount(
-                              product.priceR,
+                              product.price,
                               product.discountProcent
                             )
                           )
@@ -266,7 +266,7 @@ const OrderPage: React.FC<ProductsPageProps> = ({ productsData }) => {
                           .filter((product) => product.discountProcent > 0)
                           .map((product) =>
                             calculateDiscountedAmount(
-                              product.priceR,
+                              product.price,
                               product.discountProcent
                             )
                           )

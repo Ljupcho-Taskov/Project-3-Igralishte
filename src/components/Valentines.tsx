@@ -1,8 +1,15 @@
 import React from "react";
+import { useRouter } from "next/router";
 
 const Valentines = () => {
+  const router = useRouter();
   return (
     <div
+      onClick={() => {
+        router.push({
+          pathname: "/product",
+        });
+      }}
       className="container-fluid d-flex flex-column justify-content-between pb-5"
       style={{
         height: "605px",
