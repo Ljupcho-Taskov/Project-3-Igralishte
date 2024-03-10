@@ -127,9 +127,7 @@ const SearchPage: NextPage<SearchPageProps> = ({
           ) : (
             <>
               {currentProducts.map((item, index) => (
-                <div className="col-6 mb-3" key={item.id}>
-                  <ProductItem index={index} {...item} />
-                </div>
+                <ProductItem index={index} {...item} key={item.id} />
               ))}
             </>
           )}
