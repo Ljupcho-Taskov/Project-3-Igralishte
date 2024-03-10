@@ -87,7 +87,7 @@ const BrandsPage: NextPage<BrandsPageProps> = ({
             <h2 className="faq-header">{headerCategory}</h2>
           </div>
         </div>
-        <div className="row">
+        <div className="row align-items-center">
           {currentProducts.map((item) => (
             <BrandItem key={item.id} {...item} />
           ))}

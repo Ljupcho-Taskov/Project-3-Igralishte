@@ -1,6 +1,7 @@
 import Link from "next/link";
 import React, { useEffect, useRef, useState } from "react";
 import ChangePasswordModal from "../../components/ChangePasswordModal";
+import SaveInfoModal from "../../components/SaveInfoModal";
 
 const MyProfile = () => {
   const inputRef = useRef<HTMLInputElement | null>(null);
@@ -16,6 +17,7 @@ const MyProfile = () => {
   const [profileImage, setProfileImage] = useState<string | null>(null);
   const [isChangePasswordModalOpen, setIsChangePasswordModalOpen] =
     useState(false);
+  const [isSaveInfoModalOpen, setIsSaveInfoModalOpen] = useState(false);
 
   useEffect(() => {
     const storedData = localStorage.getItem("registrationData");
@@ -47,6 +49,14 @@ const MyProfile = () => {
 
   const handleCloseChangePasswordModal = () => {
     setIsChangePasswordModalOpen(false);
+  };
+
+  const handleOpenSaveInfoModal = () => {
+    setIsSaveInfoModalOpen(true);
+  };
+
+  const handleCloseSaveInfoModal = () => {
+    setIsSaveInfoModalOpen(false);
   };
 
   const handleSavePasswordChanges = (
@@ -103,12 +113,11 @@ const MyProfile = () => {
     setBiography(value);
   };
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
+  const handleSaveChanges = () => {
     if (selectedFile) {
       saveImageToLocalStorage(selectedFile);
     }
-    updateLocalStorage({
+    const userData = {
       name,
       surname,
       email,
@@ -116,7 +125,9 @@ const MyProfile = () => {
       adress,
       phone,
       biography,
-    });
+    };
+    localStorage.setItem("registrationData", JSON.stringify(userData));
+    handleCloseSaveInfoModal();
   };
 
   const saveImageToLocalStorage = (file: File) => {
@@ -159,6 +170,7 @@ const MyProfile = () => {
         break;
     }
   };
+
   return (
     <section className="registration-section registration-bg-pink">
       <div className="container py-3">
@@ -212,7 +224,12 @@ const MyProfile = () => {
         </div>
         <div className="row">
           <div className="col-12 d-flex flex-column align-items-center">
-            <form className="d-flex flex-column mb-3" onSubmit={handleSubmit}>
+            <form
+              className="d-flex flex-column mb-3"
+              onSubmit={(event: React.FormEvent<HTMLFormElement>) => {
+                event.preventDefault();
+              }}
+            >
               <label htmlFor="name">Име</label>
               <input
                 className="mb-3"
@@ -294,7 +311,7 @@ const MyProfile = () => {
                 onChange={handlePhoneChange}
               />
 
-              <label htmlFor="biography">Биограгија</label>
+              <label htmlFor="biography">Биографија</label>
               <textarea
                 name="biography"
                 id="biography"
@@ -316,7 +333,10 @@ const MyProfile = () => {
                 </Link>
               </div>
               <div className="text-center mt-3">
-                <button className="w-100 pointer" type="submit">
+                <button
+                  className="w-100 pointer"
+                  onClick={handleOpenSaveInfoModal}
+                >
                   Зачувај
                 </button>
               </div>
@@ -330,6 +350,13 @@ const MyProfile = () => {
           isOpen={isChangePasswordModalOpen}
           onClose={handleCloseChangePasswordModal}
           onSaveChanges={handleSavePasswordChanges}
+        />
+      )}
+      {isSaveInfoModalOpen && (
+        <SaveInfoModal
+          isSaveInfoModalOpen={isSaveInfoModalOpen}
+          onClose={handleCloseSaveInfoModal}
+          handleSaveChanges={handleSaveChanges}
         />
       )}
     </section>

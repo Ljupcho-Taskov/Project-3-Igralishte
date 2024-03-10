@@ -7,27 +7,15 @@ const BrandItem: React.FC<ProductsType> = (brand) => {
   const router = useRouter();
   const { category } = router.query;
 
-  if (!category) {
-    return (
-      <Link href={`/brands?category=${brand.category}&brand=${brand.brand}`}>
-        <div className="col-12" key={brand.id}>
-          <img className="mb-3" src={brand.img} alt="IMG-PRODUCT" />
-
-          <div>
-            <p style={{ position: "absolute", top: "0px" }}>{brand.category}</p>
-          </div>
-        </div>
-      </Link>
-    );
-  }
-
   if (category === brand.category) {
     return (
       <Link href={`/brands?category=${brand.category}&brand=${brand.brand}`}>
-        <div className="col-12" key={brand.id}>
-          <img className="mb-3" src={brand.img} alt="IMG-PRODUCT" />
+        <>
+          <div className="col-12  col-md-6" key={brand.id}>
+            <img className="mb-3" src={brand.img} alt="IMG-PRODUCT" />
+          </div>
 
-          <>
+          <div className="col-12 col-md-6">
             <p>{brand.desc1}</p>
             <ul className="py-3">
               <li style={{ listStyleType: "disc" }}>{brand.desc2}</li>
@@ -37,8 +25,8 @@ const BrandItem: React.FC<ProductsType> = (brand) => {
             </ul>
             <p className="mb-3">{brand.desc6}</p>
             <p className="mb-3">{brand.desc7}</p>
-          </>
-        </div>
+          </div>
+        </>
       </Link>
     );
   }
