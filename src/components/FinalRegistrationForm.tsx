@@ -46,6 +46,7 @@ const FinalRegistrationForm: React.FC = () => {
       adress,
       phone,
       biography,
+      isLoggedIn: true,
     };
 
     localStorage.setItem("registrationData", JSON.stringify(newUser));

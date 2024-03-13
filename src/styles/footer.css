@@ -54,7 +54,8 @@ footer {
 footer ul {
   padding: 0;
 }
-footer ul li a {
+footer ul li a,
+.logout {
   color: var(--Black, #232221);
   font-family: Cormorant Garamond;
   font-size: 20px;

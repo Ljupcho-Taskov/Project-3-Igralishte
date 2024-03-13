@@ -2,6 +2,7 @@ import Link from "next/link";
 import React, { useEffect, useRef, useState } from "react";
 import ChangePasswordModal from "../../components/ChangePasswordModal";
 import SaveInfoModal from "../../components/SaveInfoModal";
+import { UpdateLoginStatus } from "../../types/types";
 
 const MyProfile = () => {
   const inputRef = useRef<HTMLInputElement | null>(null);
@@ -18,14 +19,23 @@ const MyProfile = () => {
   const [isChangePasswordModalOpen, setIsChangePasswordModalOpen] =
     useState(false);
   const [isSaveInfoModalOpen, setIsSaveInfoModalOpen] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
 
   useEffect(() => {
     const storedData = localStorage.getItem("registrationData");
     if (storedData) {
       const parsedData = JSON.parse(storedData);
       const userData = Array.isArray(parsedData) ? parsedData[0] : parsedData;
-      const { name, surname, email, password, adress, phone, biography } =
-        userData;
+      const {
+        name,
+        surname,
+        email,
+        password,
+        adress,
+        phone,
+        biography,
+        isLoggedIn,
+      } = userData;
       setName(name);
       setSurname(surname);
       setEmail(email);
@@ -33,6 +43,7 @@ const MyProfile = () => {
       setAdress(adress);
       setPhone(phone);
       setBiography(biography);
+      setIsLoggedIn(isLoggedIn);
     }
   }, []);
 
@@ -125,6 +136,7 @@ const MyProfile = () => {
       adress,
       phone,
       biography,
+      isLoggedIn,
     };
     localStorage.setItem("registrationData", JSON.stringify(userData));
     handleCloseSaveInfoModal();
@@ -327,7 +339,10 @@ const MyProfile = () => {
                   </button>
                 </Link>
                 <Link href="/login">
-                  <button className="text-center col-5 pointer">
+                  <button
+                    onClick={UpdateLoginStatus}
+                    className="text-center col-5 pointer"
+                  >
                     Одјави се
                   </button>
                 </Link>

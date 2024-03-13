@@ -3,6 +3,7 @@ import React, { useEffect, useRef, useState } from "react";
 import AnnouncementBar from "./AnnouncementBar";
 import { useRouter } from "next/router";
 import { AccessoryType, ProductsType } from "../types/types";
+import LogInAndOut from "./LogInAndOut";
 
 interface DropdownStates {
   vintage: boolean;
@@ -32,17 +33,13 @@ const Header: React.FC = () => {
   const [loading, setLoading] = useState(true);
   const router = useRouter();
 
-  const [user, setUser] = useState<string | null>(null);
-
-  useEffect(() => {
-    const getUserFromLocalStorage = () => {
-      return window.localStorage.getItem("registrationData");
-    };
-
-    if (typeof window !== "undefined") {
-      setUser(getUserFromLocalStorage());
-    }
-  }, []);
+  let isLoggedIn = false;
+  if (typeof window !== "undefined") {
+    const registrationData = JSON.parse(
+      localStorage.getItem("registrationData") || "{}"
+    );
+    isLoggedIn = registrationData.isLoggedIn;
+  }
 
   useEffect(() => {
     fetch("https://backend-igralishte.onrender.com/products")
@@ -488,17 +485,7 @@ const Header: React.FC = () => {
                       <div className="ph-user mr-1">
                         <img src="/logo/ph_user-light.png" alt="" />
                       </div>
-                      {!user ? (
-                        <Link href="/register">Регистрирај се </Link>
-                      ) : (
-                        <Link href="/myProfile">Мој Профил </Link>
-                      )}
-                      <span className="mx-1">/</span>
-                      {!user ? (
-                        <Link href="/login"> Логирај се</Link>
-                      ) : (
-                        <Link href="/login"> Одјави се</Link>
-                      )}
+                      <LogInAndOut />
                     </li>
                   </ul>
                 </div>

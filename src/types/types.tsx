@@ -98,3 +98,14 @@ export interface ProductCardType {
   priceR: string;
   title: string;
 }
+
+export const UpdateLoginStatus = () => {
+  const previousData = JSON.parse(
+    localStorage.getItem("registrationData") || "{}"
+  );
+  const newUser = {
+    ...previousData,
+    isLoggedIn: false,
+  };
+  localStorage.setItem("registrationData", JSON.stringify(newUser));
+};

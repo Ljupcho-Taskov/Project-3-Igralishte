@@ -18,8 +18,22 @@ const Login: NextPage = () => {
     const storedUserData = localStorage.getItem("registrationData");
     if (storedUserData) {
       const userData = JSON.parse(storedUserData);
-      if (userData.email === email && userData.password === password) {
+      if (
+        userData.email === email &&
+        userData.password === password &&
+        !userData.isLoggedIn
+      ) {
         router.push("/");
+
+        const newStoredUserData = {
+          ...userData,
+          isLoggedIn: true,
+        };
+
+        localStorage.setItem(
+          "registrationData",
+          JSON.stringify(newStoredUserData)
+        );
       }
       if (userData.email !== email) {
         setEmailError(true);
